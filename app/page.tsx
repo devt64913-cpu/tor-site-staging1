@@ -34,8 +34,19 @@ export default function Home() {
             <div className="flex flex-col md:flex-row gap-8 md:gap-12">
               {/* Director Photo/Info */}
               <div className="flex-shrink-0 text-center md:text-left">
-                <div className="w-32 h-32 bg-primary-100 rounded-full mx-auto md:mx-0 mb-4 flex items-center justify-center">
-                  <span className="text-4xl font-bold text-primary-600">EK</span>
+                <div className="w-32 h-32 bg-primary-100 rounded-full mx-auto md:mx-0 mb-4 flex items-center justify-center overflow-hidden relative">
+                  {/* MD Image - Update src with actual image URL when available */}
+                  {/* If image URL is found, uncomment and update the Image component below */}
+                  {/* <Image
+                    src="IMAGE_URL_HERE"
+                    alt="Mr. Edmund Kombat, Managing Director"
+                    width={128}
+                    height={128}
+                    className="rounded-full object-cover w-full h-full"
+                  /> */}
+                  <span className="text-4xl font-bold text-primary-600">
+                    EK
+                  </span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Edmund Kombat</h3>
                 <p className="text-primary-500 font-semibold mb-2">Managing Director</p>

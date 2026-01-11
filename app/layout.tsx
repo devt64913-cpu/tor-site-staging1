@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${cabinetGrotesk.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${cabinetGrotesk.variable} antialiased min-h-screen flex flex-col`}
       >
         <Header />
         <main className="flex-grow">{children}</main>
