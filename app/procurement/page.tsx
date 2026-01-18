@@ -60,7 +60,7 @@ export default function Procurement() {
         title="Procurement Opportunities"
         subtitle="TOR Refinery"
         description="Explore current procurement needs and submit your proposals to partner with us."
-        primaryAction={{ label: "Submit Proposal", href: "#procurement-items" }}
+        primaryAction={{ label: "View Opportunities", href: "#procurement-items" }}
         secondaryAction={{ label: "Contact Us", href: "/investor-contacts" }}
       />
 
@@ -132,7 +132,7 @@ export default function Procurement() {
 
                   <div className="flex gap-3 mt-auto">
                     <Button
-                      href={`mailto:${item.contactEmail}?subject=Proposal for ${item.itemName}`}
+                      href={`/procurement/submit-proposal?itemId=${item.id}`}
                       className="flex-1"
                     >
                       Submit Proposal
