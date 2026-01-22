@@ -10,6 +10,7 @@ interface SectionProps {
   title?: string;
   subtitle?: string;
   description?: string;
+  id?: string;
 }
 
 export default function Section({
@@ -19,9 +20,10 @@ export default function Section({
   title,
   subtitle,
   description,
+  id
 }: SectionProps) {
   return (
-    <section className={`py-16 lg:py-24 ${className}`}>
+    <section id={id} className={`py-16 lg:py-24 ${className}`}>
       <div className={`container mx-auto px-4 lg:px-8 ${containerClassName}`}>
         {(title || subtitle || description) && (
           <motion.div
