@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
@@ -157,7 +157,8 @@ export default function SubmitProposal() {
 
   return (
     <>
-      <Hero
+      <Suspense fallback={<div>Loading...</div>}>
+        <Hero
         title="Submit Proposal"
         subtitle="Procurement"
         description="Submit your proposal for the selected procurement opportunity"
@@ -509,6 +510,7 @@ export default function SubmitProposal() {
           </motion.div>
         </div>
       </Section>
+        </Suspense>
     </>
   );
 }
