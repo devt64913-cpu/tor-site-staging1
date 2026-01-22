@@ -135,7 +135,7 @@ export default function SubmitProposal() {
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Proposal Submitted Successfully!</h2>
                 <p className="text-gray-600 mb-8">
-                  We have received your proposal for <strong>{selectedItem?.itemName}</strong>. 
+                  We have received your proposal for <strong>{selectedItem?.itemName}</strong>.
                   Our procurement team will review your submission and contact you within 5-7 business days.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -214,10 +214,10 @@ export default function SubmitProposal() {
                   <label htmlFor="procurementItem" className="block text-sm font-medium text-gray-700 mb-2">
                     Select Procurement Item *
                   </label>
-                  <select
+                  {/* <select
                     id="procurementItem"
                     required
-                    value={selectedItem?.id || ""}
+                    value={selectedItem ? selectedItem.id : ""}
                     onChange={(e) => {
                       const item = procurementItems.find(i => i.id === e.target.value);
                       setSelectedItem(item || null);
@@ -230,6 +230,27 @@ export default function SubmitProposal() {
                         {item.itemName} - {item.category}
                       </option>
                     ))}
+                  </select> */}
+
+                  <select
+                    id="procurementItem"
+                    required
+                    value={"1"}
+                    onChange={(e) => {
+                      const item =
+                        procurementItems.find(i => i.id === e.target.value) ?? null;
+                      setSelectedItem(item);
+                    }}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  >
+                    <option value="">Select a procurement item</option>
+                    {procurementItems
+                      .filter(item => item.status === "active")
+                      .map(item => (
+                        <option key={item.id} value={item.id}>
+                          {item.itemName} - {item.category}
+                        </option>
+                      ))}
                   </select>
                 </div>
               )}
@@ -458,7 +479,7 @@ export default function SubmitProposal() {
                       </div>
                     )}
                     <p className="text-sm text-gray-500">
-                      Recommended documents: Company profile, Business registration, Quality certifications, 
+                      Recommended documents: Company profile, Business registration, Quality certifications,
                       Technical specifications, Pricing breakdown, Delivery schedule
                     </p>
                   </div>
