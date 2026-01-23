@@ -66,14 +66,14 @@ export default function SubmitProposal() {
           primaryAction={{ label: "View All Opportunities", href: "/procurement" }}
         />
 
-        <Try />
+        <Proposal />
       </Suspense>
     </>
   );
 }
 
 
-function Try() {
+function Proposal() {
 
   const searchParams = useSearchParams();
   const router = useRouter();

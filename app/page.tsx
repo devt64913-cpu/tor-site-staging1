@@ -7,6 +7,7 @@ import Button from "@/components/Button";
 import { IconCheck, IconWorld, IconBook, IconSettings, IconFlame, IconDatabase, IconTank, IconPhone, IconMail, IconMapPin, IconClock, IconUsers } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { url } from "@/utils/url";
 
 export default function Home() {
   return (
@@ -39,7 +40,7 @@ export default function Home() {
                   {/* MD Image - Update src with actual image URL when available */}
                   {/* If image URL is found, uncomment and update the Image component below */}
                   <Image
-                    src="/images/tor_md.jpeg"
+                    src={`${url}/images/tor_md.jpeg`}
                     alt="Mr. Edmund Kombat, Managing Director"
                     width={128}
                     height={128}

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Button from "./Button";
 import { motion } from "framer-motion";
+import { url } from "@/utils/url";
 
 interface HeroProps {
   title: string;
@@ -24,7 +25,7 @@ export default function Hero({
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero.jpg"
+          src={`${url}/images/hero.jpg`}
           alt="TOR Refinery"
           fill
           className="object-cover"

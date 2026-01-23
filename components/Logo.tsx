@@ -1,3 +1,4 @@
+import { url } from "@/utils/url";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +12,7 @@ export default function Logo({ showText = false, className = "" }: LogoProps) {
     <Link href="/" className={`flex items-center ${className}`}>
       <div className="w-16 h-16 rounded-lg flex items-center justify-center relative overflow-hidden">
         <Image
-          src="/images/logo.png"
+          src={`${url}/images/logo.png`}
           alt="TOR Refinery Logo"
           width={58}
           height={58}
