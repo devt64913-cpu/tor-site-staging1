@@ -6,6 +6,7 @@ import Card from "@/components/Card";
 import Image from "next/image";
 import { IconCheck, IconSettings, IconChartBar, IconWorld, IconBulb, IconFlask, IconTank, IconTruck, IconTools, IconSchool } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import { url } from "@/utils/url";
 
 export default function WhatWeDo() {
   const operations = [
@@ -147,31 +148,31 @@ export default function WhatWeDo() {
             {
               title: "Product Quality Analysis",
               icon: IconFlask,
-              image: "/images/hero.jpg",
+              image: `${url}/images/hero.jpg`,
               description: "Comprehensive laboratory testing and quality assurance services to ensure product excellence and compliance with industry standards."
             },
             {
               title: "Storage Tanks Services",
               icon: IconTank,
-              image: "/images/tank-service.webp",
+              image: `${url}/images/tank-service.webp`,
               description: "Expert storage tank maintenance, inspection, and management services to ensure optimal performance and safety."
             },
             {
               title: "Loading Rack Services",
               icon: IconTruck,
-              image: "/images/hero.jpg",
+              image: `${url}/images/hero.jpg`,
               description: "Efficient and safe loading rack operations with advanced equipment and trained personnel for seamless product transfer."
             },
             {
               title: "Maintenance Service",
               icon: IconTools,
-              image: "/images/hero.jpg",
+              image: `${url}/images/hero.jpg`,
               description: "Professional maintenance and repair services to keep your equipment and facilities operating at peak performance."
             },
             {
               title: "Training Services",
               icon: IconSchool,
-              image: "/images/hero.jpg",
+              image: `${url}/images/hero.jpg`,
               description: "Comprehensive training programs to enhance skills, safety awareness, and operational excellence for your team."
             }
           ].map((service, index) => (
