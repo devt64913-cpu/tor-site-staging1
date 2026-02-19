@@ -447,12 +447,12 @@ export default function Home() {
               </motion.div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button href="/services" variant="secondary" size="lg">
+                <Button href="/services" variant="secondary" size="lg" className="w-full">
                   Explore Our Services
                 </Button>
-                <Button href="/investor-contacts" variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white/20">
+                {/* <Button href="/investor-contacts" variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white/20">
                   Get in Touch
-                </Button>
+                </Button> */}
               </div>
             </motion.div>
 
