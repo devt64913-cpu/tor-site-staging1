@@ -7,6 +7,9 @@ import Card from "@/components/Card";
 import Button from "@/components/Button";
 import { IconShoppingCart, IconCalendar, IconPackage, IconMail, IconPhone, IconBuilding, IconCheck } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import MailLink from "@/components/MailLink";
+import PhoneLink from "@/components/PhoneLink";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface ProcurementItem {
   id: string;
@@ -23,6 +26,7 @@ interface ProcurementItem {
 }
 
 export default function Procurement() {
+  const isMobile = useIsMobile();
   const [items] = useState<ProcurementItem[]>([
     {
       id: "1",
@@ -118,15 +122,19 @@ export default function Procurement() {
                     <h4 className="font-semibold text-gray-900">Contact Information</h4>
                     <div className="flex items-center gap-3 text-sm">
                       <IconMail className="w-4 h-4 text-primary-500" />
-                      <a href={`mailto:${item.contactEmail}`} className="text-primary-600 hover:text-primary-700 hover:underline">
+                      <MailLink
+                        email={item.contactEmail}
+                        subject={`Proposal inquiry - ${item.itemName}`}
+                        className="text-primary-600 hover:text-primary-700 hover:underline"
+                      >
                         {item.contactEmail}
-                      </a>
+                      </MailLink>
                     </div>
                     <div className="flex items-center gap-3 text-sm">
                       <IconPhone className="w-4 h-4 text-primary-500" />
-                      <a href={`tel:${item.contactPhone}`} className="text-primary-600 hover:text-primary-700 hover:underline">
+                      <PhoneLink phone={item.contactPhone} className="text-primary-600 hover:text-primary-700 hover:underline">
                         {item.contactPhone}
-                      </a>
+                      </PhoneLink>
                     </div>
                   </div>
 
@@ -135,15 +143,20 @@ export default function Procurement() {
                       href={`/procurement/submit-proposal?itemId=${item.id}`}
                       className="flex-1"
                     >
-                      Submit Proposal
+                      Send Proposal
                     </Button>
-                    <Button
-                      href={`tel:${item.contactPhone}`}
-                      variant="outline"
-                      className="flex-shrink-0"
+                    {isMobile ? (
+                    <a
+                      href={`tel:${item.contactPhone.replace(/\s/g, "")}`}
+                      className="font-semibold rounded-lg transition-all duration-200 inline-flex items-center justify-center border-2 border-primary-500 text-primary-500 hover:bg-primary-50 px-6 py-3 text-base flex-shrink-0"
                     >
                       <IconPhone className="w-5 h-5" />
-                    </Button>
+                    </a>
+                  ) : (
+                    <span className="font-semibold rounded-lg inline-flex items-center justify-center border-2 border-gray-300 text-gray-500 px-6 py-3 text-base flex-shrink-0 cursor-default">
+                      <IconPhone className="w-5 h-5" />
+                    </span>
+                  )}
                   </div>
                 </Card>
               </motion.div>

@@ -1,7 +1,11 @@
+"use client";
+
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Card from "@/components/Card";
-import { IconFileText, IconNews, IconMail, IconMapPin, IconPhone, IconClock, IconMap } from "@tabler/icons-react";
+import MailLink from "@/components/MailLink";
+import PhoneLink from "@/components/PhoneLink";
+import { IconFileText, IconNews, IconMail, IconMapPin, IconPhone, IconClock } from "@tabler/icons-react";
 
 export default function InvestorContacts() {
   const contactMethods = [
@@ -72,15 +76,19 @@ export default function InvestorContacts() {
               <div className="space-y-3">
                 <div>
                   <div className="text-xs text-gray-500 mb-1">Email</div>
-                  <a href={`mailto:${method.email}`} className="text-primary-600 hover:text-primary-700 font-medium">
+                  <MailLink
+                    email={method.email}
+                    subject={`${method.title} - TOR Refinery`}
+                    className="text-primary-600 hover:text-primary-700 font-medium"
+                  >
                     {method.email}
-                  </a>
+                  </MailLink>
                 </div>
                 <div>
                   <div className="text-xs text-gray-500 mb-1">Phone</div>
-                  <a href={`tel:${method.phone}`} className="text-primary-600 hover:text-primary-700 font-medium">
+                  <PhoneLink phone={method.phone} className="text-primary-600 hover:text-primary-700 font-medium">
                     {method.phone}
-                  </a>
+                  </PhoneLink>
                 </div>
               </div>
             </Card>
@@ -105,14 +113,18 @@ export default function InvestorContacts() {
               <p className="text-primary-500 text-center mb-6 text-sm">{member.role}</p>
               <div className="space-y-2 text-sm">
                 <div>
-                  <a href={`mailto:${member.email}`} className="text-primary-600 hover:text-primary-700">
+                  <MailLink
+                    email={member.email}
+                    subject={`Re: ${member.name} - TOR Refinery`}
+                    className="text-primary-600 hover:text-primary-700"
+                  >
                     {member.email}
-                  </a>
+                  </MailLink>
                 </div>
                 <div>
-                  <a href={`tel:${member.phone}`} className="text-primary-600 hover:text-primary-700">
+                  <PhoneLink phone={member.phone} className="text-primary-600 hover:text-primary-700">
                     {member.phone}
-                  </a>
+                  </PhoneLink>
                 </div>
               </div>
             </Card>
@@ -176,74 +188,12 @@ export default function InvestorContacts() {
         </Card>
       </Section>
 
-      <Section
-        title="Request Information"
-        description="Fill out the form below or contact us directly"
-        className="bg-primary-50"
-      >
+      {/* Request Information - form moved to /investor-contacts/request-information */}
+      {/* <Section title="Request Information" description="Fill out the form below or contact us directly" className="bg-primary-50">
         <Card className="max-w-2xl mx-auto">
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
-            </div>
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-primary-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
+          <form>...</form>
         </Card>
-      </Section>
+      </Section> */}
     </>
   );
 }

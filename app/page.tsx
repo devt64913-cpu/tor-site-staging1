@@ -5,6 +5,8 @@ import Section from "@/components/Section";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 import { IconCheck, IconWorld, IconBook, IconSettings, IconFlame, IconDatabase, IconTank, IconPhone, IconMail, IconMapPin, IconClock, IconUsers } from "@tabler/icons-react";
+import MailLink from "@/components/MailLink";
+import PhoneLink from "@/components/PhoneLink";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { url } from "@/utils/url";
@@ -473,9 +475,9 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Phone</h4>
-                    <a href="tel:+1234567890" className="text-primary-100 hover:text-white transition-colors">
+                    <PhoneLink phone="+1 (555) 123-4567" className="text-primary-100 hover:text-white transition-colors">
                       +1 (555) 123-4567
-                    </a>
+                    </PhoneLink>
                   </div>
                 </div>
 
@@ -485,9 +487,13 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Email</h4>
-                    <a href="mailto:info@torrefinery.com" className="text-primary-100 hover:text-white transition-colors">
+                    <MailLink
+                      email="info@torrefinery.com"
+                      subject="Inquiry - TOR Refinery Website"
+                      className="text-primary-100 hover:text-white transition-colors"
+                    >
                       info@torrefinery.com
-                    </a>
+                    </MailLink>
                   </div>
                 </div>
 
@@ -518,7 +524,7 @@ export default function Home() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-white/20">
-                <Button href="/investor-contacts" variant="secondary" size="lg" className="w-full">
+                <Button href="/investor-contacts/request-information" variant="secondary" size="lg" className="w-full">
                   Contact Us Now
                 </Button>
               </div>
