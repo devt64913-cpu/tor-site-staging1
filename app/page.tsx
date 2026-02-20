@@ -1,17 +1,42 @@
 "use client";
 
+import { useState } from "react";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
-import { IconCheck, IconWorld, IconBook, IconSettings, IconFlame, IconDatabase, IconTank, IconPhone, IconMail, IconMapPin, IconClock, IconUsers } from "@tabler/icons-react";
+import { IconCheck, IconWorld, IconBook, IconSettings, IconFlame, IconDatabase, IconTank, IconPhone, IconMail, IconMapPin, IconClock, IconUsers, IconChevronDown } from "@tabler/icons-react";
 import MailLink from "@/components/MailLink";
 import PhoneLink from "@/components/PhoneLink";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { url } from "@/utils/url";
 
+const faqs = [
+  {
+    question: "What products does TOR Refinery produce?",
+    answer: "TOR Refinery produces a wide range of petroleum products including gasoline, diesel, jet fuel, liquefied petroleum gas (LPG), and specialty chemicals. Our facilities are equipped to process various grades of crude oil into high-quality products that meet international standards.",
+  },
+  {
+    question: "How can I become a supplier or partner?",
+    answer: "We welcome inquiries from qualified suppliers and partners. You can explore current procurement opportunities on our Procurement page and submit a proposal for specific items. For general partnership inquiries, please use our Contact Us form or reach out to our investor relations team through the Investor Contacts page.",
+  },
+  {
+    question: "What are TOR Refinery's operating hours?",
+    answer: "Our headquarters in Tema, Ghana is open Monday through Friday from 7:30 AM to 4:30 PM GMT. For urgent matters outside these hours, please email us and we will respond as soon as possible.",
+  },
+  {
+    question: "Where is TOR Refinery located?",
+    answer: "TOR Refinery is headquartered in Tema, Ghana (PO Box 599). Our strategic location supports efficient supply chain operations and allows us to serve regional and international markets. You can view our exact location on the map available on our Investor Contacts page.",
+  },
+  {
+    question: "How does TOR Refinery approach sustainability?",
+    answer: "Sustainability is at the core of our operations. We are committed to reducing our environmental footprint through improved efficiency, emissions reduction programs, and investment in cleaner technologies. We have set measurable targets and report on our progress in line with industry best practices.",
+  },
+];
+
 export default function Home() {
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   return (
     <>
       <Hero
@@ -350,6 +375,81 @@ export default function Home() {
             </motion.div>
             <div className="text-gray-600 font-medium">Safety Record</div>
           </motion.div>
+        </motion.div>
+      </Section>
+
+      {/* FAQ Section */}
+      <Section
+        title="Frequently Asked Questions"
+        description="Quick answers to common questions about TOR Refinery and our operations."
+        className="bg-white"
+      >
+        <motion.div
+          className="max-w-3xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.05,
+              },
+            },
+          }}
+        >
+          <div className="space-y-2">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaqIndex === index;
+              return (
+                <motion.div
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, y: 10 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.4 }}
+                  className="rounded-xl border border-gray-200 overflow-hidden bg-gray-50/50 hover:bg-gray-50 transition-colors"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                    className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left font-semibold text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-xl"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${index}`}
+                    id={`faq-question-${index}`}
+                  >
+                    <span className="pr-4">{faq.question}</span>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-primary-100 text-primary-600"
+                    >
+                      <IconChevronDown className="w-5 h-5" />
+                    </motion.span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        id={`faq-answer-${index}`}
+                        role="region"
+                        aria-labelledby={`faq-question-${index}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ height: { duration: 0.35, ease: "easeInOut" }, opacity: { duration: 0.25 } }}
+                        className="overflow-hidden"
+                      >
+                        <p className="px-6 pb-5 pt-0 text-gray-600 leading-relaxed border-t border-gray-200/80">
+                          {faq.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
         </motion.div>
       </Section>
 
