@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import Button from "@/components/Button";
 import { IconShoppingCart, IconCalendar, IconPackage, IconMail, IconPhone, IconBuilding, IconCheck } from "@tabler/icons-react";
 import { motion } from "framer-motion";
@@ -35,8 +34,8 @@ export default function Procurement() {
       category: "Equipment",
       quantity: "10 units",
       deadline: "2024-12-31",
-      contactEmail: "procurement@torrefinery.com",
-      contactPhone: "+233 24 123 4567",
+      contactEmail: "gmts@torghana.gov.gh",
+      contactPhone: "057 973 3300",
       companyName: "TOR Refinery",
       status: "active",
       datePosted: "2024-01-15"
@@ -48,8 +47,8 @@ export default function Procurement() {
       category: "Safety Equipment",
       quantity: "500 sets",
       deadline: "2024-11-30",
-      contactEmail: "procurement@torrefinery.com",
-      contactPhone: "+233 24 123 4567",
+      contactEmail: "gmts@torghana.gov.gh",
+      contactPhone: "057 973 3300",
       companyName: "TOR Refinery",
       status: "active",
       datePosted: "2024-01-10"
@@ -85,7 +84,7 @@ export default function Procurement() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full flex flex-col hover:shadow-lg transition-shadow">
+                <div className="h-full flex flex-col p-6 rounded-xl bg-white border-l-4 border-primary-500 shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
@@ -158,16 +157,16 @@ export default function Procurement() {
                     </span>
                   )}
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </div>
         ) : (
-          <Card className="text-center p-12">
+          <div className="text-center p-12 rounded-xl bg-surface-50 border-2 border-primary-200 max-w-2xl mx-auto">
             <IconShoppingCart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-gray-900 mb-2">No Active Requests</h3>
             <p className="text-gray-600">There are currently no active procurement requests. Check back soon for new opportunities.</p>
-          </Card>
+          </div>
         )}
       </Section>
 
@@ -179,51 +178,51 @@ export default function Procurement() {
       >
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card>
+            <div className="p-6 rounded-xl bg-surface-50 border-l-4 border-primary-500 shadow-sm">
               <IconCheck className="w-10 h-10 text-primary-500 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Submission Process</h3>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start gap-2">
-                  <IconCheck className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                  <IconCheck className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
                   <span>Review procurement requirements carefully</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <IconCheck className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                  <IconCheck className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
                   <span>Prepare detailed proposal documents</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <IconCheck className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                  <IconCheck className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
                   <span>Contact via email or phone for submission</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <IconCheck className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                  <IconCheck className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
                   <span>Include company credentials and references</span>
                 </li>
               </ul>
-            </Card>
+            </div>
 
-            <Card>
-              <IconShoppingCart className="w-10 h-10 text-primary-500 mb-4" />
+            <div className="p-6 rounded-xl bg-surface-50 border-l-4 border-tor-teal-500 shadow-sm">
+              <IconShoppingCart className="w-10 h-10 text-tor-teal-600 mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Requirements</h3>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-start gap-2">
-                  <IconCheck className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                  <IconCheck className="w-5 h-5 text-tor-teal-500 shrink-0 mt-0.5" />
                   <span>Valid business registration</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <IconCheck className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                  <IconCheck className="w-5 h-5 text-tor-teal-500 shrink-0 mt-0.5" />
                   <span>Quality certifications and standards</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <IconCheck className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                  <IconCheck className="w-5 h-5 text-tor-teal-500 shrink-0 mt-0.5" />
                   <span>Compliance with safety regulations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <IconCheck className="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" />
+                  <IconCheck className="w-5 h-5 text-tor-teal-500 shrink-0 mt-0.5" />
                   <span>Competitive pricing and delivery terms</span>
                 </li>
               </ul>
-            </Card>
+            </div>
           </div>
         </div>
       </Section>

@@ -99,6 +99,47 @@ Use this document as the **single prompt or spec** when building the **admin pan
 
 For the **UI-only** build: use **mock submission data** (e.g. 2–3 hardcoded Request Information and 2–3 Proposals). Admin shows a **list view** (table or cards) and a **detail view** (all fields). Export button can be present but does not need to do anything real.
 
+### 4.1 Procurement proposal – full fields for admin portal
+
+Each proposal submission should be displayable in the admin with the fields below. Source: `/procurement/submit-proposal` form. Use these for **list view** (pick a few for the row) and **detail view** (show all, grouped as below).
+
+**Link to procurement item (required)**  
+- `itemId` – ID of the procurement item this proposal is for.  
+- In list/detail, show: **Procurement item** (e.g. item name, category, quantity, deadline) so staff know which request the proposal answers.
+
+**Company Information**  
+| Field | Type | Required | Notes |
+|-------|------|----------|--------|
+| Company Name | text | yes | |
+| Contact Person | text | yes | Full name |
+| Email | email | yes | |
+| Phone | text | yes | e.g. +233 XX XXX XXXX |
+| Company Address | text | yes | Street, city, country |
+
+**Proposal Details**  
+| Field | Type | Required | Notes |
+|-------|------|----------|--------|
+| Proposal Summary | long text | yes | Detailed summary of the proposal |
+| Proposed Pricing | text | yes | e.g. $50,000 or GHS 500,000 |
+| Estimated Delivery Time | text | yes | e.g. 4–6 weeks |
+| Certifications & Standards | long text | no | ISO, quality certs, etc. |
+| Previous Experience | long text | no | Similar projects, references |
+| Additional Notes | long text | no | Any extra information |
+
+**Supporting Documents**  
+| Field | Type | Notes |
+|-------|------|--------|
+| Attachments | list of files | For admin: show file names and optionally size or “Download” placeholder. Accept: PDF, DOC, DOCX, XLS, XLSX (max 10MB per file). In UI-only/mock, use mock names e.g. `company_profile.pdf`, `pricing.xlsx`. |
+
+**Metadata (for admin)**  
+| Field | Type | Notes |
+|-------|------|--------|
+| Submitted at | datetime | When the proposal was submitted (for list sort/filter). |
+
+**List view suggestion:** Show at least: Procurement item name, Company name, Contact person, Email, Submitted at. Optional: Pricing, Delivery time.
+
+**Detail view:** Group sections as “Procurement item”, “Company Information”, “Proposal Details”, “Supporting Documents”, “Submitted at”. Show every field above; long text in read-only blocks or expandable areas.
+
 ---
 
 ## 5. Global / shared content
@@ -173,7 +214,7 @@ For each section, provide: **list view** (table or cards) and **create/edit form
 
 8. **Submissions**  
    - **Request Information** (`/admin/submissions/requests`): List (mock 2–3 rows: first name, last name, email, subject, message, optional date). Detail view (all fields).  
-   - **Proposals** (`/admin/submissions/proposals`): List (mock 2–3 rows: item, company, contact, date). Detail view (all proposal fields).  
+   - **Proposals** (`/admin/submissions/proposals`): List (mock 2–3 rows: show procurement item name, company name, contact person, email, submitted at). Detail view: show **all** procurement proposal fields grouped as in Section 4.1 (Procurement item, Company Information, Proposal Details, Supporting Documents, Submitted at). Use the field list in Section 4.1 for labels and structure.  
    Export button can be present; no-op or fake for demo.
 
 **Other**
@@ -201,3 +242,44 @@ Do **not** add a database, API routes, or real authentication. Do **not** change
 - [ ] All data in state or mock JSON; no backend
 
 This document and the prompt in **Section 8** are the single source of requirements for the TOR Refinery admin panel **UI (static)**.
+
+---
+
+## 10. Prompt: Add procurement proposal fields to the admin portal
+
+Use this prompt when implementing or updating the **Proposals** (procurement proposal submissions) area in the admin portal so that all submitted information is visible.
+
+---
+
+**Prompt:**
+
+In the admin portal, the **Proposals** section (e.g. `/admin/submissions/proposals`) must show the full information from the procurement proposal form. Use the field spec below.
+
+**List view**  
+- Table or cards. Each row/card must show at least: **Procurement item** (name or “Item: [itemName]”), **Company name**, **Contact person**, **Email**, **Submitted at**. Optionally include Pricing and Delivery time.  
+- Clicking a row opens the **detail view**.
+
+**Detail view**  
+- One page or modal per proposal. Show all fields, grouped as follows.
+
+1. **Procurement item**  
+   - Which request this proposal is for: item ID, item name, category, quantity, deadline (from the procurement item record). Display as read-only summary.
+
+2. **Company Information**  
+   - Company Name, Contact Person, Email, Phone, Company Address. All read-only.
+
+3. **Proposal Details**  
+   - Proposal Summary (long text), Proposed Pricing, Estimated Delivery Time, Certifications & Standards (long text), Previous Experience (long text), Additional Notes (long text). All read-only.
+
+4. **Supporting Documents**  
+   - List of attachment file names (and size or type if available). If backend stores files, show “Download” per file; if UI-only/mock, show mock names e.g. `company_profile.pdf`, `pricing.xlsx`.
+
+5. **Metadata**  
+   - Submitted at (date/time).
+
+**Data structure (for mock or API)**  
+Each proposal record should include: `id`, `itemId`, procurement item snapshot (e.g. `itemName`, `category`, `quantity`, `deadline`), then `companyName`, `contactPerson`, `email`, `phone`, `address`, `proposalSummary`, `pricing`, `deliveryTime`, `certifications`, `previousExperience`, `additionalNotes`, `attachments` (array of `{ name: string, size?: number }` or similar), `submittedAt` (ISO date string).
+
+**Reference:** The exact form fields and labels are in `docs/ADMIN_PANEL_PROMPT.md`, Section 4.1 (“Procurement proposal – full fields for admin portal”). Match those labels and groupings in the admin UI so staff see the same information as submitted on the public form.
+
+---

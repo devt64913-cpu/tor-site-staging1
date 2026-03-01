@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import { IconArrowLeft } from "@tabler/icons-react";
 
 export default function RequestInformationPage() {
@@ -21,7 +20,7 @@ export default function RequestInformationPage() {
           description="Fill out the form below or contact us directly"
           className="bg-primary-50"
         >
-          <Card className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto p-6 rounded-xl bg-white border-2 border-primary-200 shadow-sm">
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -82,7 +81,7 @@ export default function RequestInformationPage() {
                 Send Message
               </button>
             </form>
-          </Card>
+          </div>
         </Section>
       </div>
     </div>

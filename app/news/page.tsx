@@ -1,12 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import Image from "next/image";
 import { IconChevronRight } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { url } from "@/utils/url";
+import Carousel from "@/components/Carousel";
+import Lightbox from "@/components/Lightbox";
 
 export default function News() {
   const newsItems = [
@@ -81,6 +83,29 @@ export default function News() {
     },
   ];
 
+  const departmentsAndDivisions = [
+    { name: "Production Division", departments: ["Crude Distillation Unit (CDU)", "Residue Fluid Catalytic Cracking (RFCC)", "Utilities", "Wastewater Treatment Unit (WWTU)"] },
+    { name: "Maintenance Division", departments: ["Instrumentation & Welding Services (IWS)", "Mechanical", "Electrical", "Maintenance Planning", "Civil Works"] },
+    { name: "Technical Services Division", departments: ["Projects", "Technical Stores", "Inspection"] },
+    { name: "Commerce Division", departments: ["Exports/Imports", "Movement of Products (MOP)", "Distribution", "IT, Monitoring & Control", "Refinery Optimization", "Business Development & Trading", "Quality Control"] },
+    { name: "Finance Division", departments: ["Management Accounts", "Payroll", "Treasury", "Financial Accounts"] },
+    { name: "Human Resource & Administration", departments: ["Human Resources", "Training & Development", "Information Management", "Estates", "General Services"] },
+    { name: "Health, Safety, Security, Environment & Insurance", departments: ["Health Services", "Safety", "Environment", "Security", "Insurance"] },
+    { name: "Legal, Procurement, Public Affairs & SIRD", departments: ["Legal", "Procurement", "Public Affairs", "SIRD"] },
+    { name: "Internal Audit", departments: ["Internal Audit"] },
+  ];
+
+  const galleryItems = [
+    { image: `/images/tor60.webp`, title: "TOR @60 Celebration", description: "Celebrating 60 years of refining" },
+    { image: `/images/mayday.webp`, title: "May Day 2024", description: "May Day at TOR" },
+    { image: `/images/tor_board.webp`, title: "Maiden Visit by the New TOR Board of Directors", description: "Board of Directors visit" },
+    { image: `${url}/images/hero.jpg`, title: "Tema Mayor Ebi Bright Pays Courtesy Call on Management of TOR", description: "Courtesy call by Tema Mayor" },
+    { image: `/images/energy_minister.jpg`, title: "Energy Minister Visits TOR", description: "Energy Minister visit" },
+    { image: `/images/bost.jpg`, title: "BOST Executives Pay a Visit to TOR", description: "BOST executives visit" },
+  ];
+
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   return (
     <>
       <Hero
@@ -93,9 +118,12 @@ export default function News() {
         title="Latest News"
         description="Stay informed about our latest developments and achievements"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <Carousel autoPlay continuousScroll scrollSpeed={0.7} showArrows={false} showDots={false} loop>
           {newsItems.map((item, index) => (
-            <Card key={index} hover>
+            <div
+              key={index}
+              className="p-6 rounded-xl bg-surface-50 border-l-4 border-primary-500 shadow-sm"
+            >
               <div className="text-5xl mb-4">{item.image}</div>
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-xs font-semibold text-primary-500 uppercase tracking-wider">
@@ -105,50 +133,49 @@ export default function News() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
               <p className="text-gray-600 leading-relaxed">{item.description}</p>
-            </Card>
+            </div>
+          ))}
+        </Carousel>
+      </Section>
+
+      {/* Departments and Divisions */}
+      <Section
+        title="Departments and Divisions"
+        description="Our organizational structure at Tema Oil Refinery"
+        className="bg-surface-50"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {departmentsAndDivisions.map((division, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              className="p-5 rounded-xl bg-white border-l-4 border-tor-teal-500 shadow-sm"
+            >
+              <h3 className="text-lg font-bold text-gray-900 mb-3">{division.name}</h3>
+              <ul className="space-y-1.5 text-sm text-gray-600">
+                {division.departments.map((dept, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-tor-teal-500 mt-1">•</span>
+                    <span>{dept}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           ))}
         </div>
       </Section>
 
-      {/* Gallery Section */}
+      {/* Our Gallery – from torghana.gov.gh/life-at-tor/#gallery */}
       <Section
         title="Our Gallery"
-        description="A visual journey through our operations and facilities"
-        className="bg-gray-50"
+        description="Media gallery from Life at TOR"
+        className="bg-white"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              image: `${url}/images/hero.jpg`,
-              title: "Refinery Operations",
-              description: "State-of-the-art refining facilities"
-            },
-            {
-              image: `${url}/images/tank-service.webp`,
-              title: "Storage Facilities",
-              description: "Advanced storage tank systems"
-            },
-            {
-              image: `${url}/images/images.jpeg`,
-              title: "Operations Center",
-              description: "Modern control and monitoring systems"
-            },
-            {
-              image: `${url}/images/hero.jpg`,
-              title: "Production Unit",
-              description: "High-capacity processing units"
-            },
-            {
-              image: `${url}/images/tank-service.webp`,
-              title: "Quality Control",
-              description: "Laboratory and testing facilities"
-            },
-            {
-              image: `${url}/images/images.jpeg`,
-              title: "Safety Systems",
-              description: "Advanced safety infrastructure"
-            }
-          ].map((item, index) => (
+          {galleryItems.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -156,7 +183,11 @@ export default function News() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 h-full group cursor-pointer">
+              <button
+                type="button"
+                onClick={() => setLightboxIndex(index)}
+                className="w-full text-left bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 h-full group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+              >
                 <div className="relative w-full h-64 overflow-hidden">
                   <Image
                     src={item.image}
@@ -176,10 +207,20 @@ export default function News() {
                   <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">{item.title}</h3>
                   <p className="text-sm text-gray-600">{item.description}</p>
                 </div>
-              </div>
+              </button>
             </motion.div>
           ))}
         </div>
+        {lightboxIndex !== null && (
+          <Lightbox
+            isOpen={true}
+            onClose={() => setLightboxIndex(null)}
+            src={galleryItems[lightboxIndex].image}
+            alt={galleryItems[lightboxIndex].title}
+            title={galleryItems[lightboxIndex].title}
+            description={galleryItems[lightboxIndex].description}
+          />
+        )}
       </Section>
 
       <Section
@@ -187,29 +228,30 @@ export default function News() {
         description="Join us at these upcoming events"
         className="bg-white"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ul className="space-y-4 max-w-3xl mx-auto">
           {upcomingEvents.map((event, index) => (
-            <Card key={index} hover>
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <div className="text-primary-500 font-bold text-lg mb-1">{event.date}</div>
-                  <div className="text-xs text-gray-500 uppercase tracking-wider">{event.type}</div>
-                </div>
-                <div className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-semibold">
-                  {event.location}
-                </div>
+            <li
+              key={index}
+              className="p-5 rounded-xl bg-surface-50 border-l-4 border-primary-500 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+            >
+              <div>
+                <div className="text-primary-500 font-bold text-lg">{event.date}</div>
+                <div className="text-xs text-gray-500 uppercase tracking-wider">{event.type}</div>
+                <h3 className="text-xl font-bold text-gray-900 mt-1">{event.title}</h3>
               </div>
-              <h3 className="text-xl font-bold text-gray-900">{event.title}</h3>
-            </Card>
+              <span className="px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs font-semibold shrink-0">
+                {event.location}
+              </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </Section>
 
       <Section
         title="Press Releases"
         description="Official announcements and press releases"
       >
-        <div className="max-w-4xl mx-auto space-y-6">
+        <ul className="max-w-4xl mx-auto space-y-4">
           {[
             {
               date: "March 1, 2024",
@@ -227,41 +269,19 @@ export default function News() {
               summary: "New appointments strengthen executive team and position company for future growth.",
             },
           ].map((release, index) => (
-            <Card key={index} hover>
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <div className="text-sm text-gray-500 mb-2">{release.date}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{release.title}</h3>
-                  <p className="text-gray-600">{release.summary}</p>
-                </div>
-                <IconChevronRight className="w-6 h-6 text-primary-500 ml-4 flex-shrink-0" />
+            <li
+              key={index}
+              className="flex items-start gap-4 p-5 rounded-xl bg-white border border-gray-200 hover:border-primary-200 hover:shadow-md transition-all"
+            >
+              <div className="flex-1 min-w-0">
+                <div className="text-sm text-gray-500 mb-1">{release.date}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{release.title}</h3>
+                <p className="text-gray-600">{release.summary}</p>
               </div>
-            </Card>
+              <IconChevronRight className="w-6 h-6 text-primary-500 shrink-0 mt-1" />
+            </li>
           ))}
-        </div>
-      </Section>
-
-      <Section
-        title="Media Inquiries"
-        description="Contact our media relations team"
-        className="bg-primary-500 text-white"
-      >
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xl text-primary-100 mb-8">
-            For media inquiries, press releases, or interview requests, please contact our 
-            communications team.
-          </p>
-          <div className="space-y-4 text-left bg-white/10 rounded-lg p-6 backdrop-blur-sm">
-            <div>
-              <h3 className="font-semibold mb-1">Media Relations</h3>
-              <p className="text-primary-100">media@torrefinery.com</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-1">Phone</h3>
-              <p className="text-primary-100">+1 (555) 123-4567</p>
-            </div>
-          </div>
-        </div>
+        </ul>
       </Section>
     </>
   );

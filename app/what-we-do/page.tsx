@@ -2,9 +2,10 @@
 
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
+import Button from "@/components/Button";
 import Image from "next/image";
-import { IconCheck, IconSettings, IconChartBar, IconWorld, IconBulb, IconFlask, IconTank, IconTruck, IconTools, IconSchool } from "@tabler/icons-react";
+import Carousel from "@/components/Carousel";
+import { IconCheck, IconFlask, IconTank, IconTruck, IconTools, IconSchool } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import { url } from "@/utils/url";
 
@@ -34,83 +35,112 @@ export default function WhatWeDo() {
 
   const capabilities = [
     {
-      title: "Production Capacity",
-      value: "500,000+",
-      unit: "Barrels Per Day",
-      description: "Our facilities can process over half a million barrels of crude oil daily.",
+      title: "CDU Capacity",
+      value: "45,000",
+      unit: "BPSD",
+      description: "Crude Distillation Unit capacity (barrels per stream day) after revamp.",
     },
     {
-      title: "Product Range",
-      value: "50+",
-      unit: "Product Types",
-      description: "We produce a diverse range of petroleum and specialty chemical products.",
+      title: "RFCC Capacity",
+      value: "14,000",
+      unit: "BPSD",
+      description: "Residue Fluid Catalytic Cracking unit for LPG and gasoline production.",
     },
     {
-      title: "Storage Capacity",
-      value: "10M+",
-      unit: "Barrels",
-      description: "Extensive storage facilities ensure reliable supply and inventory management.",
+      title: "Crude Processing",
+      value: "2M+",
+      unit: "MT annually",
+      description: "We can process over 2 million metric tonnes of crude oil per year.",
     },
     {
-      title: "Market Reach",
-      value: "30+",
-      unit: "Countries",
-      description: "Our products reach customers across multiple continents and markets.",
+      title: "Site Area",
+      value: "440,000",
+      unit: "m²",
+      description: "Refinery site linked to the Port of Tema by pipelines for crude and products.",
     },
+  ];
+
+  const products = [
+    { title: "LPG", description: "Liquefied petroleum gas for domestic, commercial and industrial use.", features: ["Bulk supply", "Storage", "Trading"], icon: "🔥" },
+    { title: "Aviation Turbine Kerosene (ATK)", description: "Exclusive producer of ATK for Ghana's aviation sector.", features: ["Jet A-1", "Aviation standards", "Quality certified"], icon: "✈️" },
+    { title: "Premix Fuel", description: "Premix fuel for Ghana's fishing sector.", features: ["Fishing industry", "Dedicated supply"], icon: "⛵" },
+    { title: "Gasoline", description: "Gasoline (94 RON) from our RFCC unit alongside naphtha-based production.", features: ["Premium grade", "CDU & RFCC"], icon: "⛽" },
+    { title: "Diesel / Gas Oil", description: "Diesel and gas-oil for transportation and industry.", features: ["Ultra-low sulfur", "Bulk supply"], icon: "🚛" },
+    { title: "Kerosene & Residual Oil", description: "Illuminating and cooking kerosene; residual fuel oil.", features: ["Kerosene", "Residual fuel", "Industrial"], icon: "🛢️" },
   ];
 
   return (
     <>
       <Hero
         title="What We Do"
-        subtitle="Our Operations"
-        description="Comprehensive oil refining operations delivering high-quality products to global markets."
+        subtitle="Operations & Services"
+        description="Refining crude oil to produce quality petroleum products for Ghana's economic development. We are the exclusive producer of Aviation Turbine Kerosene (ATK) and premix fuel for Ghana's fishing sector."
       />
 
       <Section
         title="Our Core Operations"
         description="Excellence in every aspect of oil refining"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Carousel autoPlay continuousScroll scrollSpeed={0.7} showArrows={false} showDots={false} loop>
           {operations.map((operation, index) => (
-            <Card key={index} hover>
+            <div
+              key={index}
+              className="p-6 rounded-xl bg-white border-l-4 border-primary-500 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col"
+            >
               <h3 className="text-2xl font-bold text-gray-900 mb-4">{operation.title}</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">{operation.description}</p>
+              <p className="text-gray-600 mb-6 leading-relaxed flex-1">{operation.description}</p>
               <ul className="space-y-2">
                 {operation.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start">
-                    <IconCheck className="w-5 h-5 text-primary-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <IconCheck className="w-5 h-5 text-primary-500 mr-2 mt-0.5 shrink-0" />
                     <span className="text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
-            </Card>
+            </div>
           ))}
-        </div>
+        </Carousel>
       </Section>
 
       <Section
         title="Our Capabilities"
         description="Scale and expertise that sets us apart"
-        className="bg-gray-50"
+        className="bg-surface-50"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {capabilities.map((capability, index) => (
-            <Card key={index} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-primary-500 mb-2">
+            <div
+              key={index}
+              className="text-center p-6 rounded-xl bg-white border border-primary-200 shadow-sm"
+            >
+              <div className="text-4xl md:text-5xl font-bold text-primary-600 mb-2">
                 {capability.value}
               </div>
               <div className="text-sm text-primary-600 font-semibold mb-2">{capability.unit}</div>
               <h3 className="text-lg font-bold text-gray-900 mb-3">{capability.title}</h3>
               <p className="text-gray-600 text-sm">{capability.description}</p>
-            </Card>
+            </div>
           ))}
         </div>
       </Section>
 
       <Section title="Our Process">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-5 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.12,
+                  delayChildren: 0.1,
+                },
+              },
+              hidden: {},
+            }}
+          >
             {[
               { step: "1", title: "Receiving", description: "Crude oil arrives at our facilities" },
               { step: "2", title: "Processing", description: "Advanced refining and conversion" },
@@ -118,28 +148,102 @@ export default function WhatWeDo() {
               { step: "4", title: "Storage", description: "Safe storage in dedicated facilities" },
               { step: "5", title: "Distribution", description: "Efficient delivery to customers" },
             ].map((process, index) => (
-              <div key={index} className="relative">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
+              <motion.div
+                key={index}
+                className="relative"
+                variants={{
+                  hidden: { opacity: 0, y: 24 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 22,
+                    },
+                  },
+                }}
+              >
+                <motion.div
+                  className="text-center"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                >
+                  <motion.div
+                    className="w-16 h-16 bg-primary-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-lg"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 20,
+                      delay: index * 0.08,
+                    }}
+                    whileHover={{
+                      scale: 1.1,
+                      boxShadow: "0 10px 40px -10px rgba(5, 171, 231, 0.5)",
+                    }}
+                  >
                     {process.step}
-                  </div>
+                  </motion.div>
                   <h3 className="font-bold text-lg mb-2">{process.title}</h3>
                   <p className="text-gray-600 text-sm">{process.description}</p>
-                </div>
+                </motion.div>
                 {index < 4 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-primary-200 -z-10">
-                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-8 border-l-primary-200 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
-                  </div>
+                  <motion.div
+                    className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-primary-200 -z-10 origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.2 + index * 0.12,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-8 border-l-primary-200 border-t-4 border-t-transparent border-b-4 border-b-transparent" />
+                  </motion.div>
                 )}
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </Section>
 
-      {/* Our Services Section */}
       <Section
-        title="Our Services"
+        title="Our Product Portfolio"
+        description="Quality products for every application"
+        className="bg-white"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="p-6 rounded-xl bg-white border-l-4 border-tor-teal-500 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="text-5xl mb-4">{product.icon}</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">{product.title}</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">{product.description}</p>
+              <ul className="space-y-2 mb-6">
+                {product.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start text-sm">
+                    <IconCheck className="w-5 h-5 text-tor-teal-500 mr-2 mt-0.5 shrink-0" />
+                    <span className="text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button href="/investor-contacts" variant="outline" size="sm" className="w-full">
+                Learn More
+              </Button>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Operational & Support Services */}
+      <Section
+        title="Operational & Support Services"
         description="Comprehensive services to support your operations"
         className="bg-gray-50"
       >
@@ -213,44 +317,6 @@ export default function WhatWeDo() {
               </div>
             </motion.div>
           ))}
-        </div>
-      </Section>
-
-      <Section
-        title="Technology & Innovation"
-        description="Leveraging cutting-edge technology for superior results"
-        className="bg-primary-50"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card>
-            <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
-              <IconSettings className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">Advanced Automation</h3>
-            <p className="text-gray-600">
-              State-of-the-art automation systems ensure precision, efficiency, and safety in all operations.
-            </p>
-          </Card>
-
-          <Card>
-            <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
-              <IconChartBar className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">Data Analytics</h3>
-            <p className="text-gray-600">
-              Real-time data analytics and monitoring optimize performance and predict maintenance needs.
-            </p>
-          </Card>
-
-          <Card>
-            <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
-              <IconWorld className="w-6 h-6 text-white" />
-            </div>
-            <h3 className="text-xl font-bold mb-3">Environmental Systems</h3>
-            <p className="text-gray-600">
-              Advanced environmental control systems minimize emissions and protect the environment.
-            </p>
-          </Card>
         </div>
       </Section>
     </>

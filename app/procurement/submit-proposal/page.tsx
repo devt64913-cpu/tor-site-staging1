@@ -4,7 +4,6 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import Button from "@/components/Button";
 import { IconFileUpload, IconCheck, IconArrowLeft, IconBuilding, IconMail, IconPhone, IconUser, IconFileText, IconPackage } from "@tabler/icons-react";
 import { motion } from "framer-motion";
@@ -32,8 +31,8 @@ const procurementItems: ProcurementItem[] = [
     category: "Equipment",
     quantity: "10 units",
     deadline: "2024-12-31",
-    contactEmail: "procurement@torrefinery.com",
-    contactPhone: "+233 24 123 4567",
+    contactEmail: "gmts@torghana.gov.gh",
+    contactPhone: "057 973 3300",
     companyName: "TOR Refinery",
     status: "active",
     datePosted: "2024-01-15"
@@ -45,8 +44,8 @@ const procurementItems: ProcurementItem[] = [
     category: "Safety Equipment",
     quantity: "500 sets",
     deadline: "2024-11-30",
-    contactEmail: "procurement@torrefinery.com",
-    contactPhone: "+233 24 123 4567",
+    contactEmail: "gmts@torghana.gov.gh",
+    contactPhone: "057 973 3300",
     companyName: "TOR Refinery",
     status: "active",
     datePosted: "2024-01-10"
@@ -150,7 +149,7 @@ function Proposal() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <Card className="text-center p-12">
+              <div className="text-center p-12 rounded-xl bg-white border-2 border-primary-200 shadow-sm">
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <IconCheck className="w-12 h-12 text-green-600" />
                 </div>
@@ -168,7 +167,7 @@ function Proposal() {
                     Contact Us
                   </Button>
                 </div>
-              </Card>
+              </div>
             </motion.div>
           </div>
         </Section>
@@ -194,7 +193,7 @@ function Proposal() {
             Back to Procurement
           </Button>
 
-          <Card className="p-8">
+          <div className="p-8 rounded-xl bg-white border-l-4 border-primary-500 shadow-sm">
             {/* Selected Procurement Item */}
             {selectedItem ? (
               <div className="mb-8 p-6 bg-primary-50 rounded-xl border border-primary-100">
@@ -519,7 +518,7 @@ function Proposal() {
                 </Button>
               </div>
             </form>
-          </Card>
+          </div>
         </motion.div>
       </div>
     </Section>

@@ -4,19 +4,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  
-  /* Primary color palette - TOR Brand Color #03adeb */
+
+  /* TOR mother/brand color – single source of truth */
+  --tor-primary: #05abe7;
+
+  /* Primary palette derived from --tor-primary */
   --primary-50: #e6f7fd;
-  --primary-100: #b3e8fa;
-  --primary-200: #80d9f7;
-  --primary-300: #4dcaf4;
-  --primary-400: #1abbf1;
-  --primary-500: #03adeb;
-  --primary-600: #028bc2;
-  --primary-700: #026999;
-  --primary-800: #014770;
-  --primary-900: #012547;
-  --primary-950: #00121e;
+  --primary-100: #b8e9fa;
+  --primary-200: #8adbf7;
+  --primary-300: #5ccdf4;
+  --primary-400: #2ebff1;
+  --primary-500: var(--tor-primary);
+  --primary-600: #0490c4;
+  --primary-700: #0375a1;
+  --primary-800: #025a7e;
+  --primary-900: #013f5b;
+  --primary-950: #012538;
   
   /* Secondary colors */
   --secondary-50: #f8f9fa;
@@ -35,6 +38,18 @@
   --accent-warning: #f59e0b;
   --accent-error: #ef4444;
   --accent-info: #3b82f6;
+
+  /* Complementary to TOR primary (#05abe7) – teal & warm accent */
+  --tor-teal-50: #f0fdfa;
+  --tor-teal-100: #ccfbf1;
+  --tor-teal-200: #99f6e4;
+  --tor-teal-500: #14b8a6;
+  --tor-teal-600: #0d9488;
+  --tor-amber-50: #fffbeb;
+  --tor-amber-100: #fef3c7;
+  --tor-amber-500: #f59e0b;
+  --surface-50: #f8fafc;
+  --surface-100: #f1f5f9;
 }
 
 @theme inline {
@@ -71,6 +86,16 @@
   --color-accent-warning: var(--accent-warning);
   --color-accent-error: var(--accent-error);
   --color-accent-info: var(--accent-info);
+  --color-tor-teal-50: var(--tor-teal-50);
+  --color-tor-teal-100: var(--tor-teal-100);
+  --color-tor-teal-200: var(--tor-teal-200);
+  --color-tor-teal-500: var(--tor-teal-500);
+  --color-tor-teal-600: var(--tor-teal-600);
+  --color-tor-amber-50: var(--tor-amber-50);
+  --color-tor-amber-100: var(--tor-amber-100);
+  --color-tor-amber-500: var(--tor-amber-500);
+  --color-surface-50: var(--surface-50);
+  --color-surface-100: var(--surface-100);
   
   /* Font families */
   --font-sans: var(--font-cabinet-grotesk), system-ui, -apple-system, sans-serif;
@@ -89,10 +114,9 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
-    
-    /* Dark mode primary colors (optional - adjust as needed) */
-    --primary-500: #38bdf8;
-    --primary-600: #0ea5e9;
+    /* Dark mode: keep TOR primary, slightly brighter for contrast */
+    --primary-500: #1ab8f0;
+    --primary-600: var(--tor-primary);
   }
 }
 
@@ -115,4 +139,34 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for continuous carousel */
+.continuous-scroll-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.continuous-scroll-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Carousel: responsive slides per view (1 → 2 → 3 by breakpoint) and spacing */
+.carousel-wrapper {
+  --carousel-slides-per-view: 1;
+  --carousel-gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .carousel-wrapper {
+    --carousel-slides-per-view: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .carousel-wrapper {
+    --carousel-slides-per-view: 3;
+  }
+}
+.carousel-slide-responsive {
+  flex: 0 0 calc((100% - (var(--carousel-slides-per-view) - 1) * var(--carousel-gap)) / var(--carousel-slides-per-view));
+  width: calc((100% - (var(--carousel-slides-per-view) - 1) * var(--carousel-gap)) / var(--carousel-slides-per-view));
+  min-width: 0;
 }

@@ -1,14 +1,18 @@
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import { IconShieldCheck, IconWorld, IconBolt, IconBulb, IconUsers, IconBuildingCommunity } from "@tabler/icons-react";
 
 export default function Mission() {
   const coreValues = [
     {
-      title: "Safety Excellence",
-      description: "We prioritize the safety and well-being of our employees, contractors, and communities above all else.",
+      title: "Highest Standards for Safety",
+      description: "We prioritize the health and safety of our workers, the community, and operational integrity through strict safety procedures and ongoing improvement programs.",
       icon: <IconShieldCheck className="w-8 h-8" />,
+    },
+    {
+      title: "Integrity",
+      description: "We maintain uncompromising integrity in all our operations, conducting business with transparency and accountability.",
+      icon: <IconUsers className="w-8 h-8" />,
     },
     {
       title: "Environmental Stewardship",
@@ -26,11 +30,6 @@ export default function Mission() {
       icon: <IconBulb className="w-8 h-8" />,
     },
     {
-      title: "Integrity & Ethics",
-      description: "We conduct business with the highest ethical standards, transparency, and accountability.",
-      icon: <IconUsers className="w-8 h-8" />,
-    },
-    {
       title: "Community Engagement",
       description: "We are committed to being a responsible corporate citizen and contributing to community development.",
       icon: <IconBuildingCommunity className="w-8 h-8" />,
@@ -42,7 +41,7 @@ export default function Mission() {
       <Hero
         title="Our Mission & Core Values"
         subtitle="What Drives Us"
-        description="Guided by our mission and core values, we strive to be a leader in the oil refining industry."
+        description="Guided by our mission and core values, we strive to be a preeminent refinery and a pride for Ghanaians."
       />
 
       <Section
@@ -50,21 +49,17 @@ export default function Mission() {
         description="The foundation of everything we do"
       >
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-br from-primary-50 to-primary-100 border-2 border-primary-200">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                To be the world's most trusted and innovative oil refining company, 
-                delivering exceptional value to our customers, stakeholders, and communities 
-                while maintaining the highest standards of safety, environmental stewardship, 
-                and operational excellence.
-              </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Our mission drives every decision we make and every action we take. 
-                We are committed to transforming the energy sector through innovation, 
-                sustainability, and unwavering dedication to excellence.
-              </p>
-            </div>
-          </Card>
+          <div className="rounded-xl bg-gradient-to-br from-primary-50 to-tor-teal-50 border-2 border-primary-200 p-8 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              To provide quality energy products and services to power Ghana&apos;s economic growth 
+              in an environmentally sustainable manner.
+            </h2>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Our mission drives every decision we make and every action we take. 
+              We are committed to transforming the energy sector through innovation, 
+              sustainability, and unwavering dedication to excellence.
+            </p>
+          </div>
         </div>
       </Section>
 
@@ -76,24 +71,29 @@ export default function Mission() {
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg max-w-none text-center">
             <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-              To lead the global energy transition by setting new standards in sustainable refining, 
-              pioneering innovative technologies, and creating lasting value for all stakeholders 
-              while protecting our planet for future generations.
+              To be a preeminent refinery, a pride for Ghanaians.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Our current goal is to rank among the sub-region&apos;s most productive refineries, 
+              emphasizing excellence, innovation, and long-term sustainability.
             </p>
           </div>
         </div>
       </Section>
 
       <Section title="Our Core Values">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {coreValues.map((value, index) => (
-            <Card key={index} hover>
-              <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-primary-600">
+            <div
+              key={index}
+              className="p-6 rounded-xl bg-white border-l-4 border-primary-500 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-primary-600">
                 {value.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
               <p className="text-gray-600 leading-relaxed">{value.description}</p>
-            </Card>
+            </div>
           ))}
         </div>
       </Section>

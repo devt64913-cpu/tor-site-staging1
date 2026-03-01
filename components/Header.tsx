@@ -30,7 +30,6 @@ export default function Header() {
 
   const navLinks = [
     { href: "/what-we-do", label: "What We Do" },
-    { href: "/services", label: "Our Services" },
     { href: "/sustainability", label: "Sustainability" },
     { href: "/health-safety", label: "Health & Safety" },
     { href: "/news", label: "News & Events" },

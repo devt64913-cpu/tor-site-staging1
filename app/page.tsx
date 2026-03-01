@@ -3,35 +3,34 @@
 import { useState } from "react";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import Button from "@/components/Button";
-import { IconCheck, IconWorld, IconBook, IconSettings, IconFlame, IconDatabase, IconTank, IconPhone, IconMail, IconMapPin, IconClock, IconUsers, IconChevronDown } from "@tabler/icons-react";
-import MailLink from "@/components/MailLink";
-import PhoneLink from "@/components/PhoneLink";
+import Carousel from "@/components/Carousel";
+import { IconCheck, IconWorld, IconBook, IconSettings, IconFlame, IconDatabase, IconTank, IconUsers, IconChevronDown } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { url } from "@/utils/url";
+import CountUp from "@/components/CountUp";
 
 const faqs = [
   {
-    question: "What products does TOR Refinery produce?",
-    answer: "TOR Refinery produces a wide range of petroleum products including gasoline, diesel, jet fuel, liquefied petroleum gas (LPG), and specialty chemicals. Our facilities are equipped to process various grades of crude oil into high-quality products that meet international standards.",
+    question: "What products does TOR produce?",
+    answer: "TOR produces LPG, light and heavy naphtha, illuminating kerosene, Aviation Turbine Kerosene (ATK), diesel, residual fuel oil, and premix fuel for Ghana's fishing sector. The RFCC unit produces fuel gas, LPG, gasoline (94 RON), light cycle oil, heavy cycle oil, and clarified oil.",
   },
   {
     question: "How can I become a supplier or partner?",
-    answer: "We welcome inquiries from qualified suppliers and partners. You can explore current procurement opportunities on our Procurement page and submit a proposal for specific items. For general partnership inquiries, please use our Contact Us form or reach out to our investor relations team through the Investor Contacts page.",
+    answer: "We welcome inquiries from qualified suppliers and partners. Explore current procurement opportunities on our Procurement page and submit a proposal. For general partnership inquiries, use the form on our Investor Contacts page.",
   },
   {
-    question: "What are TOR Refinery's operating hours?",
-    answer: "Our headquarters in Tema, Ghana is open Monday through Friday from 7:30 AM to 4:30 PM GMT. For urgent matters outside these hours, please email us and we will respond as soon as possible.",
+    question: "What are TOR's operating hours?",
+    answer: "Our offices at Heavy Industrial Area, Valco Road, Tema are open Monday to Friday from 8:00 a.m. to 3:30 p.m.",
   },
   {
-    question: "Where is TOR Refinery located?",
-    answer: "TOR Refinery is headquartered in Tema, Ghana (PO Box 599). Our strategic location supports efficient supply chain operations and allows us to serve regional and international markets. You can view our exact location on the map available on our Investor Contacts page.",
+    question: "Where is Tema Oil Refinery located?",
+    answer: "TOR is located in the Heavy Industrial Area, Valco Road, Tema, 24 kilometres from Accra. Our mailing address is P.O. Box CO 599, Tema, Ghana. The refinery is linked to the Port of Tema by pipelines.",
   },
   {
-    question: "How does TOR Refinery approach sustainability?",
-    answer: "Sustainability is at the core of our operations. We are committed to reducing our environmental footprint through improved efficiency, emissions reduction programs, and investment in cleaner technologies. We have set measurable targets and report on our progress in line with industry best practices.",
+    question: "What crude oils does TOR process?",
+    answer: "We process light and low-sulfur crude oils including Bonny Light and Brass River from Nigeria, Palanca Blend from Angola, and crude from Equatorial Guinea, Cameroon, and Gabon.",
   },
 ];
 
@@ -40,11 +39,11 @@ export default function Home() {
   return (
     <>
       <Hero
-        title="Leading the Future of Oil Refining"
-        subtitle="TOR Refinery"
-        description="We are committed to excellence in oil refining, delivering high-quality products while prioritizing sustainability, safety, and innovation in everything we do."
+        title="Refining Crude Since 1963"
+        subtitle="Tema Oil Refinery"
+        description="Ghana's premier crude oil refinery. We provide quality energy products and services to power Ghana's economic growth in an environmentally sustainable manner."
         primaryAction={{ label: "Learn More", href: "/about" }}
-        secondaryAction={{ label: "Our Services", href: "/services" }}
+        secondaryAction={{ label: "What We Do", href: "/what-we-do" }}
       />
 
       {/* Managing Director's Message Section */}
@@ -58,19 +57,19 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
+            className="border-l-4 border-primary-500 bg-surface-50 rounded-r-xl p-8 md:p-12"
           >
-            <Card className="p-8 md:p-12">
             <div className="flex flex-col md:flex-row gap-8 md:gap-12">
               {/* Director Photo/Info */}
               <div className="flex-shrink-0 text-center md:text-left">
-                <div className="w-32 h-32 bg-primary-100 rounded-full mx-auto md:mx-0 mb-4 flex items-center justify-center overflow-hidden relative">
+                <div className="w-40 h-40 md:w-48 md:h-48 bg-primary-100 rounded-full mx-auto md:mx-0 mb-4 flex items-center justify-center overflow-hidden relative">
                   {/* MD Image - Update src with actual image URL when available */}
                   {/* If image URL is found, uncomment and update the Image component below */}
                   <Image
                     src={`${url}/images/tor_md.jpeg`}
                     alt="Mr. Edmund Kombat, Managing Director"
-                    width={128}
-                    height={128}
+                    width={192}
+                    height={192}
                     className="rounded-full object-cover w-full h-full"
                   />
                   {/* <span className="text-4xl font-bold text-primary-600">
@@ -79,25 +78,25 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-1">Mr. Edmund Kombat</h3>
                 <p className="text-primary-500 font-semibold mb-2">Managing Director</p>
-                <p className="text-sm text-gray-600">TOR Refinery</p>
+                <p className="text-sm text-gray-600">Tema Oil Refinery</p>
               </div>
 
               {/* Message Content */}
               <div className="flex-1">
                 <div className="prose prose-lg max-w-none">
                   <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                    Welcome to TOR Refinery. For over five decades, we have been at the forefront of the oil refining industry, 
-                    consistently delivering excellence in every aspect of our operations.
+                    Welcome to Tema Oil Refinery. For over six decades we have been refining crude oil at the heart of Ghana&apos;s energy sector, 
+                    consistently delivering quality petroleum products including Aviation Turbine Kerosene (ATK) and premix fuel for Ghana&apos;s fishing sector.
                   </p>
                   <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                     Our commitment to innovation, sustainability, and operational excellence has positioned us as a trusted leader 
-                    in the energy sector. We take pride in our state-of-the-art facilities, our dedicated team of professionals, 
+                    in the energy sector. We take pride in our facilities, our dedicated team, 
                     and our unwavering focus on safety and environmental stewardship.
                   </p>
                   <p className="text-lg text-gray-700 leading-relaxed">
-                    As we look to the future, we remain dedicated to transforming the energy landscape through cutting-edge technology, 
-                    sustainable practices, and a deep commitment to creating value for our stakeholders, employees, and the communities 
-                    we serve. Thank you for your interest in TOR Refinery.
+                    As we look to the future, we remain dedicated to ranking among the sub-region&apos;s most productive refineries through 
+                    cutting-edge technology, sustainable practices, and a deep commitment to creating value for Ghana and our stakeholders. 
+                    Thank you for your interest in Tema Oil Refinery.
                   </p>
                 </div>
                 <div className="mt-8 pt-6 border-t border-gray-200">
@@ -105,19 +104,18 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </Card>
           </motion.div>
         </div>
       </Section>
 
       {/* Features Section */}
       <Section
-        title="Why Choose TOR Refinery"
+        title="Why Choose TOR"
         description="We combine cutting-edge technology with decades of expertise to deliver exceptional results."
-        className="bg-gray-50"
+        className="bg-surface-50"
       >
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          className="space-y-6 mb-12 max-w-4xl mx-auto"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -130,57 +128,51 @@ export default function Home() {
           }}
         >
           <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 }
-            }}
+            variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
             transition={{ duration: 0.5 }}
+            className="flex gap-6 items-start p-6 rounded-xl bg-white border-l-4 border-primary-500 shadow-sm hover:shadow-md transition-shadow"
           >
-            <Card hover>
-              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                <IconCheck className="w-6 h-6 text-primary-600" />
-              </div>
+            <div className="w-12 h-12 shrink-0 bg-primary-100 rounded-lg flex items-center justify-center">
+              <IconCheck className="w-6 h-6 text-primary-600" />
+            </div>
+            <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Operational Excellence</h3>
               <p className="text-gray-600">
                 State-of-the-art facilities and processes ensuring the highest quality standards in every operation.
               </p>
-            </Card>
+            </div>
           </motion.div>
 
           <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 }
-            }}
+            variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
             transition={{ duration: 0.5 }}
+            className="flex gap-6 items-start p-6 rounded-xl bg-white border-l-4 border-tor-teal-500 shadow-sm hover:shadow-md transition-shadow"
           >
-            <Card hover>
-              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                <IconWorld className="w-6 h-6 text-primary-600" />
-              </div>
+            <div className="w-12 h-12 shrink-0 bg-tor-teal-100 rounded-lg flex items-center justify-center">
+              <IconWorld className="w-6 h-6 text-tor-teal-600" />
+            </div>
+            <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Sustainability Focus</h3>
               <p className="text-gray-600">
                 Committed to environmental responsibility and sustainable practices for a better future.
               </p>
-            </Card>
+            </div>
           </motion.div>
 
           <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 }
-            }}
+            variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
             transition={{ duration: 0.5 }}
+            className="flex gap-6 items-start p-6 rounded-xl bg-white border-l-4 border-tor-amber-500 shadow-sm hover:shadow-md transition-shadow"
           >
-            <Card hover>
-              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
-                <IconBook className="w-6 h-6 text-primary-600" />
-              </div>
+            <div className="w-12 h-12 shrink-0 bg-tor-amber-100 rounded-lg flex items-center justify-center">
+              <IconBook className="w-6 h-6 text-tor-amber-500" />
+            </div>
+            <div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Innovation & Technology</h3>
               <p className="text-gray-600">
                 Leveraging the latest technologies and innovative solutions to stay ahead of the curve.
               </p>
-            </Card>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -200,87 +192,52 @@ export default function Home() {
           >
             Our Production & Storage Capacity
           </motion.h3>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.15
-                }
-              }
-            }}
+          <Carousel
+            autoPlay
+            continuousScroll
+            scrollSpeed={0.7}
+            showArrows={false}
+            showDots={false}
+            loop
           >
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 }
-              }}
-              transition={{ duration: 0.5, type: "spring" }}
-            >
-              <Card className="text-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <IconSettings className="w-8 h-8 text-primary-600" />
-                </div>
-                <div className="text-3xl font-bold text-primary-500 mb-2">45,000</div>
-                <div className="text-sm text-gray-600 font-medium mb-1">BPSD</div>
-                <div className="text-sm text-gray-700 font-semibold">CDU Capacity</div>
-              </Card>
-            </motion.div>
+            <div className="text-center p-6 rounded-xl bg-primary-50/80 border border-primary-200 h-full flex flex-col">
+              <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <IconSettings className="w-8 h-8 text-primary-600" />
+              </div>
+              <div className="text-3xl font-bold text-primary-600 mb-2">45,000</div>
+              <div className="text-sm text-gray-600 font-medium mb-1">BPSD</div>
+              <div className="text-sm text-gray-700 font-semibold">CDU Capacity</div>
+              <p className="text-xs text-gray-500 mt-1">Crude Distillation Unit</p>
+            </div>
 
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 }
-              }}
-              transition={{ duration: 0.5, type: "spring" }}
-            >
-              <Card className="text-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <IconFlame className="w-8 h-8 text-primary-600" />
-                </div>
-                <div className="text-3xl font-bold text-primary-500 mb-2">14,000</div>
-                <div className="text-sm text-gray-600 font-medium mb-1">BPSD</div>
-                <div className="text-sm text-gray-700 font-semibold">RFCC Capacity</div>
-              </Card>
-            </motion.div>
+            <div className="text-center p-6 rounded-xl bg-tor-teal-50 border border-tor-teal-200 h-full flex flex-col">
+              <div className="w-16 h-16 bg-tor-teal-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <IconFlame className="w-8 h-8 text-tor-teal-600" />
+              </div>
+              <div className="text-3xl font-bold text-tor-teal-600 mb-2">14,000</div>
+              <div className="text-sm text-gray-600 font-medium mb-1">BPSD</div>
+              <div className="text-sm text-gray-700 font-semibold">RFCC Capacity</div>
+              <p className="text-xs text-gray-500 mt-1">Residue Fluid Catalytic Cracking</p>
+            </div>
 
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 }
-              }}
-              transition={{ duration: 0.5, type: "spring" }}
-            >
-              <Card className="text-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <IconDatabase className="w-8 h-8 text-primary-600" />
-                </div>
-                <div className="text-2xl font-bold text-primary-500 mb-2">262,652</div>
-                <div className="text-sm text-gray-600 font-medium mb-1">MT</div>
-                <div className="text-sm text-gray-700 font-semibold">White Product Storage</div>
-              </Card>
-            </motion.div>
+            <div className="text-center p-6 rounded-xl bg-primary-50/80 border border-primary-200 h-full flex flex-col">
+              <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <IconDatabase className="w-8 h-8 text-primary-600" />
+              </div>
+              <div className="text-2xl font-bold text-primary-600 mb-2">262,652</div>
+              <div className="text-sm text-gray-600 font-medium mb-1">MT</div>
+              <div className="text-sm text-gray-700 font-semibold">White Product Storage</div>
+            </div>
 
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 }
-              }}
-              transition={{ duration: 0.5, type: "spring" }}
-            >
-              <Card className="text-center">
-                <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <IconTank className="w-8 h-8 text-primary-600" />
-                </div>
-                <div className="text-2xl font-bold text-primary-500 mb-2">1,925,348</div>
-                <div className="text-sm text-gray-600 font-medium mb-1">BBL</div>
-                <div className="text-sm text-gray-700 font-semibold">Crude Storage</div>
-              </Card>
-            </motion.div>
-          </motion.div>
+            <div className="text-center p-6 rounded-xl bg-tor-teal-50 border border-tor-teal-200 h-full flex flex-col">
+              <div className="w-16 h-16 bg-tor-teal-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <IconTank className="w-8 h-8 text-tor-teal-600" />
+              </div>
+              <div className="text-2xl font-bold text-tor-teal-600 mb-2">1,925,348</div>
+              <div className="text-sm text-gray-600 font-medium mb-1">BBL</div>
+              <div className="text-sm text-gray-700 font-semibold">Crude Storage</div>
+            </div>
+          </Carousel>
         </motion.div>
       </Section>
 
@@ -294,85 +251,61 @@ export default function Home() {
           variants={{
             visible: {
               transition: {
-                staggerChildren: 0.2
-              }
-            }
+                staggerChildren: 0.15,
+              },
+            },
           }}
         >
           <motion.div
-            className="text-center"
+            className="text-center min-h-[100px]"
             variants={{
               hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 }
+              visible: { opacity: 1, y: 0 },
             }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <motion.div
-              className="text-4xl md:text-5xl font-bold text-primary-500 mb-2"
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, type: "spring", delay: 0.1 }}
-            >
-              50+
-            </motion.div>
-            <div className="text-gray-600 font-medium">Years of Experience</div>
+            <div className="text-4xl md:text-5xl font-bold text-primary-500 mb-2">
+              <CountUp end={60} suffix="+" duration={2.2} />
+            </div>
+            <div className="text-gray-600 font-medium">Years Refining</div>
           </motion.div>
           <motion.div
-            className="text-center"
+            className="text-center min-h-[100px]"
             variants={{
               hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 }
+              visible: { opacity: 1, y: 0 },
             }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <motion.div
-              className="text-4xl md:text-5xl font-bold text-primary-500 mb-2"
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, type: "spring", delay: 0.2 }}
-            >
-              500K+
-            </motion.div>
+            <div className="text-4xl md:text-5xl font-bold text-tor-teal-600 mb-2">
+              <CountUp end={500} suffix="K+" duration={2.2} />
+            </div>
             <div className="text-gray-600 font-medium">Barrels Per Day</div>
           </motion.div>
           <motion.div
-            className="text-center"
+            className="text-center min-h-[100px]"
             variants={{
               hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 }
+              visible: { opacity: 1, y: 0 },
             }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <motion.div
-              className="text-4xl md:text-5xl font-bold text-primary-500 mb-2"
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, type: "spring", delay: 0.3 }}
-            >
-              1000+
-            </motion.div>
+            <div className="text-4xl md:text-5xl font-bold text-primary-500 mb-2">
+              <CountUp end={1000} suffix="+" duration={2.2} />
+            </div>
             <div className="text-gray-600 font-medium">Employees</div>
           </motion.div>
           <motion.div
-            className="text-center"
+            className="text-center min-h-[100px]"
             variants={{
               hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0 }
+              visible: { opacity: 1, y: 0 },
             }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            <motion.div
-              className="text-4xl md:text-5xl font-bold text-primary-500 mb-2"
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, type: "spring", delay: 0.4 }}
-            >
-              99.9%
-            </motion.div>
+            <div className="text-4xl md:text-5xl font-bold text-tor-amber-500 mb-2">
+              <CountUp end={99.9} suffix="%" decimals={1} duration={2.2} />
+            </div>
             <div className="text-gray-600 font-medium">Safety Record</div>
           </motion.div>
         </motion.div>
@@ -459,176 +392,26 @@ export default function Home() {
         description="Discover how TOR Refinery can meet your energy needs with excellence and reliability."
         className="bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 text-white"
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-3xl mx-auto text-center">
           <motion.div
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.2
-                }
-              }
-            }}
+            transition={{ duration: 0.6 }}
           >
-            {/* Left Side - Content */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, x: -50 },
-                visible: { opacity: 1, x: 0 }
-              }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <IconUsers className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold">Let's Build Something Great Together</h3>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                <IconUsers className="w-8 h-8 text-white" />
               </div>
-              <p className="text-lg text-primary-100 mb-8 leading-relaxed">
-                Partner with TOR Refinery and experience the difference that comes with working with an industry leader. 
-                We offer reliable supply, competitive pricing, and exceptional service to meet all your energy needs.
-              </p>
-              
-              <motion.div
-                className="space-y-4 mb-8"
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.15
-                    }
-                  }
-                }}
-              >
-                <motion.div
-                  className="flex items-start gap-3"
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    visible: { opacity: 1, x: 0 }
-                  }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <IconCheck className="w-6 h-6 text-primary-200 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold mb-1">Reliable Supply Chain</h4>
-                    <p className="text-primary-100 text-sm">Consistent delivery and inventory management</p>
-                  </div>
-                </motion.div>
-                <motion.div
-                  className="flex items-start gap-3"
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    visible: { opacity: 1, x: 0 }
-                  }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <IconCheck className="w-6 h-6 text-primary-200 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold mb-1">Competitive Pricing</h4>
-                    <p className="text-primary-100 text-sm">Market-leading rates with flexible payment terms</p>
-                  </div>
-                </motion.div>
-                <motion.div
-                  className="flex items-start gap-3"
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    visible: { opacity: 1, x: 0 }
-                  }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <IconCheck className="w-6 h-6 text-primary-200 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold mb-1">Expert Support</h4>
-                    <p className="text-primary-100 text-sm">Dedicated account management and technical assistance</p>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button href="/services" variant="secondary" size="lg" className="w-full">
-                  Explore Our Services
-                </Button>
-                {/* <Button href="/investor-contacts" variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white/20">
-                  Get in Touch
-                </Button> */}
-              </div>
-            </motion.div>
-
-            {/* Right Side - Contact Info */}
-            <motion.div
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
-              variants={{
-                hidden: { opacity: 0, x: 50 },
-                visible: { opacity: 1, x: 0 }
-              }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <IconPhone className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Phone</h4>
-                    <PhoneLink phone="+1 (555) 123-4567" className="text-primary-100 hover:text-white transition-colors">
-                      +1 (555) 123-4567
-                    </PhoneLink>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <IconMail className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Email</h4>
-                    <MailLink
-                      email="info@torrefinery.com"
-                      subject="Inquiry - TOR Refinery Website"
-                      className="text-primary-100 hover:text-white transition-colors"
-                    >
-                      info@torrefinery.com
-                    </MailLink>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <IconMapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Location</h4>
-                    <p className="text-primary-100 text-sm">
-                      Tema, Ghana
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <IconClock className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1">Business Hours</h4>
-                    <p className="text-primary-100 text-sm">
-                      Monday - Friday: 8:00 AM - 6:00 PM<br />
-                      Saturday: 9:00 AM - 1:00 PM
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-white/20">
-                <Button href="/investor-contacts/request-information" variant="secondary" size="lg" className="w-full">
-                  Contact Us Now
-                </Button>
-              </div>
-            </motion.div>
+              <h3 className="text-3xl font-bold">Let&apos;s Build Something Great Together</h3>
+            </div>
+            <p className="text-lg text-primary-100 mb-8 leading-relaxed">
+              Partner with TOR Refinery and experience the difference that comes with working with an industry leader. 
+              We offer reliable supply, competitive pricing, and exceptional service to meet all your energy needs.
+            </p>
+            <Button href="/what-we-do" variant="secondary" size="lg">
+              Explore What We Do
+            </Button>
           </motion.div>
         </div>
       </Section>

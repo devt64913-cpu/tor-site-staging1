@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Button from "./Button";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { url } from "@/utils/url";
 
 interface HeroProps {
@@ -20,10 +20,13 @@ export default function Hero({
   primaryAction,
   secondaryAction,
 }: HeroProps) {
+  const { scrollY } = useScroll();
+  const backgroundY = useTransform(scrollY, [0, 600], [0, 120]);
+
   return (
     <section className="relative text-white py-40 lg:py-56 overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
+      {/* Background Image with parallax */}
+      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
         <Image
           src={`${url}/images/hero.jpg`}
           alt="TOR Refinery"
@@ -32,9 +35,8 @@ export default function Hero({
           priority
           quality={100}
         />
-        {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/60 via-primary-800/50 to-primary-700/60"></div>
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/60 via-primary-800/50 to-primary-700/60" />
+      </motion.div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl">

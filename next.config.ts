@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   // output: "export",
   reactStrictMode: true,
   images: { unoptimized: true },
+  async redirects() {
+    return [
+      { source: "/services", destination: "/what-we-do", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

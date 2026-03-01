@@ -1,6 +1,5 @@
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
 import { IconWorld, IconDroplet, IconTrash, IconBolt } from "@tabler/icons-react";
 
 export default function Sustainability() {
@@ -68,8 +67,11 @@ export default function Sustainability() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {initiatives.map((initiative, index) => (
-            <Card key={index} hover>
-              <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-primary-600">
+            <div
+              key={index}
+              className="p-6 rounded-xl bg-white border-l-4 border-primary-500 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div className="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-primary-600">
                 {initiative.icon}
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">{initiative.title}</h3>
@@ -86,7 +88,7 @@ export default function Sustainability() {
                   ></div>
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </Section>
@@ -94,36 +96,39 @@ export default function Sustainability() {
       <Section
         title="Our Sustainability Goals"
         description="Ambitious targets for a sustainable future"
-        className="bg-gray-50"
+        className="bg-surface-50"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {goals.map((goal, index) => (
-            <Card key={index} className="text-center">
+            <div
+              key={index}
+              className="p-5 rounded-xl bg-white border-t-4 border-tor-teal-500 shadow-sm text-center"
+            >
               <div className="text-primary-500 font-bold text-2xl mb-2">{goal.year}</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{goal.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{goal.description}</p>
-            </Card>
+            </div>
           ))}
         </div>
       </Section>
 
       <Section title="Environmental Performance">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="text-center">
-            <div className="text-5xl font-bold text-primary-500 mb-2">35%</div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-xl bg-primary-50 border border-primary-200 text-center">
+            <div className="text-5xl font-bold text-primary-600 mb-2">35%</div>
             <h3 className="text-lg font-semibold mb-2">Carbon Reduction</h3>
             <p className="text-gray-600 text-sm">Achieved since 2020</p>
-          </Card>
-          <Card className="text-center">
-            <div className="text-5xl font-bold text-primary-500 mb-2">60%</div>
+          </div>
+          <div className="p-6 rounded-xl bg-tor-teal-50 border border-tor-teal-200 text-center">
+            <div className="text-5xl font-bold text-tor-teal-600 mb-2">60%</div>
             <h3 className="text-lg font-semibold mb-2">Water Savings</h3>
             <p className="text-gray-600 text-sm">Through recycling programs</p>
-          </Card>
-          <Card className="text-center">
-            <div className="text-5xl font-bold text-primary-500 mb-2">95%</div>
+          </div>
+          <div className="p-6 rounded-xl bg-tor-amber-50 border border-tor-amber-500/30 text-center">
+            <div className="text-5xl font-bold text-tor-amber-500 mb-2">95%</div>
             <h3 className="text-lg font-semibold mb-2">Waste Recovery</h3>
             <p className="text-gray-600 text-sm">Materials recycled or reused</p>
-          </Card>
+          </div>
         </div>
       </Section>
 
@@ -133,19 +138,22 @@ export default function Sustainability() {
         className="bg-primary-50"
       >
         <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               "ISO 14001",
               "Green Business",
               "Carbon Trust",
               "EcoVadis",
             ].map((cert, index) => (
-              <Card key={index} className="text-center">
-                <div className="w-20 h-20 bg-white rounded-lg mx-auto mb-4 flex items-center justify-center shadow-sm">
-                  <span className="text-2xl font-bold text-primary-500">{cert.split(" ")[0][0]}</span>
+              <div
+                key={index}
+                className="p-5 rounded-xl bg-white border border-primary-200 shadow-sm text-center"
+              >
+                <div className="w-16 h-16 bg-primary-50 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                  <span className="text-2xl font-bold text-primary-600">{cert.split(" ")[0][0]}</span>
                 </div>
-                <h3 className="font-semibold text-gray-900">{cert}</h3>
-              </Card>
+                <h3 className="font-semibold text-gray-900 text-sm">{cert}</h3>
+              </div>
             ))}
           </div>
         </div>

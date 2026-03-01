@@ -33,8 +33,8 @@ const cabinetGrotesk = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "TOR Refinery - Leading Oil Refining Excellence",
-  description: "TOR Refinery is a leading oil refining company committed to innovation, sustainability, and operational excellence.",
+  title: "Tema Oil Refinery (TOR) - Refining Crude Since 1963",
+  description: "Tema Oil Refinery is Ghana's premier crude oil refinery. Refining crude since 1963—quality energy products to power Ghana's economic growth.",
 };
 
 export default function RootLayout({

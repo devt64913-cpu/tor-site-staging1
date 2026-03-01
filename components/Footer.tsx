@@ -10,10 +10,9 @@ export default function Footer() {
       { href: "/about", label: "About Us" },
       { href: "/history", label: "Our History" },
       { href: "/mission", label: "Mission & Values" },
-      { href: "/what-we-do", label: "What We Do" },
     ],
     operations: [
-      { href: "/services", label: "Our Services" },
+      { href: "/what-we-do", label: "What We Do" },
       { href: "/sustainability", label: "Sustainability" },
       { href: "/health-safety", label: "Health & Safety" },
     ],
@@ -32,7 +31,7 @@ export default function Footer() {
           <div>
             <Logo showText={true} className="mb-4" />
             <p className="text-sm text-gray-400 mb-4">
-              Leading the future of oil refining with innovation, sustainability, and excellence.
+              Refining crude since 1963. Ghana&apos;s premier crude oil refinery—quality energy products to power Ghana&apos;s economic growth.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
@@ -104,10 +103,10 @@ export default function Footer() {
               Our Location
             </h3>
             <div className="space-y-3 mb-4">
-              <p className="text-sm text-gray-400">
-                TOR Refinery<br />
-                Tema, Ghana
-              </p>
+            <p className="text-sm text-gray-400">
+              Tema Oil Refinery Limited<br />
+              Heavy Industrial Area, Valco Road, Tema
+            </p>
             </div>
             <div className="w-full h-48 rounded-lg overflow-hidden border border-gray-700">
               <iframe

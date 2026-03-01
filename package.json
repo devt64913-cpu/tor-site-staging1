@@ -10,10 +10,15 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^3.35.0",
+    "embla-carousel-auto-scroll": "^8.6.0",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.24",
     "next": "16.0.5",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-countup": "^6.5.3",
+    "react-dom": "19.2.0",
+    "yet-another-react-lightbox": "^3.29.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
