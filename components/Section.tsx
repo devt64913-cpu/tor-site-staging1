@@ -27,7 +27,7 @@ export default function Section({
       <div className={`container mx-auto px-4 lg:px-8 ${containerClassName}`}>
         {(title || subtitle || description) && (
           <motion.div
-            className="text-center max-w-3xl mx-auto mb-12 lg:mb-16"
+            className="text-center max-w-4xl mx-auto mb-12 lg:mb-16"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -53,7 +53,7 @@ export default function Section({
             )}
             {title && (
               <motion.h2
-                className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${className.includes('text-white') ? 'text-white' : 'text-gray-900'}`}
+                className={`text-2xl md:text-xl lg:text-3xl font-black mb-4 text-primary-900`}
                 variants={{
                   hidden: { opacity: 0, y: 30 },
                   visible: { opacity: 1, y: 0 }

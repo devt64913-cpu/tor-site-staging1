@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import { IconMenu2, IconX, IconChevronDown } from "@tabler/icons-react";
+import { IconMenu2, IconX, IconChevronDown, IconPhone } from "@tabler/icons-react";
 import Logo from "@/components/Logo";
 
 export default function Header() {
@@ -31,10 +31,10 @@ export default function Header() {
   const navLinks = [
     { href: "/what-we-do", label: "What We Do" },
     { href: "/sustainability", label: "Sustainability" },
-    { href: "/health-safety", label: "Health & Safety" },
-    { href: "/news", label: "News & Events" },
+    // { href: "/health-safety", label: "Health & Safety" },
+    // { href: "/news", label: "News & Events" },
     { href: "/investors", label: "Investors" },
-    { href: "/procurement", label: "Procurement" },
+    // { href: "/procurement", label: "Procurement" },
   ];
 
   // Check if any nav link is active
@@ -108,7 +108,7 @@ export default function Header() {
   }, [lastScrollY]);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-sm border-b border-gray-100 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20 min-w-0">
           {/* Logo */}
@@ -144,13 +144,13 @@ export default function Header() {
                 }`}
               >
                 Who We Are
-                <IconChevronDown className={`w-4 h-4 transition-transform duration-200 ${isWhoWeAreOpen ? 'rotate-180' : ''}`} />
+                {/* <IconChevronDown className={`w-4 h-4 transition-transform duration-200 ${isWhoWeAreOpen ? 'rotate-180' : ''}`} />
                 <span className={`absolute bottom-0 left-0 h-0.5 bg-primary-500 transition-all duration-200 ${
                   isWhoWeAreActive ? "w-full" : "w-0 group-hover:w-full"
-                }`}></span>
+                }`}></span> */}
               </button>
 
-              {isWhoWeAreOpen && (
+              {/* {isWhoWeAreOpen && (
                 <div 
                   className="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-3 animate-in fade-in slide-in-from-top-2 duration-200 z-50"
                   onMouseLeave={() => setIsWhoWeAreOpen(false)}
@@ -178,7 +178,7 @@ export default function Header() {
                     })}
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
 
             {/* Visible Nav Links for XL - Show first 4 */}
@@ -255,13 +255,16 @@ export default function Header() {
 
             <Link
               href="/investor-contacts"
-              className={`ml-2 px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 whitespace-nowrap ${
+              className={`ml-2 px-4 py-3 text-sm font-semibold rounded-lg transition-all duration-200 
+                 hover:shadow-md hover:scale-105 whitespace-nowrap flex ${
                 pathname === "/investor-contacts"
                   ? "text-white bg-primary-600"
                   : "text-white bg-primary-500 hover:bg-primary-600"
               }`}
             >
-              Contact
+              
+              Contact Us
+              <IconPhone className="w-5 h-5 ml-2" />
             </Link>
           </div>
 
@@ -410,7 +413,7 @@ export default function Header() {
                   : "text-white bg-primary-500 hover:bg-primary-600"
               }`}
             >
-              Contact
+              Contact Us
             </Link>
           </div>
 
@@ -501,13 +504,15 @@ export default function Header() {
               <Link
                 href="/investor-contacts"
                 onClick={() => setIsMenuOpen(false)}
-                className={`mx-4 mt-4 mb-2 px-5 py-3 text-base font-semibold rounded-lg transition-colors duration-200 text-center shadow-sm ${
+                className={`mx-4 mt-4 mb-2 px-5 py-3 text-base font-semibold rounded-lg transition-colors duration-200 text-center shadow-sm flex items-center justify-center ${
                   pathname === "/investor-contacts"
                     ? "text-white bg-primary-600"
                     : "text-white bg-primary-500 hover:bg-primary-600"
                 }`}
               >
-                Contact
+
+                <IconPhone className="w-5 h-5 mr-2" />
+                Contact Us
               </Link>
             </div>
           </div>

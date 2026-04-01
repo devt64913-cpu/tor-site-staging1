@@ -39,7 +39,7 @@ export default function About() {
       </Section>
 
       {/* Our Strategy Section */}
-      <Section
+      {/* <Section
         title="Our Strategy"
         description="Maximizing value creation through strategic excellence"
         className="bg-white"
@@ -53,7 +53,7 @@ export default function About() {
             </p>
           </div>
         </div>
-      </Section>
+      </Section> */}
 
       <Section
         title="Our Leadership"
