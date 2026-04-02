@@ -12,7 +12,8 @@ export default function Logo({ showText = false, className = "" }: LogoProps) {
     <Link href="/" className={`flex items-center ${className}`}>
       <div className="w-16 h-16 rounded-lg flex items-center justify-center relative overflow-hidden">
         <Image
-          src={`${url}/images/logo.png`}
+          // src={`${url}/images/logo.png`}
+          src={`/images/logo.png`}
           alt="TOR Refinery Logo"
           width={58}
           height={58}
