@@ -14,6 +14,7 @@ import CDU from "@/components/home/CDU";
 import RFCC from "@/components/home/RFCC";
 import ProductStorage from "@/components/home/ProductStorage";
 import CrudeStorage from "@/components/home/CrudeStorage";
+import OurCommitment from "@/components/home/OurCommitment";
 
 const faqs = [
   {
@@ -69,56 +70,55 @@ export default function Home() {
         // title="Message from the Managing Director"
         className="bg-white"
       >
-        <div className=" mx-auto">
-          <p className="font-black text-[55px] text-primary-500 uppercase text-center">Tor Wel
-            <span className="text-primary-950">comes you</span></p>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-3xl font-black uppercase text-primary-500 sm:text-4xl md:text-5xl lg:text-6xl xl:text-[55px]">
+            Tor Wel
+            <span className="text-primary-950">comes you</span>
+          </p>
 
-          <div className="mt-8 bg-primary-200 flex">
+          <div className="mt-6 bg-primary-200 sm:mt-8">
+            <div className="flex flex-col bg-primary-950 pt-6 text-white sm:pt-8 md:pt-10 lg:flex-row lg:rounded-tr-[240px] lg:rounded-bl-[240px] xl:rounded-tr-[300px] xl:rounded-bl-[300px] rounded-tr-[72px] rounded-bl-[72px] sm:rounded-tr-[120px] sm:rounded-bl-[120px] md:rounded-tr-[180px] md:rounded-bl-[180px]">
+              <div className="min-w-0 flex-1 px-4 pb-6 sm:px-6 sm:pb-8 md:px-10 md:pb-10 lg:px-12 lg:pb-12 xl:pl-16 xl:pr-8 2xl:pl-24 2xl:pr-10">
+                <p className="text-xl font-black uppercase sm:text-2xl md:text-3xl lg:text-2xl xl:text-[25px]">
+                  MANAGING DIREC
+                  <span className="text-primary-500">TOR&apos;S MESSSAGE</span>
+                </p>
 
-            <div className="bg-primary-950 pt-10 rounded-tr-[300px] rounded-bl-[300px] text-white pl-32 flex">
-
-
-
-              <div>
-                <p className="uppercase font-black text-[40px]">MANAGING DIREC
-                  <span className="text-primary-500">TOR’S MESSSAGE</span></p>
-
-
-                <p className="mt-6 text-white">
+                <p className="mt-4 text-sm leading-relaxed text-white sm:mt-5 sm:text-sm md:mt-6 xl:text-base">
                   It is a new and dynamic time at TOR Ltd., one driven by a bold strategy aimed at maximizing the potential and utilization of existing assets to enhance efficiency, productivity, and ultimately increase profitability. <br /><br />
 
                   The company has a clear vision to effectively sweat its assets and progressively transitioned into the core of complete refining operations. <br /> <br />
 
-                  TOR has evolved remarkably over the years, and we are committed to transitioning the refinery’s viability and sustainability through the sweating of the assets. <br /> <br />
+                  TOR has evolved remarkably over the years, and we are committed to transitioning the refinery&apos;s viability and sustainability through the sweating of the assets. <br /> <br />
 
-                  Key initiatives include improving operations and maintenance of assets, upgrading assets with new technologies, exploring new prospects and markets, and implementing a 24/7 shift system at the refinery’s loading gantry among other measures to augment operational efficiency and sustainability.
+                  Key initiatives include improving operations and maintenance of assets, upgrading assets with new technologies, exploring new prospects and markets, and implementing a 24/7 shift system at the refinery&apos;s loading gantry among other measures to augment operational efficiency and sustainability.
                 </p>
 
-                <div className="mt-6 ml-16">
-                <p className="text-white font-bold text-[32px]">EDMOND KOMBAT, ESQ</p>
-                <p className="text-[24px] font-bold text-primary-500 ml-7 leading-2">Managing Director - TOR</p>
-
+                <div className="mt-6 sm:mt-8 sm:ml-4 md:ml-8 lg:ml-12 xl:ml-16">
+                  <p className="text-lg font-bold text-white sm:text-xl md:text-2xl lg:text-3xl xl:text-[32px]">
+                    EDMOND KOMBAT, ESQ
+                  </p>
+                  <p className="mt-1 text-base font-bold leading-tight text-primary-500 sm:text-lg sm:ml-4 md:ml-6 md:text-xl lg:ml-7 lg:text-2xl xl:text-[24px]">
+                    Managing Director - TOR
+                  </p>
                 </div>
-
               </div>
 
-              <Image
-                src={"/images/tor_md.png"}
-                alt=""
-                width={100}
-                height={100}
-                className="h-full w-[50%] object-cover" />
-
+              <div className="relative h-56 w-full shrink-0 sm:h-64 md:h-72 lg:h-auto lg:min-h-[280px] lg:w-[42%] xl:w-[50%]">
+                <Image
+                  src="/images/tor_md.png"
+                  alt="Managing Director"
+                  fill
+                  className="object-cover object-top lg:object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </div>
-
-
-
-
-
           </div>
-
         </div>
       </Section>
+
+      <OurCommitment />
 
       {/* Features Section */}
 
