@@ -90,7 +90,7 @@ function CommitmentCard({
 
 export default function OurCommitment() {
   return (
-    <section className="relative isolate min-h-[560px] overflow-hidden py-16 md:min-h-[640px] md:py-24">
+    <section className="relative isolate min-h-[560px] overflow-hidden py-16 md:min-h-[670px] md:py-24">
       <Image
         src="/images/our-commitment-image.png"
         alt=""
@@ -104,20 +104,20 @@ export default function OurCommitment() {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-8 lg:max-w-7xl xl:max-w-[min(100%,1200px)] 2xl:max-w-[1280px]">
+      <div className=" relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-8 lg:max-w-7xl xl:max-w-[min(100%,1200px)] 2xl:max-w-[1280px]">
         <h2 className="mb-8 text-center text-2xl font-bold tracking-tight text-white sm:mb-10 sm:text-3xl md:mb-12 md:text-4xl">
           Our Commitment
         </h2>
 
-        <div className="mx-auto flex w-full flex-col gap-4 sm:gap-6 xl:gap-8">
+        <div className="mx-auto flex w-full flex-col gap-4 sm:gap-6  xl:gap-12 ">
           {/* Row 1: 1 col → 2 cols (sm) → 4 cols (xl+) */}
-          <div className="grid w-full grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 sm:justify-items-stretch sm:gap-5 md:gap-6 xl:grid-cols-4">
+          <div className="grid w-full grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 sm:justify-items-stretch sm:gap-5 md:gap-6 lg:gap-12 xl:grid-cols-4 ">
             {commitments.slice(0, 4).map((item) => (
               <CommitmentCard key={item.title} title={item.title} description={item.description} />
             ))}
           </div>
           {/* Row 2: 1 col → 2 cols → centered 3 cols on xl+ */}
-          <div className="grid w-full grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 sm:justify-items-stretch sm:gap-5 md:gap-6 xl:mx-auto xl:max-w-[calc(75%-1.125rem)] xl:grid-cols-3">
+          <div className="grid w-full grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 sm:justify-items-stretch sm:gap-5 md:gap-6 lg:gap-12 xl:mx-auto xl:max-w-[calc(75%-1.125rem)] xl:grid-cols-3">
             {commitments.slice(4, 7).map((item, index) =>
               index === 2 ? (
                 <div

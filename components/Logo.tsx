@@ -10,7 +10,7 @@ interface LogoProps {
 export default function Logo({ showText = false, className = "" }: LogoProps) {
   return (
     <Link href="/" className={`flex items-center ${className}`}>
-      <div className="w-16 h-16 rounded-lg flex items-center justify-center relative overflow-hidden">
+      <div className="w-16 h-16 rounded-lg flex items-center justify-center relative overflow-hidden ">
         <Image
           // src={`${url}/images/logo.png`}
           src={`/images/logo.png`}
@@ -21,7 +21,7 @@ export default function Logo({ showText = false, className = "" }: LogoProps) {
         />
       </div>
       {showText && (
-        <span className="text-xl font-bold text-gray-900 ml-2">TOR Refinery</span>
+        <span className="text-xl font-bold text-white ml-2 mt-3">Tema Oil Refinery</span>
       )}
     </Link>
   );
