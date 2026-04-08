@@ -40,7 +40,7 @@ export default function Footer() {
        />
 
        <div className={`absolute ${height} w-full bg-black/70`} />
-      <div className={`container px-4 lg:px-16 py-12 w-[170%] pt-32 ${height} absolute bg-green-500`}>
+      <div className={`absolute inset-0 w-full px-4 lg:px-16 py-12 pt-32 ${height} bg-green-500`}>
         
 
         {/* <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
