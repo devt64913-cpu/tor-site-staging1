@@ -39,14 +39,14 @@ export default function Footer() {
         className={`${height} w-full object-cover absolute`}
       />
 
-      <div className={`absolute ${height} w-full bg-primary-500/40`} />
+      <div className={`absolute ${height} w-full bg-primary-950/60`} />
       <div className={`absolute inset-0 w-full px-4 lg:px-16 py-5 pt-10 ${height} `}>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
             <Logo showText={true} className="mb-4" />
-            <p className="text-sm text-primary-950 mb-4 w-[16rem]">
+            <p className="text-sm text-white mb-4 w-[16rem]">
               Established in 1963 and being the first stellar refinery in Africa.
             </p>
             <div className="flex space-x-4">
@@ -75,14 +75,14 @@ export default function Footer() {
           </div>
 
           {/* Company Links */}
-          <div className=" text-end">
+          <div>
             <h3 className="text-primary-950 font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm hover:text-primary-500 transition-colors text-primary-950"
+                    className="text-sm hover:text-primary-500 transition-colors text-white"
                   >
                     {link.label}
                   </Link>
@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
 
           {/* Operations Links */}
-          <div className=" text-end">
+          <div>
             <h3 className="text-white font-semibold mb-4">Operations</h3>
             <ul className="space-y-2">
               {footerLinks.operations.map((link) => (
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
 
           {/* Resources Links */}
-          <div className=" text-end">
+          <div>
             <h3 className="text-white font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (

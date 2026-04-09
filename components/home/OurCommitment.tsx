@@ -90,7 +90,7 @@ function CommitmentCard({
 
 export default function OurCommitment() {
   return (
-    <section className="relative isolate min-h-[560px] overflow-hidden py-16 md:min-h-[670px] md:py-24">
+    <section className="relative isolate min-h-[560px] overflow-hidden py-16 md:min-h-[670px] md:py-24 mt-20">
       <Image
         src="/images/our-commitment-image.png"
         alt=""

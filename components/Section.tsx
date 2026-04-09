@@ -23,7 +23,7 @@ export default function Section({
   id
 }: SectionProps) {
   return (
-    <section id={id} className={`py-16 lg:py-24 ${className}`}>
+    <section id={id} className={`pt-16 lg:pt-24 ${className}`}>
       <div className={`container mx-auto px-4 lg:px-8 ${containerClassName}`}>
         {(title || subtitle || description) && (
           <motion.div

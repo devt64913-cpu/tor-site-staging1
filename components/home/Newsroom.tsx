@@ -55,24 +55,24 @@ export default function Newsroom() {
       aria-labelledby="newsroom-heading"
     >
       {/* lg: heading and carousel share one row — tops aligned (items-start); pagination only under carousel */}
-      <div className="flex flex-col gap-10 px-5 sm:px-6 lg:gap-x-10 lg:px-0 xl:gap-x-14 2xl:gap-x-16">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-x-10 xl:gap-x-14 2xl:gap-x-16">
-          <header className="shrink-0 lg:max-w-[300px] lg:pl-[max(1.25rem,calc((100vw-80rem)/2+1rem))] lg:pr-2 lg:pt-1">
+      <div className="flex flex-col gap-10 px-5 sm:px-6 lg:gap-x-10 lg:px-0 xl:gap-x-14 2xl:gap-x-16 ">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-x-10 xl:gap-x-14 2xl:gap-x-16 ">
+          <header className="h-[30rem] flex flex-col justify-center items-center bg-green-500">
             <p className="text-[0.8125rem] font-bold uppercase leading-none tracking-[0.14em] text-primary-950">
               Newsroom
             </p>
             <h2
               id="newsroom-heading"
-              className="mt-4 max-w-[11ch] text-[2.375rem] font-black leading-[0.98] tracking-tight text-primary-950 sm:text-[2.75rem] lg:text-[3.125rem] lg:leading-[0.98]"
+              className="font-black mt-4 max-w-[11ch] text-[2.375rem] font-black leading-[0.98] tracking-tight text-primary-950 sm:text-[2.75rem] lg:text-[3.125rem] lg:leading-[0.98]"
             >
               <span className="block">Latest at</span>
               <span className="block">TOR</span>
             </h2>
           </header>
 
-          <div className="min-w-0 flex-1 lg:min-h-0 lg:pr-0">
+          <div className="min-w-0 flex-1 lg:min-h-0 lg:pr-0 bg-red-500">
             <div className="overflow-hidden lg:pl-0" ref={emblaRef}>
-            <div className="flex items-center gap-[0.875rem] sm:gap-4 lg:gap-[1.125rem]">
+            <div className="flex items-center gap-[0.875rem] sm:gap-4 lg:gap-[1.125rem] ">
               {newsItems.map((item, index) => {
                 const focused = selectedIndex === index;
                 return (
