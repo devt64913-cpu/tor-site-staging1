@@ -48,7 +48,7 @@ export default function RootLayout({
         className={`${cabinetGrotesk.variable} antialiased min-h-screen flex flex-col bg-white`}
       >
         <Header />
-        <main className="flex-grow">{children}</main>
+        <main className="min-w-0 flex-grow overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

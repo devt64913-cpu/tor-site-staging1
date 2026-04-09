@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Children } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import type { EmblaCarouselType, EmblaOptionsType } from "embla-carousel";
 import Autoplay from "embla-carousel-autoplay";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
@@ -17,6 +18,16 @@ interface CarouselProps {
   loop?: boolean;
   /** CSS flex-basis for each slide. When undefined and not continuousScroll, uses responsive 1/2/3 per view. */
   slideBasis?: string;
+  /** Tailwind/classes for each slide wrapper (e.g. fixed card width). When set, overrides responsive slide sizing. */
+  slideClassName?: string;
+  /** Classes for the horizontal track inside the viewport (e.g. gap, items-center). */
+  innerClassName?: string;
+  /** Merged into Embla options (e.g. containScroll). */
+  emblaOptions?: Partial<EmblaOptionsType>;
+  /** Called when the Embla instance is ready or changes. */
+  onApiReady?: (api: EmblaCarouselType | undefined) => void;
+  /** Called when the selected slide index changes. */
+  onSlideChange?: (index: number) => void;
   /** Continuous one-direction scroll (no back-and-forth). When true, content is duplicated and scrolls seamlessly. */
   continuousScroll?: boolean;
   /** Pixels to scroll per frame when continuousScroll is true. Default 0.8. */
@@ -34,6 +45,11 @@ export default function Carousel({
   showDots = true,
   loop = true,
   slideBasis,
+  slideClassName,
+  innerClassName,
+  emblaOptions,
+  onApiReady,
+  onSlideChange,
   continuousScroll = false,
   scrollSpeed = 0.8,
   responsiveSlides = true,
@@ -48,9 +64,10 @@ export default function Carousel({
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
-      loop: true,
+      loop,
       align: "start",
       duration: 25,
+      ...emblaOptions,
     },
     plugins
   );
@@ -61,14 +78,24 @@ export default function Carousel({
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
+    onApiReady?.(emblaApi);
+  }, [emblaApi, onApiReady]);
+
+  useEffect(() => {
     if (!emblaApi) return;
-    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    const onSelect = () => {
+      const idx = emblaApi.selectedScrollSnap();
+      setSelectedIndex(idx);
+      onSlideChange?.(idx);
+    };
     onSelect();
     emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
     return () => {
       emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
     };
-  }, [emblaApi]);
+  }, [emblaApi, onSlideChange]);
 
   const scrollTo = useCallback(
     (index: number) => emblaApi?.scrollTo(index),
@@ -77,21 +104,28 @@ export default function Carousel({
 
   if (items.length === 0) return null;
 
-  const useResponsive = responsiveSlides && slideBasis === undefined;
-  const slideStyle = useResponsive ? undefined : { flexBasis: slideBasis ?? "100%", width: slideBasis ?? "100%" };
+  const useResponsive =
+    responsiveSlides && slideBasis === undefined && !slideClassName;
+  const slideStyle =
+    useResponsive || slideClassName
+      ? undefined
+      : { flexBasis: slideBasis ?? "100%", width: slideBasis ?? "100%" };
   const displayItems = continuousScroll ? [...items, ...items] : items;
 
   return (
     <div className={`relative carousel-wrapper ${className}`}>
       <div className="overflow-hidden" ref={emblaRef}>
         <div
-          className="flex touch-pan-y items-stretch"
-          style={{ width: "100%", gap: "var(--carousel-gap)" }}
+          className={`flex touch-pan-y items-stretch ${innerClassName ?? ""}`}
+          style={{
+            width: "100%",
+            ...(innerClassName ? {} : { gap: "var(--carousel-gap)" }),
+          }}
         >
           {displayItems.map((item, i) => (
             <div
               key={i}
-              className={`min-w-0 shrink-0 grow-0 flex flex-col ${useResponsive ? "carousel-slide-responsive" : ""}`}
+              className={`min-w-0 shrink-0 grow-0 flex flex-col ${useResponsive ? "carousel-slide-responsive" : ""} ${slideClassName ?? ""}`}
               style={slideStyle}
             >
               <div className="h-full flex flex-col">
