@@ -4,7 +4,6 @@ import { useState } from "react";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
-import Carousel from "@/components/Carousel";
 import { IconCheck, IconWorld, IconBook, IconSettings, IconFlame, IconDatabase, IconTank, IconUsers, IconChevronDown } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -49,7 +48,7 @@ export default function Home() {
         title="Refining Crude Since 1963"
         subtitle="Tema Oil Refinery"
         description="Ghana's premier crude oil refinery. We provide quality energy products and services to power Ghana's economic growth in an environmentally sustainable manner."
-        primaryAction={{ label: "Learn More", href: "/about" }}
+        primaryAction={{ label: "Learn More", href: "/whoweare" }}
         secondaryAction={{ label: "What We Do", href: "/what-we-do" }}
       />
 

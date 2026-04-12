@@ -10,7 +10,7 @@ export default function Footer() {
 
   const footerLinks = {
     company: [
-      { href: "/about", label: "About Us" },
+      { href: "/whoweare", label: "About Us" },
       { href: "/history", label: "Our History" },
       { href: "/mission", label: "Mission & Values" },
     ],

@@ -33,18 +33,28 @@ export default function Newsroom() {
     [emblaApi]
   );
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  /** First "next": expand to full width first, then advance after layout can settle. */
+  const FIRST_EXPAND_THEN_SCROLL_MS = 520;
+
   const scrollNext = useCallback(() => {
-    setNextHasBeenPressed(true);
+    if (!nextHasBeenPressed) {
+      setNextHasBeenPressed(true);
+      window.setTimeout(() => {
+        emblaApi?.scrollNext();
+      }, FIRST_EXPAND_THEN_SCROLL_MS);
+      return;
+    }
     emblaApi?.scrollNext();
-  }, [emblaApi]);
+  }, [emblaApi, nextHasBeenPressed]);
 
   const isExpanded = nextHasBeenPressed;
 
   useEffect(() => {
     if (!emblaApi || !isExpanded) return;
+    // Re-init after expand motion + delayed first scroll so slide widths measure correctly
     const t = window.setTimeout(() => {
       emblaApi.reInit();
-    }, 560);
+    }, FIRST_EXPAND_THEN_SCROLL_MS + 400);
     return () => window.clearTimeout(t);
   }, [emblaApi, isExpanded]);
 
