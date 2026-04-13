@@ -18,19 +18,54 @@ const TAB_ACTIVE =
 
 const CONTENT_BG = "bg-[#004A77]";
 
+/** Shared layout for Executive Leadership & Board tabs: wider column, roomier gaps, taller image frames. */
+const ABOUT_PEOPLE_INNER = "mx-auto max-w-7xl";
+const ABOUT_PEOPLE_IMAGE_FRAME =
+  "relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-black/20 shadow-xl";
+
+const EXECUTIVE_LEADERSHIP = [
+  {
+    name: "Emmanuella Asamoah",
+    title: "General Manager for Production",
+    image: "/images/leadership/emmanuella-asamoah.jpg",
+  },
+  {
+    name: "Greselda Addo",
+    title: "General Manager for Maintenance",
+    image: "/images/leadership/greselda-addo.png",
+  },
+  {
+    name: "Jeremiah Bampoe",
+    title: "General Manager for Commerce",
+    image: "/images/leadership/jeremiah-bampoe.png",
+  },
+  {
+    name: "Greselda Addo",
+    title: "General Manager for Maintenance",
+    image: "/images/leadership/greselda-addo.png",
+  },
+] as const;
+
+/** Full viewport width; used for History tab full-bleed photos. */
+const FULL_BLEED_STRIP =
+  "relative w-full overflow-hidden h-[min(36vh,280px)] sm:h-[min(38vh,320px)] md:h-[min(40vh,380px)] lg:h-[min(42vh,420px)]";
+
+/** Taller strips for the About tab full-bleed images only. */
+const ABOUT_TAB_FULL_BLEED_STRIP =
+  "relative h-[950px] w-full overflow-hidden";
+
 const HistoryFullBleedImage = forwardRef<
   HTMLDivElement,
   { src: string; alt: string; className?: string }
 >(function HistoryFullBleedImage({ src, alt, className = "" }, ref) {
   return (
     <div ref={ref} className={`w-full bg-surface-50 pt-0 ${className}`}>
-      <div className="w-full">
+      <div className={FULL_BLEED_STRIP}>
         <Image
           src={src}
           alt={alt}
-          width={1600}
-          height={1000}
-          className="h-auto w-full max-w-none object-contain object-center"
+          fill
+          className="object-cover object-center"
           sizes="100vw"
         />
       </div>
@@ -215,25 +250,23 @@ export default function AboutUs() {
 
             {/* Agreement photo: full-bleed width, flush under navy panel (no top padding) */}
             <div className="w-full bg-surface-50 pt-0 pb-10 sm:pb-12 lg:pb-14">
-              <div className="w-full">
+              <div className={ABOUT_TAB_FULL_BLEED_STRIP}>
                 <Image
                   src="/images/our-commitment/integrity.jpg"
                   alt="Historical signing ceremony establishing Tema Oil Refinery"
-                  width={100}
-                  height={10}
-                  className="h-full w-full max-w-none object-contain object-center overflow-hidden"
-                  // sizes="10vw"
+                  fill
+                  className="object-cover object-center"
+                  sizes="100vw"
                   priority={false}
                 />
               </div>
 
-              <div className="w-full">
+              <div className={ABOUT_TAB_FULL_BLEED_STRIP}>
                 <Image
                   src="/images/whoweare/image3.jpg"
                   alt="Historical signing ceremony establishing Tema Oil Refinery"
-                  width={1600}
-                  height={500}
-                  className="h-auto w-full max-w-none object-contain object-center"
+                  fill
+                  className="object-cover object-center"
                   sizes="100vw"
                   priority={false}
                 />
@@ -337,54 +370,33 @@ export default function AboutUs() {
             aria-labelledby="tab-leadership"
             className={`${CONTENT_BG} px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24`}
           >
-            <div className="mx-auto max-w-5xl">
+            <div className={ABOUT_PEOPLE_INNER}>
               <h2 className="text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Executive Leadership
               </h2>
-              <div className="mt-12 grid gap-8 md:grid-cols-3">
-                <div className="rounded-xl border border-white/15 bg-black/10 p-6 text-center backdrop-blur-sm">
-                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white/10 text-2xl font-bold text-white">
-                    JD
-                  </div>
-                  <h3 className="text-xl font-bold text-white">John Davis</h3>
-                  <p className="mt-1 text-sm font-medium text-primary-200">
-                    Chief Executive Officer
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/85">
-                    Leading TOR with a focus on sustainable growth and
-                    operational excellence across the energy value chain.
-                  </p>
-                </div>
-                <div className="rounded-xl border border-white/15 bg-black/10 p-6 text-center backdrop-blur-sm">
-                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white/10 text-2xl font-bold text-white">
-                    SM
-                  </div>
-                  <h3 className="text-xl font-bold text-white">
-                    Sarah Martinez
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-primary-200">
-                    Chief Operating Officer
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/85">
-                    Driving safe, efficient refining operations and continuous
-                    improvement across our plants.
-                  </p>
-                </div>
-                <div className="rounded-xl border border-white/15 bg-black/10 p-6 text-center backdrop-blur-sm">
-                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white/10 text-2xl font-bold text-white">
-                    RW
-                  </div>
-                  <h3 className="text-xl font-bold text-white">
-                    Robert Wilson
-                  </h3>
-                  <p className="mt-1 text-sm font-medium text-primary-200">
-                    Chief Technology Officer
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/85">
-                    Advancing technology, reliability, and innovation in
-                    support of TOR&apos;s strategic goals.
-                  </p>
-                </div>
+              <div className="mt-12 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-14 lg:grid-cols-4 lg:gap-10">
+                {EXECUTIVE_LEADERSHIP.map((leader, index) => (
+                  <article
+                    key={`${leader.name}-${leader.title}-${index}`}
+                    className="flex flex-col text-left"
+                  >
+                    <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
+                      <Image
+                        src={leader.image}
+                        alt={`${leader.name}, ${leader.title}`}
+                        fill
+                        className="object-cover object-center"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    </div>
+                    <h3 className="mt-4 text-lg font-bold tracking-tight text-white sm:text-xl">
+                      {leader.name}
+                    </h3>
+                    <p className="mt-1.5 text-sm font-medium leading-snug text-primary-200 sm:text-base">
+                      {leader.title}
+                    </p>
+                  </article>
+                ))}
               </div>
             </div>
           </div>
@@ -397,17 +409,17 @@ export default function AboutUs() {
             aria-labelledby="tab-board"
             className={`${CONTENT_BG} px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24`}
           >
-            <div className="mx-auto max-w-5xl">
+            <div className={ABOUT_PEOPLE_INNER}>
               <h2 className="text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
                 Board of Directors
               </h2>
-              <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-center">
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-black/20 shadow-xl">
+              <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-14">
+                <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
                   <Image
                     src="/images/tor_board.webp"
                     alt="TOR Board of Directors"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>

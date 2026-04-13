@@ -10,10 +10,18 @@ import { IconArrowRight } from "@tabler/icons-react";
 
 const HERO_IMAGES = [
   { src: "/images/whoweare/image1.jpg", alt: "TOR engineer at work" },
-  { src: "/images/whoweare/image5.jpg", alt: "Tema Oil Refinery facilities" },
+  { src: "/images/whoweare/image2.jpg", alt: "Tema Oil Refinery facilities" },
   { src: "/images/whoweare/image3.jpg", alt: "Tema Oil Refinery facilities" },
   { src: "/images/whoweare/image4.jpg", alt: "Tema Oil Refinery facilities" },
 ];
+
+/** One hero headline per slide (aligned with images and timeline milestones). */
+const HERO_HEADLINES = [
+  "The nation's first value-added investment after the Akosombo dam.",
+  "GHAIP operates as a tolling refinery, processing crude for partners across the sector.",
+  "The CDU is expanded to 45,000 barrels per stream day.",
+  "The RFCC unit is commissioned—14,000 barrels per stream day of upgraded capacity.",
+] as const;
 
 const TIMELINE = [
   {
@@ -39,16 +47,11 @@ export default function AboutUsHero() {
   const [activeTimeline, setActiveTimeline] = useState(0);
 
   const handleSlideChange = useCallback((index: number) => {
-    setActiveTimeline((prev) => {
-      const pairStart = index === 0 ? 0 : 2;
-      if (prev >= pairStart && prev < pairStart + 2) return prev;
-      return pairStart;
-    });
+    setActiveTimeline(index);
   }, []);
 
   const goToSlideForMilestone = (milestoneIndex: number) => {
-    const slide = milestoneIndex < 2 ? 0 : 1;
-    emblaRef.current?.scrollTo(slide);
+    emblaRef.current?.scrollTo(milestoneIndex);
     setActiveTimeline(milestoneIndex);
   };
 
@@ -58,7 +61,7 @@ export default function AboutUsHero() {
       setActiveTimeline((t) => {
         const next = (t + 1) % SEGMENT_COUNT;
         queueMicrotask(() => {
-          emblaRef.current?.scrollTo(Math.floor(next / 2));
+          emblaRef.current?.scrollTo(next);
         });
         return next;
       });
@@ -68,9 +71,9 @@ export default function AboutUsHero() {
 
   return (
     <section className="relative mb-0 w-full pt-16 lg:mb-0 lg:pt-20">
-      <div className="relative min-h-[min(85vh,820px)] w-full overflow-hidden bg-primary-950">
+      <div className="relative min-h-[min(78vh,760px)] w-full overflow-hidden bg-primary-950">
         <Carousel
-          className="absolute inset-0 h-full min-h-[min(85vh,820px)]"
+          className="absolute inset-0 h-full min-h-[min(78vh,760px)]"
           responsiveSlides={false}
           slideBasis="100%"
           slideClassName="!w-full !min-w-full !max-w-full h-full"
@@ -86,7 +89,7 @@ export default function AboutUsHero() {
           onSlideChange={handleSlideChange}
         >
           {HERO_IMAGES.map((img) => (
-            <div key={img.src} className="relative h-[min(85vh,820px)] w-full">
+            <div key={img.src} className="relative h-[min(78vh,760px)] w-full">
               <Image
                 src={img.src}
                 alt={img.alt}
@@ -100,16 +103,23 @@ export default function AboutUsHero() {
         </Carousel>
 
         <div
-          className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-primary-950/95 via-primary-900/50 to-primary-950/30"
+          className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/85 via-black/45 to-black/25"
           aria-hidden
         />
 
-        <div className="absolute inset-0 z-20 flex min-h-[min(85vh,820px)] flex-col justify-between px-4 pb-24 pt-24 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
+        <div className="absolute inset-0 z-20 flex min-h-[min(78vh,760px)] flex-col justify-between px-4 pb-24 pt-24 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
           {/* Headline + CTA: left-aligned (timeline below uses same horizontal inset) */}
           <div className="pointer-events-none flex flex-1 flex-col items-start justify-center">
-            <h1 className="pointer-events-auto max-w-4xl text-left text-3xl font-bold leading-tight tracking-tight text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:max-w-5xl lg:text-6xl">
-              The nation&apos;s first value-added investment after the Akosombo dam.
-            </h1>
+            <motion.h1
+              key={activeTimeline}
+              aria-live="polite"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.35 }}
+              className="pointer-events-auto max-w-4xl text-left text-3xl font-bold leading-tight tracking-tight text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:max-w-5xl lg:text-6xl"
+            >
+              {HERO_HEADLINES[activeTimeline]}
+            </motion.h1>
             <Link
               href="#about-us-tabs"
               className="pointer-events-auto mt-8 inline-flex items-center gap-2 self-start rounded-lg bg-primary-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg transition hover:bg-primary-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
