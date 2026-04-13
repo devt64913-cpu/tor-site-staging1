@@ -1,40 +1,46 @@
 "use client";
-
 import Image from "next/image";
 
 const commitments = [
   {
     title: "Safety",
+    image: { src: "/images/our-commitment/safety.png", alt: "Safety icon" },
     description:
       "We put safety first in every operation—protecting our people, our communities, and our facilities through rigorous standards, training, and a culture of vigilance.",
   },
   {
     title: "Integrity",
+    image: { src: "/images/our-commitment/integrity.jpg", alt: "Integrity icon" },
     description:
       "We act with honesty and accountability in all we do, building trust with stakeholders through transparent practices and ethical decision-making.",
   },
   {
     title: "Excellence",
+    image: { src: "/images/our-commitment/excellence.jpg", alt: "Excellence icon" },
     description:
       "We pursue the highest standards in refining, maintenance, and service—continuously improving so we deliver quality products and reliable performance.",
   },
   {
     title: "Teamwork",
-    description:
+    image: { src: "/images/our-commitment/teamwork.jpg", alt: "Teamwork icon" },
+    description:  
       "We succeed together: collaboration across departments and with partners ensures resilient operations and shared goals for Ghana’s energy future.",
   },
   {
     title: "Competence",
+    image: { src: "/images/our-commitment/competence.jpg", alt: "Competence icon" },
     description:
       "We invest in skills, technology, and expertise so our teams can operate complex assets safely and efficiently in a demanding industry.",
   },
   {
     title: "Respect For Environment",
+    image: { src: "/images/our-commitment/environment.jpg", alt: "Environment icon" },
     description:
       "TOR recognizes the vital significance of being environmentally conscious. To ensure that its activities are in line with the principles that promote the environment for present and future generations, the refinery is deeply committed to sustainable practices and environmental stewardship.",
   },
   {
     title: "Innovation",
+    image: { src: "/images/our-commitment/innovation.jpg", alt: "Innovation icon" },
     description:
       "We embrace new technologies and smarter ways of working—upgrading processes, improving efficiency, and adapting so TOR remains competitive and ready for the future of energy.",
   },
@@ -43,15 +49,17 @@ const commitments = [
 function CommitmentCard({
   title,
   description,
+  image
 }: {
   title: string;
   description: string;
+  image?: { src: string; alt: string };
 }) {
   return (
     <div className="group relative mx-auto aspect-[3/4] w-full max-w-[min(100%,280px)] overflow-hidden rounded-lg shadow-lg sm:max-w-none">
       <Image
-        src="/images/integrity.png"
-        alt=""
+        src={image?.src || "/images/integrity.png"}
+        alt={image?.alt || ""}
         fill
         className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         sizes="(max-width: 640px) 280px, (max-width: 1280px) 45vw, 22vw"
@@ -113,7 +121,7 @@ export default function OurCommitment() {
           {/* Row 1: 1 col → 2 cols (sm) → 4 cols (xl+) */}
           <div className="grid w-full grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 sm:justify-items-stretch sm:gap-5 md:gap-6 lg:gap-12 xl:grid-cols-4 ">
             {commitments.slice(0, 4).map((item) => (
-              <CommitmentCard key={item.title} title={item.title} description={item.description} />
+              <CommitmentCard key={item.title} title={item.title} description={item.description} image={item.image}/>
             ))}
           </div>
           {/* Row 2: 1 col → 2 cols → centered 3 cols on xl+ */}
@@ -125,11 +133,11 @@ export default function OurCommitment() {
                   className="flex w-full justify-center sm:col-span-2 xl:col-span-1"
                 >
                   <div className="w-full max-w-[min(100%,280px)] sm:max-w-[calc(50%-0.625rem)] xl:max-w-none">
-                    <CommitmentCard title={item.title} description={item.description} />
+                    <CommitmentCard title={item.title} description={item.description} image={item.image}/>
                   </div>
                 </div>
               ) : (
-                <CommitmentCard key={item.title} title={item.title} description={item.description} />
+                <CommitmentCard key={item.title} title={item.title} description={item.description} image={item.image} />
               )
             )}
           </div>

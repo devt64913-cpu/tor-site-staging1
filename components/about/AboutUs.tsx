@@ -146,7 +146,7 @@ export default function AboutUs() {
 
       <section
         id="about-us-tabs"
-        className="mt-6 scroll-mt-20 sm:mt-8 lg:mt-10"
+        className="mt-0 scroll-mt-20 "
         aria-label="About us sections"
       >
         {/* Light-blue strip inset from screen; tabs are shrink-wrapped — active pill does not span edge-to-edge */}
@@ -217,10 +217,22 @@ export default function AboutUs() {
             <div className="w-full bg-surface-50 pt-0 pb-10 sm:pb-12 lg:pb-14">
               <div className="w-full">
                 <Image
-                  src="/images/agreement.png"
+                  src="/images/our-commitment/integrity.jpg"
+                  alt="Historical signing ceremony establishing Tema Oil Refinery"
+                  width={100}
+                  height={10}
+                  className="h-full w-full max-w-none object-contain object-center overflow-hidden"
+                  // sizes="10vw"
+                  priority={false}
+                />
+              </div>
+
+              <div className="w-full">
+                <Image
+                  src="/images/whoweare/image3.jpg"
                   alt="Historical signing ceremony establishing Tema Oil Refinery"
                   width={1600}
-                  height={1000}
+                  height={500}
                   className="h-auto w-full max-w-none object-contain object-center"
                   sizes="100vw"
                   priority={false}
@@ -298,8 +310,20 @@ export default function AboutUs() {
               alt="Historical signing ceremony establishing Tema Oil Refinery"
             />
             <HistoryFullBleedImage
-              ref={historySecondImageRef}
+              ref={historyFirstImageRef}
               src="/images/history.png"
+              alt="Official visit at Tema Oil Refinery facilities during commissioning era"
+            />
+
+            <HistoryFullBleedImage
+              ref={historySecondImageRef}
+              src="/images/whoweare/image4.jpg"
+              alt="Official visit at Tema Oil Refinery facilities during commissioning era"
+            />
+
+            <HistoryFullBleedImage
+              ref={historySecondImageRef}
+              src="/images/whoweare/image2.jpg"
               alt="Official visit at Tema Oil Refinery facilities during commissioning era"
               className="pb-10 sm:pb-12 lg:pb-14"
             />

@@ -9,8 +9,10 @@ import Carousel from "@/components/Carousel";
 import { IconArrowRight } from "@tabler/icons-react";
 
 const HERO_IMAGES = [
-  { src: "/images/engineer-image.png", alt: "TOR engineer at work" },
-  { src: "/images/tor60.webp", alt: "Tema Oil Refinery facilities" },
+  { src: "/images/whoweare/image1.jpg", alt: "TOR engineer at work" },
+  { src: "/images/whoweare/image5.jpg", alt: "Tema Oil Refinery facilities" },
+  { src: "/images/whoweare/image3.jpg", alt: "Tema Oil Refinery facilities" },
+  { src: "/images/whoweare/image4.jpg", alt: "Tema Oil Refinery facilities" },
 ];
 
 const TIMELINE = [
@@ -65,7 +67,7 @@ export default function AboutUsHero() {
   }, [emblaReady]);
 
   return (
-    <section className="relative mb-8 w-full pt-16 lg:mb-12 lg:pt-20">
+    <section className="relative mb-0 w-full pt-16 lg:mb-0 lg:pt-20">
       <div className="relative min-h-[min(85vh,820px)] w-full overflow-hidden bg-primary-950">
         <Carousel
           className="absolute inset-0 h-full min-h-[min(85vh,820px)]"
@@ -90,7 +92,7 @@ export default function AboutUsHero() {
                 alt={img.alt}
                 fill
                 className="object-cover"
-                priority={img.src === HERO_IMAGES[0].src}
+                // priority={img.src === HERO_IMAGES[0].src}
                 sizes="100vw"
               />
             </div>
@@ -102,7 +104,7 @@ export default function AboutUsHero() {
           aria-hidden
         />
 
-        <div className="absolute inset-0 z-20 flex min-h-[min(85vh,820px)] flex-col justify-between px-4 pb-6 pt-24 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
+        <div className="absolute inset-0 z-20 flex min-h-[min(85vh,820px)] flex-col justify-between px-4 pb-24 pt-24 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
           {/* Headline + CTA: left-aligned (timeline below uses same horizontal inset) */}
           <div className="pointer-events-none flex flex-1 flex-col items-start justify-center">
             <h1 className="pointer-events-auto max-w-4xl text-left text-3xl font-bold leading-tight tracking-tight text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:max-w-5xl lg:text-6xl">
