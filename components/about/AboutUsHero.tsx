@@ -10,7 +10,7 @@ import { IconArrowRight } from "@tabler/icons-react";
 
 const HERO_IMAGES = [
   { src: "/images/whoweare/image1.jpg", alt: "TOR engineer at work" },
-  { src: "/images/whoweare/image2.jpg", alt: "Tema Oil Refinery facilities" },
+  { src: "/images/whoweare/image5.jpg", alt: "Tema Oil Refinery facilities" },
   { src: "/images/whoweare/image3.jpg", alt: "Tema Oil Refinery facilities" },
   { src: "/images/whoweare/image4.jpg", alt: "Tema Oil Refinery facilities" },
 ];

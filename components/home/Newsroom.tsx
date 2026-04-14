@@ -5,18 +5,17 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { EmblaCarouselType } from "embla-carousel";
 import { motion } from "framer-motion";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { IconArrowLeft, IconArrowRight, IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
 
 const newsItems = [
-  { id: "a", date: "March 12, 2026", title: "TOR Conference on crude refinement.", href: "/news" },
-  { id: "b", date: "March 12, 2026", title: "TOR Conference on crude refinement.", href: "/news" },
-  { id: "c", date: "March 12, 2026", title: "TOR Conference on crude refinement.", href: "/news" },
-  { id: "d", date: "March 12, 2026", title: "TOR Conference on crude refinement.", href: "/news" },
-  { id: "e", date: "March 12, 2026", title: "TOR Conference on crude refinement.", href: "/news" },
-  { id: "f", date: "March 12, 2026", title: "TOR Conference on crude refinement.", href: "/news" },
-  { id: "g", date: "March 12, 2026", title: "TOR Conference on crude refinement.", href: "/news" },
-  { id: "h", date: "March 12, 2026", title: "TOR Conference on crude refinement.", href: "/news" },
+  { id: "a", date: "February 27, 2026", title: "TOR’s Return to Operations Acknowledged in State of the Nation Address", href: "/news", image: "/images/news/SONA-2026.jpeg"},
+  { id: "b", date: "December 28, 2025", title: "Update on Operations", href: "/news", image: "/images/news/flare.webp" },
+  { id: "c", date: "March 12, 2026", title: "Energy Minister Reaffirms Government’s Support To TOR’S Recovery", href: "/news", image: "/images/news/minister.webp" },
+  { id: "d", date: "October 12, 2025", title: "TOR in Brief – October 2025 Edition", href: "/news", image: "/images/news/image1.jpeg" },
+  { id: "e", date: "August 26, 2025", title: "TOR Unviels Enterprise Risk Management Framework", href: "/news", image: "/images/news/board.jpg" },
+  { id: "f", date: "August 5, 2025", title: "We Welcome Our Board Of Directors", href: "/news", image: "/images/news/board-of-directors.jpg" },
+  
 ];
 
 /** Margin between slides (not flex gap) so Embla’s loop keeps even spacing at the last → first wrap. */
@@ -77,7 +76,7 @@ export default function Newsroom() {
           }`}
         >
           <Image
-            src="/images/integrity.png"
+            src={item.image}
             alt="TOR news"
             fill
             className="object-cover object-center"
@@ -219,9 +218,9 @@ export default function Newsroom() {
                 type="button"
                 onClick={scrollPrev}
                 aria-label="Previous slide"
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary-950/25 bg-white text-primary-950 shadow-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                className="cursor-pointer flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black bg-white text-primary-950 shadow-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
               >
-                <IconChevronLeft className="h-4 w-4" />
+                <IconArrowLeft className="h-6 w-6 text-black" />
               </button>
             ) : (
               <span className="h-9 w-9 shrink-0" aria-hidden />
@@ -251,9 +250,9 @@ export default function Newsroom() {
               type="button"
               onClick={scrollNext}
               aria-label="Next slide"
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-primary-950/25 bg-white text-primary-950 shadow-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+              className="cursor-pointer flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black bg-white text-primary-950 shadow-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
             >
-              <IconChevronRight className="h-4 w-4" />
+              <IconArrowRight className="h-6 w-6 text-black" />
             </button>
           </div>
         </nav>

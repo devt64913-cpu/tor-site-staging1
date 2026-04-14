@@ -48,7 +48,7 @@ const EXECUTIVE_LEADERSHIP = [
 
 /** Full viewport width; used for History tab full-bleed photos. */
 const FULL_BLEED_STRIP =
-  "relative w-full overflow-hidden h-[min(36vh,280px)] sm:h-[min(38vh,320px)] md:h-[min(40vh,380px)] lg:h-[min(42vh,420px)]";
+  "relative w-full overflow-hidden h-[min(36vh,280px)] sm:h-[min(38vh,320px)] md:h-[min(40vh,380px)] lg:h-[min(98vh,850px)]";
 
 /** Taller strips for the About tab full-bleed images only. */
 const ABOUT_TAB_FULL_BLEED_STRIP =
@@ -341,6 +341,7 @@ export default function AboutUs() {
               ref={historyFirstImageRef}
               src="/images/agreement.png"
               alt="Historical signing ceremony establishing Tema Oil Refinery"
+               
             />
             <HistoryFullBleedImage
               ref={historyFirstImageRef}
