@@ -252,7 +252,7 @@ export default function Newsroom() {
               aria-label="Next slide"
               className="cursor-pointer flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black bg-white text-primary-950 shadow-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
             >
-              <IconArrowRight className="h-6 w-6 text-black" />
+              <IconArrowRight className="h-6 w-6 text-black"/>
             </button>
           </div>
         </nav>
