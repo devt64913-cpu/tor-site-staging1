@@ -56,7 +56,7 @@ export default function Home() {
         title="Our Production And Storage Capacity"
         className="text-primary"
       >
-        <div className="flex items-center justify-evenly">
+        <div className="flex flex-wrap items-center justify-center gap-x-20 gap-y-10">
 
           <CDU />
           <RFCC />

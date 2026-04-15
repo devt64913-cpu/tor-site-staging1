@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { EmblaCarouselType } from "embla-carousel";
 import { motion } from "framer-motion";
-import { IconArrowLeft, IconArrowRight, IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
 
 const newsItems = [
@@ -32,29 +32,24 @@ export default function Newsroom() {
     [emblaApi]
   );
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  /** First "next": expand to full width first, then advance after layout can settle. */
-  const FIRST_EXPAND_THEN_SCROLL_MS = 520;
+  const CAROUSEL_MOTION_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
   const scrollNext = useCallback(() => {
     if (!nextHasBeenPressed) {
       setNextHasBeenPressed(true);
-      window.setTimeout(() => {
-        emblaApi?.scrollNext();
-      }, FIRST_EXPAND_THEN_SCROLL_MS);
-      return;
     }
     emblaApi?.scrollNext();
   }, [emblaApi, nextHasBeenPressed]);
 
   const isExpanded = nextHasBeenPressed;
-
+  
   useEffect(() => {
     if (!emblaApi || !isExpanded) return;
-    // Re-init after expand motion + delayed first scroll so slide widths measure correctly
-    const t = window.setTimeout(() => {
+    // Ensure snapping/controls remain correct after layout expansion.
+    const timer = window.setTimeout(() => {
       emblaApi.reInit();
-    }, FIRST_EXPAND_THEN_SCROLL_MS + 400);
-    return () => window.clearTimeout(t);
+    }, 420);
+    return () => window.clearTimeout(timer);
   }, [emblaApi, isExpanded]);
 
   const carouselSlides = newsItems.map((item, index) => {
@@ -62,10 +57,10 @@ export default function Newsroom() {
     return (
       <article
         key={item.id}
-        className={`group relative flex h-full flex-col overflow-hidden rounded-[1.125rem] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-all duration-300 ease-out sm:rounded-3xl ${
+        className={`group relative flex h-full flex-col overflow-hidden rounded-[1.125rem] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-all duration-500 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] will-change-transform sm:rounded-3xl ${
           focused
             ? "z-20 min-h-[352px] scale-[1.05] shadow-[0_12px_40px_rgba(0,0,0,0.14)] ring-black/8 sm:min-h-[384px] lg:min-h-[400px]"
-            : "z-0 min-h-[148px] scale-[0.96] sm:min-h-[156px] lg:min-h-[162px]"
+            : "z-0 min-h-[128px] scale-[0.96] sm:min-h-[138px] lg:min-h-[146px]"
         }`}
       >
         <div
@@ -89,6 +84,9 @@ export default function Newsroom() {
             focused ? "bg-primary-950" : "bg-primary-500"
           }`}
         >
+          <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/85 sm:text-[11px]">
+            Latest News
+          </p>
           <time className="text-[11px] font-medium leading-tight text-white sm:text-xs">
             {item.date}
           </time>
@@ -121,8 +119,16 @@ export default function Newsroom() {
       showDots={false}
       responsiveSlides={false}
       slideClassName={CARD_BASIS}
-      innerClassName="items-center gap-0 py-2 sm:py-3 lg:py-4"
-      emblaOptions={{ containScroll: false, loop: true, align: "start" }}
+      innerClassName="items-center gap-0 py-2 sm:py-3 lg:py-4 pl-2 pr-2 sm:pl-3 sm:pr-3 lg:pl-4 lg:pr-4"
+      emblaOptions={{
+        containScroll: "keepSnaps",
+        loop: true,
+        align: "start",
+        slidesToScroll: 1,
+        dragFree: false,
+        skipSnaps: false,
+        duration: 40,
+      }}
       onSlideChange={setSelectedIndex}
       onApiReady={setEmblaApi}
     >
@@ -183,9 +189,9 @@ export default function Newsroom() {
               className={`min-w-0 w-full ${isExpanded ? "px-4 sm:px-5 md:px-6" : ""}`}
               animate={carouselMotionAnimate}
               transition={{
-                layout: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-                duration: 0.55,
-                ease: [0.16, 1, 0.3, 1],
+                layout: { duration: 0.65, ease: CAROUSEL_MOTION_EASE },
+                duration: 0.7,
+                ease: CAROUSEL_MOTION_EASE,
                 opacity: { duration: 0.45 },
               }}
               style={{ transformOrigin: "center top" }}
@@ -213,18 +219,14 @@ export default function Newsroom() {
                 : "flex min-w-0 items-center justify-center gap-3 sm:gap-4 lg:justify-start lg:pr-[max(1.25rem,calc((100vw-80rem)/2+1rem))]"
             }
           >
-            {nextHasBeenPressed ? (
-              <button
-                type="button"
-                onClick={scrollPrev}
-                aria-label="Previous slide"
-                className="cursor-pointer flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black bg-white text-primary-950 shadow-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-              >
-                <IconArrowLeft className="h-6 w-6 text-black" />
-              </button>
-            ) : (
-              <span className="h-9 w-9 shrink-0" aria-hidden />
-            )}
+            <button
+              type="button"
+              onClick={scrollPrev}
+              aria-label="Previous slide"
+              className="cursor-pointer flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black bg-white text-primary-950 shadow-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+            >
+              <IconArrowLeft className="h-6 w-6 text-black" />
+            </button>
             <div
               className="flex items-center gap-2 sm:gap-2.5"
               role="tablist"
