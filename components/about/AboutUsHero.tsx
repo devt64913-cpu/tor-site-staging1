@@ -69,7 +69,7 @@ export default function AboutUsHero() {
     if (!emblaReady) return;
     const id = window.setInterval(() => {
       setActiveTimeline((t) => {
-        const next = (t + 1) % SEGMENT_COUNT;
+        const next = (t + 5) % SEGMENT_COUNT;
         queueMicrotask(() => {
           emblaRef.current?.scrollTo(next);
         });
@@ -113,7 +113,7 @@ export default function AboutUsHero() {
         </Carousel>
 
         <div
-          className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/85 via-black/45 to-black/25"
+          className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/55 via-black/25 to-black/15"
           aria-hidden
         />
 

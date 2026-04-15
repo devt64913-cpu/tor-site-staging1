@@ -99,7 +99,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm hover:text-primary-500 transition-colors text-primary-950"
+                    className="text-sm hover:text-primary-500 transition-colors text-white"
                   >
                     {link.label}
                   </Link>
@@ -116,7 +116,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm hover:text-primary-500 transition-colors text-primary-950"
+                    className="text-sm hover:text-primary-500 transition-colors text-white"
                   >
                     {link.label}
                   </Link>
@@ -154,7 +154,7 @@ export default function Footer() {
         </div>
 
 
-        <div className="mt-8 pt-16 text-center text-lg text-primary-950 font-bold">
+        <div className="mt-8 pt-16 text-center text-lg text-white font-bold">
           <p>&copy; {currentYear} Tema Oil Refinery. All rights reserved.</p>
         </div>
       </div>
