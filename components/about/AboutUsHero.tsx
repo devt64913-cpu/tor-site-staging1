@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { MouseEvent } from "react";
 import type { EmblaCarouselType } from "embla-carousel";
 import { motion } from "framer-motion";
 import Carousel from "@/components/Carousel";
@@ -53,6 +54,15 @@ export default function AboutUsHero() {
   const goToSlideForMilestone = (milestoneIndex: number) => {
     emblaRef.current?.scrollTo(milestoneIndex);
     setActiveTimeline(milestoneIndex);
+  };
+
+  const handleProgressTrackClick = (event: MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const relativeX = event.clientX - rect.left;
+    const ratio = rect.width > 0 ? relativeX / rect.width : 0;
+    const clampedRatio = Math.min(Math.max(ratio, 0), 0.999999);
+    const targetIndex = Math.floor(clampedRatio * SEGMENT_COUNT);
+    goToSlideForMilestone(targetIndex);
   };
 
   useEffect(() => {
@@ -139,6 +149,18 @@ export default function AboutUsHero() {
               aria-valuemax={SEGMENT_COUNT - 1}
               aria-valuenow={activeTimeline}
               aria-label="Timeline progress"
+              onClick={handleProgressTrackClick}
+              onKeyDown={(event) => {
+                if (event.key === "ArrowRight") {
+                  event.preventDefault();
+                  goToSlideForMilestone((activeTimeline + 1) % SEGMENT_COUNT);
+                }
+                if (event.key === "ArrowLeft") {
+                  event.preventDefault();
+                  goToSlideForMilestone((activeTimeline - 1 + SEGMENT_COUNT) % SEGMENT_COUNT);
+                }
+              }}
+              tabIndex={0}
             >
               {/* Four equal sections on the track */}
               <div
