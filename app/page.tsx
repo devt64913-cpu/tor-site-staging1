@@ -54,9 +54,9 @@ export default function Home() {
 
       <Section
         title="Our Production And Storage Capacity"
-        className="text-primary"
+        className="text-primary flex justify-start"
       >
-        <div className="flex flex-wrap items-center justify-center gap-x-20 gap-y-10">
+        <div className="flex flex-wrap  gap-x-16 gap-y-10">
 
           <CDU />
           <RFCC />

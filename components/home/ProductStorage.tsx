@@ -9,8 +9,8 @@ export default function ProductStorage() {
             <div className="">
 
                 <div className="flex ">
-                    <IconDatabase color="#004A77" size={50} stroke={1.5} />
-                    <p className="ml-3 text-[40px] font-semibold leading-none text-primary-950">262,265</p>
+                    <IconDatabase color="#004A77" size={55} stroke={1.5} />
+                    <p className="ml-3 text-[55px] font-semibold leading-none text-primary-950">262,265</p>
                 </div>
 
                 <p className="text-lg font-semibold text-primary-950">White Product Storage</p>

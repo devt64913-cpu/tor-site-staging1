@@ -7,8 +7,10 @@ import AboutUsHero from "@/components/about/AboutUsHero";
 const TABS = [
   { id: "about" as const, label: "About Us" },
   { id: "history" as const, label: "History" },
+  { id: "missions" as const, label: "Missions & Values" },
   { id: "leadership" as const, label: "Executive Leadership" },
   { id: "board" as const, label: "Board of Directors" },
+   
 ] as const;
 
 /** Sub-nav: light cyan bar; active tab = darker navy pill (does not stretch full width) */
@@ -227,7 +229,7 @@ export default function AboutUs() {
                 <h2 className="text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
                   About Us
                 </h2>
-                <div className="mt-10 space-y-8 text-left text-base leading-relaxed text-white sm:text-lg">
+                <div className="mt-10 space-y-8 text-left text-base leading-relaxed text-white sm:text-lg ">
                   <p>
                     Tema Oil Refinery (TOR) Ltd. is the nation&apos;s first
                     value-added investment after the Akosombo dam and was
@@ -403,6 +405,61 @@ export default function AboutUs() {
           </div>
         )}
 
+        {tab === "missions" && (
+          <div
+            id="panel-board"
+            role="tabpanel"
+            aria-labelledby="tab-board"
+            className={`${CONTENT_BG} px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24`}
+          >
+            <div className={ABOUT_PEOPLE_INNER}>
+              <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
+
+                <div className="space-y-6 text-left text-base leading-relaxed text-white/95 sm:text-lg">
+                <p className="text-white font-bold text-[29px] text-center">Our  Mission</p>
+                  <p>
+                    To provide quality energy products and services to power Ghana’s economic growth in an environmentally sustainable manner.
+                  </p>
+                 
+                </div>
+                <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
+                  <Image
+                    src="/images/man-working.jpg"
+                    alt="TOR Board of Directors"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+                
+              </div>
+
+              <div className="mt-24 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
+
+                
+                <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
+                  <Image
+                    src="/images/man-working1.jpg"
+                    alt="TOR Board of Directors"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+
+                <div className="space-y-6 text-left text-base leading-relaxed text-white/95 sm:text-lg">
+                <p className="text-white font-bold text-[29px] text-center">Our Vision</p>
+                  <p>
+                    To be a preeminent refinery, a pride for Ghanaians.
+                  </p>
+                 
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        )}
+
         {tab === "board" && (
           <div
             id="panel-board"
@@ -441,6 +498,8 @@ export default function AboutUs() {
             </div>
           </div>
         )}
+
+
       </section>
     </>
   );

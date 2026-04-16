@@ -8,8 +8,8 @@ export default function CrudeStorage() {
             <div className="">
 
                 <div className="flex ">
-                    <IconTank color="#004A77" size={50} stroke={1.5} />
-                    <p className="ml-3 text-[40px] font-semibold leading-none text-primary-950">1,925,348</p>
+                    <IconTank color="#004A77" size={55} stroke={1.5} />
+                    <p className="ml-3 text-[55px] font-semibold leading-none text-primary-950">1,925,348</p>
                 </div>
 
                 <p className="text-center text-lg font-semibold text-primary-950">Crude Storage</p>

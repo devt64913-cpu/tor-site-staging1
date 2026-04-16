@@ -26,7 +26,7 @@ export default function Footer() {
     ],
   };
 
-  const height = "h-[24rem]";
+  const height = "h-[27rem]";
 
   return (
     <footer className={`bg-gray-900 text-gray-300 rounded-tl-[60px] rounded-tr-[60px] relative ${height} overflow-hidden`}>
@@ -40,43 +40,33 @@ export default function Footer() {
       />
 
       <div className={`absolute ${height} w-full bg-primary-950/60`} />
-      <div className={`absolute inset-0 w-full px-4 lg:px-16 py-5 pt-10 ${height} `}>
+      <div className={`absolute inset-0 w-full px-4 lg:px-16 py-5 pt-16 ${height} `}>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="flex flex-row justify-between mx-32 mb-8  ">
           {/* Company Info */}
           <div>
-            <Logo showText={true} className="mb-4" />
-            <p className="text-sm text-white mb-4 w-[16rem]">
-              Established in 1963 and being the first stellar refinery in Africa.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
-                <span className="sr-only">Facebook</span>
-                <IconBrandFacebookFilled className="w-7 h-7 text-white" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
-                <span className="sr-only">Twitter</span>
-                <IconBrandXFilled className="w-7 h-7 text-white" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
-                <span className="sr-only">Instagram</span>
-                <IconBrandInstagramFilled className="w-7 h-7 text-white" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
-                <span className="sr-only">TikTok</span>
-                <IconBrandTiktokFilled className="w-7 h-7 text-white" />
-              </a>
+            {/* <Logo showText={true} className="mb-4" /> */}
+            <Link href="/" className={`flex flex-col `}>
+              <div className=" flex flex-col ">
+                <Image
+                  // src={`${url}/images/logo.png`}
+                  src={`/images/logo.png`}
+                  alt="TOR Refinery Logo"
+                  width={98}
+                  height={98}
+                  className="object-cover w-[95%] h-[130px]"
+                />
+              </div>
 
-              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
-                <span className="sr-only">LinkedIn</span>
-                <IconBrandLinkedinFilled className="w-7 h-7 text-white" />
-              </a>
-            </div>
+              <span className="text-xl font-bold text-white ml-2 mt-8">Tema Oil Refinery</span>
+
+            </Link>
+
           </div>
 
           {/* Company Links */}
           <div>
-            <h3 className="text-primary-950 font-semibold mb-4">Company</h3>
+            <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
@@ -154,9 +144,44 @@ export default function Footer() {
         </div>
 
 
-        <div className="mt-8 pt-16 text-center text-lg text-white font-bold">
-          <p>&copy; {currentYear} Tema Oil Refinery. All rights reserved.</p>
+        <div className="flex justify-between items-center mt-16">
+
+          <div />
+
+          <div className=" text-center text-lg text-white font-medium">
+            <p>&copy; {currentYear} Tema Oil Refinery. All rights reserved.</p>
+          </div>
+          <div>
+            <p className="text-sm text-white mb-4 ">
+              Established in 1963 and being the first stellar refinery in Africa.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+                <span className="sr-only">Facebook</span>
+                <IconBrandFacebookFilled className="w-7 h-7 text-white" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+                <span className="sr-only">Twitter</span>
+                <IconBrandXFilled className="w-7 h-7 text-white" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+                <span className="sr-only">Instagram</span>
+                <IconBrandInstagramFilled className="w-7 h-7 text-white" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+                <span className="sr-only">TikTok</span>
+                <IconBrandTiktokFilled className="w-7 h-7 text-white" />
+              </a>
+
+              <a href="#" className="text-gray-400 hover:text-primary-500 transition-colors">
+                <span className="sr-only">LinkedIn</span>
+                <IconBrandLinkedinFilled className="w-7 h-7 text-white" />
+              </a>
+            </div>
+          </div>
         </div>
+
+
       </div>
     </footer>
   );

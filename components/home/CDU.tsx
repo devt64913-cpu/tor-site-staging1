@@ -8,12 +8,12 @@ export default function CDU() {
             <div className="">
 
                 <div className="flex ">
-                    <IconSettings color="#004A77" size={50} stroke={1.5} />
-                    <p className="ml-3 text-[40px] font-semibold leading-none text-primary-950">45,000</p>
+                    <IconSettings color="#004A77" size={55} stroke={1.5} />
+                    <p className="ml-3 text-[55px] font-semibold leading-none text-primary-950">45,000</p>
                 </div>
 
-                <p className="text-lg font-semibold text-primary-950">Barrels per stream day</p>
-                <p className="text-center text-lg font-semibold text-primary-950">CDU Capacity</p>
+                <p className="text-lg font-semibold text-primary-950 text-center ml-16">Barrels per stream day</p>
+                <p className="text-center text-lg font-semibold text-primary-950 ml-16">CDU Capacity</p>
 
             </div>
 

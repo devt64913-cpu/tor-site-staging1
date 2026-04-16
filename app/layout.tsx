@@ -5,26 +5,27 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import localFont from 'next/font/local'
 
-const cabinetGrotesk = localFont({
-	variable: '--font-cabinet-grotesk',
+
+const dax = localFont({
+	variable: '--font-dax',
 	src: [
 		{
-			path: '../public/fonts/CabinetGrotesk-Light.otf',
+			path: '../public/fonts/Dax Light.ttf',
 			weight: '300',
 			style: 'normal',
 		},
 		{
-			path: '../public/fonts/CabinetGrotesk-Regular.otf',
+			path: '../public/fonts/Dax Regular.ttf',
 			weight: '400',
 			style: 'normal',
 		},
 		{
-			path: '../public/fonts/CabinetGrotesk-Medium.otf',
+			path: '../public/fonts/Dax Medium.ttf',
 			weight: '500',
 			style: 'normal',
 		},
 		{
-			path: '../public/fonts/CabinetGrotesk-Bold.otf',
+			path: '../public/fonts/Dax Bold.otf',
 			weight: '700',
 			style: 'normal',
 		}
@@ -45,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${cabinetGrotesk.variable} antialiased min-h-screen flex flex-col bg-white`}
+        className={`${dax.variable} antialiased min-h-screen flex flex-col bg-white`}
       >
         <Header />
         <main className="min-w-0 flex-grow overflow-x-clip">{children}</main>

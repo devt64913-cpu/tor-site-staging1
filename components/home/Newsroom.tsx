@@ -159,19 +159,19 @@ export default function Newsroom() {
         >
           {isExpanded ? (
             <h2 id="newsroom-heading" className="sr-only">
-              Latest at TOR
+              Latest updates from TOR
             </h2>
           ) : (
-            <header className="flex h-[30rem] flex-col items-center justify-center">
+            <header className="flex h-[30rem] flex-col items-start justify-center">
               <p className="text-[0.8125rem] font-bold uppercase leading-none tracking-[0.14em] text-primary-950">
-                Newsroom
+                TOR Newsroom
               </p>
               <h2
                 id="newsroom-heading"
-                className="mt-4 max-w-[11ch] text-[2.375rem] font-black leading-[0.98] tracking-tight text-primary-950 sm:text-[2.75rem] lg:text-[3.125rem] lg:leading-[0.98]"
+                className="mt-4 max-w-[13ch] text-[2.375rem] font-black leading-[0.98] tracking-tight text-primary-950 sm:text-[2.75rem] lg:text-[3.125rem] lg:leading-[0.98]"
               >
-                <span className="block">Latest at</span>
-                <span className="block">TOR</span>
+                <span className="block">Latest Updates</span>
+                <span className="block">From TOR</span>
               </h2>
             </header>
           )}
