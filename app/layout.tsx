@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Dancing_Script, Geist_Mono } from "next/font/google";
 import './global.css';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FooterShowcase from "@/components/FooterShowcase";
 import localFont from 'next/font/local'
 
 
@@ -49,8 +49,9 @@ export default function RootLayout({
         className={`${dax.variable} antialiased min-h-screen flex flex-col bg-white`}
       >
         <Header />
-        <main className="min-w-0 flex-grow overflow-x-clip">{children}</main>
+        <main className="min-w-0 grow overflow-x-clip">{children}</main>
         <Footer />
+        <FooterShowcase />
       </body>
     </html>
   );

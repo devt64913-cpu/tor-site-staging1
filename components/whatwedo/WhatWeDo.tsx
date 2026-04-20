@@ -6,13 +6,10 @@ import { motion } from "framer-motion";
 import {
   IconFlask,
   IconTank,
-  IconTruck,
   IconTools,
   IconSchool,
 } from "@tabler/icons-react";
-import Section from "@/components/Section";
 import WhatWeDoHero from "@/components/whatwedo/WhatWeDoHero";
-import { url } from "@/utils/url";
 
 const TABS = [
   { id: "business" as const, label: "Our business" },
@@ -67,41 +64,39 @@ const PRODUCT_TILES = [
 
 const supportServices = [
   {
-    title: "Product Quality Analysis",
-    icon: IconFlask,
-    image: `${url}/images/hero.jpg`,
-    description:
-      "Comprehensive laboratory testing and quality assurance services to ensure product excellence and compliance with industry standards.",
-  },
-  {
-    title: "Storage Tanks Services",
+    title: "Storage Tanks",
     icon: IconTank,
-    image: `${url}/images/tank-service.webp`,
+    image: "/images/whatwedo/our-business.png",
     description:
-      "Expert storage tank maintenance, inspection, and management services to ensure optimal performance and safety.",
+      "TOR's storage and handling systems are designed to support safe custody and efficient throughput of petroleum products. Our team ensures reliable tank operations, product integrity, and operational continuity.",
   },
   {
-    title: "Loading Rack Services",
-    icon: IconTruck,
-    image: `${url}/images/hero.jpg`,
+    title: "Quality Control",
+    icon: IconFlask,
+    image: "/images/whatwedo/our-business.png",
     description:
-      "Efficient and safe loading rack operations with advanced equipment and trained personnel for seamless product transfer.",
+      "Every product stream is monitored through strict quality checks and laboratory validation to meet specification and compliance requirements before dispatch.",
   },
   {
-    title: "Maintenance Service",
+    title: "Maintenance Support",
     icon: IconTools,
-    image: `${url}/images/hero.jpg`,
+    image: "/images/whatwedo/our-business.png",
     description:
-      "Professional maintenance and repair services to keep your equipment and facilities operating at peak performance.",
+      "Our maintenance teams deliver preventive and corrective support across key assets to keep refining and logistics systems dependable, safe, and available.",
   },
   {
     title: "Training Services",
     icon: IconSchool,
-    image: `${url}/images/hero.jpg`,
+    image: "/images/whatwedo/our-business.png",
     description:
-      "Comprehensive training programs to enhance skills, safety awareness, and operational excellence for your team.",
+      "TOR invests in practical training to strengthen operational competence, safety culture, and workforce readiness across technical and support functions.",
   },
 ];
+
+const SERVICES_ROW_MOTION = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0 },
+} as const;
 
 export default function WhatWeDo() {
   const [tab, setTab] = useState<(typeof TABS)[number]["id"]>("business");
@@ -282,55 +277,59 @@ export default function WhatWeDo() {
             id="panel-services"
             role="tabpanel"
             aria-labelledby="tab-services"
-            className="bg-surface-50"
+            className="bg-[#004A77]"
           >
-            <Section
-              title="Our services"
-              description="Comprehensive services to support your operations"
-              className="pt-16!"
-            >
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+              <h2 className="sr-only">Our services</h2>
+              <div className="grid grid-cols-1 gap-12 lg:gap-16">
                 {supportServices.map((service, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  <motion.article
+                    key={service.title}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.25 }}
+                    variants={SERVICES_ROW_MOTION}
+                    transition={{ duration: 0.55, ease: "easeOut", delay: index * 0.08 }}
+                    className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12"
                   >
-                    <div className="group h-full cursor-pointer overflow-hidden rounded-xl border-2 border-transparent bg-white shadow-md transition-all duration-300 hover:border-primary-200 hover:shadow-2xl">
-                      <div className="relative h-56 w-full overflow-hidden bg-gradient-to-br from-primary-500 to-primary-600">
-                        <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary-600/25 to-primary-700/25 transition-all duration-300 group-hover:from-primary-600/20 group-hover:to-primary-700/20">
-                          <div className="rounded-full bg-white/20 p-4 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-white/30">
-                            <service.icon className="h-12 w-12 text-white" />
-                          </div>
-                        </div>
+                    <motion.div
+                      className={`relative aspect-[4/3] w-full overflow-hidden rounded-[1.4rem] ${
+                        index % 2 === 1 ? "lg:order-2" : ""
+                      }`}
+                      whileHover={{ scale: 1.015 }}
+                      transition={{ duration: 0.35, ease: "easeOut" }}
+                    >
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </motion.div>
+
+                    <motion.div
+                      className={`${index % 2 === 1 ? "lg:order-1" : ""}`}
+                      initial={{ opacity: 0, x: 18 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.45, ease: "easeOut", delay: 0.1 + index * 0.06 }}
+                    >
+                      <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white transition-transform duration-300 hover:scale-105">
+                        <service.icon className="h-7 w-7 text-[#004A77]" />
                       </div>
-                      <div className="bg-white p-8">
-                        <div className="mb-4 flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-100 transition-colors duration-300 group-hover:bg-primary-200">
-                            <service.icon className="h-5 w-5 text-primary-600" />
-                          </div>
-                          <h3 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-primary-600">
-                            {service.title}
-                          </h3>
-                        </div>
-                        <p className="leading-relaxed text-gray-600">
-                          {service.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
+                      <h3 className="mt-5 text-2xl font-bold text-white sm:text-3xl">
+                        {service.title}
+                      </h3>
+                      <div className="mt-3 h-px w-20 bg-primary-300" />
+                      <p className="mt-4 max-w-xl text-base leading-relaxed text-white/90 sm:text-lg">
+                        {service.description}
+                      </p>
+                    </motion.div>
+                  </motion.article>
                 ))}
               </div>
-            </Section>
+            </div>
           </div>
         )}
       </section>

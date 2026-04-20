@@ -7,7 +7,6 @@ import AboutUsHero from "@/components/about/AboutUsHero";
 const TABS = [
   { id: "about" as const, label: "About Us" },
   { id: "history" as const, label: "History" },
-  { id: "missions" as const, label: "Missions & Values" },
   { id: "leadership" as const, label: "Executive Leadership" },
   { id: "board" as const, label: "Board of Directors" },
    
@@ -225,7 +224,7 @@ export default function AboutUs() {
               aria-labelledby="tab-about"
               className={`${CONTENT_BG} px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24`}
             >
-              <div className="mx-auto max-w-3xl">
+              <div className="mx-auto max-w-6xl">
                 <h2 className="text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
                   About Us
                 </h2>
@@ -263,6 +262,17 @@ export default function AboutUs() {
                 />
               </div>
 
+              <div className="w-full bg-primary-950">
+                <p className="mx-auto max-w-4xl px-5 py-5 text-center text-sm leading-relaxed text-white sm:text-base">
+                  This historic moment reflects TOR&apos;s foundation as Ghana&apos;s first
+                  value-added investment after the Akosombo Dam, commissioned in 1963.
+                  From the beginning, the refinery has focused on providing quality
+                  energy products that support national growth and long-term
+                  development.
+                </p>
+              </div>
+              
+
               <div className={ABOUT_TAB_FULL_BLEED_STRIP}>
                 <Image
                   src="/images/whoweare/image3.jpg"
@@ -272,6 +282,48 @@ export default function AboutUs() {
                   sizes="100vw"
                   priority={false}
                 />
+              </div>
+            </div>
+
+            <div className={`${CONTENT_BG} px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24`}>
+              <div className={ABOUT_PEOPLE_INNER}>
+                <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
+                  <div className="space-y-6 text-left text-base leading-relaxed text-white/95 sm:text-lg">
+                    <p className="text-center text-[29px] font-bold text-white">Our Mission</p>
+                    <p>
+                      To provide quality energy products and services to power Ghana&apos;s
+                      economic growth in an environmentally sustainable manner.
+                    </p>
+                  </div>
+                  <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
+                    <Image
+                      src="/images/man-working.jpg"
+                      alt="TOR mission in action"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
+                  <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
+                    <Image
+                      src="/images/man-working1.jpg"
+                      alt="TOR vision for the future"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+
+                  <div className="space-y-6 text-left text-base leading-relaxed text-white/95 sm:text-lg">
+                    <p className="text-center text-[29px] font-bold text-white">Our Vision</p>
+                    <p>
+                      To be a preeminent refinery, a pride for Ghanaians.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </>
@@ -400,61 +452,6 @@ export default function AboutUs() {
                     </p>
                   </article>
                 ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {tab === "missions" && (
-          <div
-            id="panel-board"
-            role="tabpanel"
-            aria-labelledby="tab-board"
-            className={`${CONTENT_BG} px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24`}
-          >
-            <div className={ABOUT_PEOPLE_INNER}>
-              <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
-
-                <div className="space-y-6 text-left text-base leading-relaxed text-white/95 sm:text-lg">
-                <p className="text-white font-bold text-[29px] text-center">Our  Mission</p>
-                  <p>
-                    To provide quality energy products and services to power Ghana’s economic growth in an environmentally sustainable manner.
-                  </p>
-                 
-                </div>
-                <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
-                  <Image
-                    src="/images/man-working.jpg"
-                    alt="TOR Board of Directors"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-                
-              </div>
-
-              <div className="mt-24 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
-
-                
-                <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
-                  <Image
-                    src="/images/man-working1.jpg"
-                    alt="TOR Board of Directors"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-
-                <div className="space-y-6 text-left text-base leading-relaxed text-white/95 sm:text-lg">
-                <p className="text-white font-bold text-[29px] text-center">Our Vision</p>
-                  <p>
-                    To be a preeminent refinery, a pride for Ghanaians.
-                  </p>
-                 
-                </div>
-                
               </div>
             </div>
           </div>
