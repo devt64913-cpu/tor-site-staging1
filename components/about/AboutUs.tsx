@@ -125,8 +125,10 @@ function HistoryEraTogglePill({
 export default function AboutUs() {
   const [tab, setTab] = useState<(typeof TABS)[number]["id"]>("about");
   const [historyEra, setHistoryEra] = useState<"1963" | "present">("1963");
+  const historyStartRef = useRef<HTMLDivElement>(null);
   const historyFirstImageRef = useRef<HTMLDivElement>(null);
   const historySecondImageRef = useRef<HTMLDivElement>(null);
+  const historyModernDescriptionRef = useRef<HTMLDivElement>(null);
   const ignoreScrollSyncUntil = useRef(0);
 
   /** Scroll position: first image in view → 1963; second image dominant → Present */
@@ -134,15 +136,18 @@ export default function AboutUs() {
     if (tab !== "history") return;
     const first = historyFirstImageRef.current;
     const second = historySecondImageRef.current;
-    if (!first || !second) return;
+    const modernDescription = historyModernDescriptionRef.current;
+    if (!first || !second || !modernDescription) return;
 
     const syncEraFromScroll = () => {
       if (Date.now() < ignoreScrollSyncUntil.current) return;
       const r1 = first.getBoundingClientRect();
       const r2 = second.getBoundingClientRect();
+      const rd = modernDescription.getBoundingClientRect();
       const vh = window.innerHeight;
-      // Second image in upper half of viewport → Present; else first image visible → 1963
-      if (r2.top < vh * 0.55 && r2.bottom > 80) {
+      // Modern-day description or second era image in view → Present; else first image visible → 1963
+      const modernDescriptionInView = rd.top < vh * 0.6 && rd.bottom > vh * 0.2;
+      if (modernDescriptionInView || (r2.top < vh * 0.55 && r2.bottom > 80)) {
         setHistoryEra((e) => (e === "present" ? e : "present"));
       } else if (r1.top < vh * 0.72 && r1.bottom > 60) {
         setHistoryEra((e) => (e === "1963" ? e : "1963"));
@@ -158,10 +163,20 @@ export default function AboutUs() {
     };
   }, [tab]);
 
-  const scrollToHistorySecondImage = useCallback(() => {
+  const scrollToHistoryPresentSection = useCallback(() => {
     ignoreScrollSyncUntil.current = Date.now() + 800;
     requestAnimationFrame(() => {
-      historySecondImageRef.current?.scrollIntoView({
+      historyModernDescriptionRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }, []);
+
+  const scrollToHistoryStart = useCallback(() => {
+    ignoreScrollSyncUntil.current = Date.now() + 800;
+    requestAnimationFrame(() => {
+      historyStartRef.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
@@ -347,15 +362,19 @@ export default function AboutUs() {
               <HistoryEraTogglePill
                 variant="stickyBar"
                 historyEra={historyEra}
-                onSelect1963={() => setHistoryEraFromToggle("1963")}
+                onSelect1963={() => {
+                  setHistoryEraFromToggle("1963");
+                  scrollToHistoryStart();
+                }}
                 onSelectPresent={() => {
                   setHistoryEraFromToggle("present");
-                  scrollToHistorySecondImage();
+                  scrollToHistoryPresentSection();
                 }}
               />
             </div>
 
             <div
+              ref={historyStartRef}
               className={`${CONTENT_BG} px-5 pb-16 pt-4 sm:px-8 sm:pb-20 sm:pt-5 lg:px-12 lg:pb-24 lg:pt-6`}
             >
               <div className="mx-auto max-w-3xl text-center">
@@ -402,6 +421,27 @@ export default function AboutUs() {
               src="/images/history.png"
               alt="Official visit at Tema Oil Refinery facilities during commissioning era"
             />
+
+            <div
+              ref={historyModernDescriptionRef}
+              className={`${CONTENT_BG} px-5 py-12 sm:px-8 sm:py-14 lg:px-12 lg:py-16`}
+            >
+              <div className="mx-auto max-w-3xl text-center text-white">
+                <p className="text-sm font-normal text-white/90 sm:text-base">
+                  Present Day TOR
+                </p>
+                <h3 className="mt-3 text-2xl font-bold leading-snug sm:text-3xl md:text-4xl">
+                  Building a modern, resilient refinery for Ghana.
+                </h3>
+                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg">
+                  Today, TOR continues to strengthen refining reliability, storage,
+                  and operational efficiency to support Ghana&apos;s energy security.
+                  With renewed focus on asset optimization, technical excellence,
+                  and sustainability, the refinery is positioned for long-term
+                  national impact.
+                </p>
+              </div>
+            </div>
 
             <HistoryFullBleedImage
               ref={historySecondImageRef}
