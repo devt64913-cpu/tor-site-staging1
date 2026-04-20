@@ -53,10 +53,16 @@ const BUSINESS_IMAGE_CORNERS =
   "rounded-[2.5rem_0.375rem_2.5rem_0.375rem]";
 
 const PRODUCT_TILES = [
-  { title: "Kerosene", image: "/images/whatwedo/hands.png" },
-  { title: "Kerosene", image: "/images/whatwedo/hands.png" },
-  { title: "Kerosene", image: "/images/whatwedo/hands.png" },
-  { title: "Kerosene", image: "/images/whatwedo/hands.png" },
+  { title: "Liquified Petroleum Gas (LPG)", image: "/images/whatwedo/liquified.webp" },
+  { title: "Motor Gasoline", image: "/images/whatwedo/gasoline.webp" },
+  { title: "Kerosene", image: "/images/whatwedo/kerosine.webp" },
+  { title: "Aviation Turbine Kerosene (ATK)", image: "/images/whatwedo/aviation.webp" },
+  // { title: "Diesel", image: "/images/whatwedo/diesel.webp" },
+  { title: "Gas Oil (Diesel)", image: "/images/whatwedo/gas oil.webp" },
+  { title: "Premix Fuel", image: "/images/whatwedo/premix.webp" },
+  { title: "Cracked Fuels", image: "/images/whatwedo/cracked_oil.jpg" },
+
+
 ] as const;
 
 const supportServices = [

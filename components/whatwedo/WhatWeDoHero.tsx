@@ -14,6 +14,13 @@ const HERO_IMAGE = {
   alt: "Tema Oil Refinery operations and process facilities",
 } as const;
 
+const Hero_images = [
+  "/images/whatwedo/image1.jpg",
+  "/images/whatwedo/image2.jpg",
+  "/images/whatwedo/image3.webp",
+  "/images/whatwedo/image4.webp",
+];
+
 const HERO_HEADLINES = [
   "We refine crude oil into products that power Ghana's economy.",
   "From crude distillation to RFCC—integrated processing across our units.",
@@ -72,9 +79,9 @@ export default function WhatWeDoHero() {
 
   return (
     <section className="relative mb-0 w-full pt-16 lg:mb-0 lg:pt-20">
-      <div className="relative min-h-[min(78vh,760px)] w-full overflow-hidden bg-primary-950">
+      <div className="relative min-h-[min(88vh,790px)] w-full overflow-hidden bg-primary-950">
         <Carousel
-          className="absolute inset-0 h-full min-h-[min(78vh,760px)]"
+          className="absolute inset-0 h-full min-h-[min(88vh,790px)]"
           responsiveSlides={false}
           slideBasis="100%"
           slideClassName="!w-full !min-w-full !max-w-full h-full"
@@ -92,13 +99,13 @@ export default function WhatWeDoHero() {
           {HERO_HEADLINES.map((_, i) => (
             <div
               key={i}
-              className="relative h-[min(78vh,760px)] w-full"
+              className="relative h-[min(88vh,790px)] w-full"
             >
               <Image
-                src={HERO_IMAGE.src}
+                src={Hero_images[i]}
                 alt={HERO_IMAGE.alt}
                 fill
-                className="object-cover"
+                className="object-cover object-center h-full w-full"
                 sizes="100vw"
                 priority={i === 0}
               />
