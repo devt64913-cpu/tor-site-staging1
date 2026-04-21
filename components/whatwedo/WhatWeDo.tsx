@@ -252,7 +252,7 @@ export default function WhatWeDo() {
               <div className="mt-8 grid grid-cols-1 gap-y-16 px-5 sm:grid-cols-2 sm:gap-x-24 sm:px-8 lg:px-32">
                 {PRODUCT_TILES.map((product, index) => (
                   <article key={`${product.title}-${index}`}>
-                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-100">
+                    <div className="relative aspect-[5/3] w-full overflow-hidden bg-neutral-100">
                       <Image
                         src={product.image}
                         alt={product.title}

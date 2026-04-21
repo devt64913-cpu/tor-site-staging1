@@ -50,7 +50,7 @@ export default function RootLayout({
       >
         <Header />
         <main className="min-w-0 grow overflow-x-clip">{children}</main>
-        <Footer />
+        {/* <Footer /> */}
         <FooterShowcase />
       </body>
     </html>
