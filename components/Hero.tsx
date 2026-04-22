@@ -26,7 +26,7 @@ export default function Hero({
   return (
     <section className="relative text-white lg:h-[850px] w-full overflow-hidden">
       {/* Background Image with parallax */}
-      <motion.div className="absolute inset-0 h-full" style={{ y: backgroundY }}>
+      {/* <motion.div className="absolute inset-0 h-full" style={{ y: backgroundY }}>
         <Image
           src={`/images/hero.png`}
           alt="TOR Refinery"
@@ -35,14 +35,26 @@ export default function Hero({
           priority
           quality={100}
         />
-        {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-900/60 via-primary-800/50 to-primary-700/60" /> */}
-      </motion.div>
+      </motion.div> */}
 
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white font-black text-4xl md:text-5xl lg:text-6xl min-[1440px]:text-5xl tracking-tight leading-tight">
-          Ghana's Premier Oil Refinery
-      </div>
+      <video
+        width="100%"
+        height="auto"
+        // controls
+        autoPlay
+        muted
+        loop
+        className="object-cover aspect-video"
+      >
+        <source src="/videos/TOR Video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      
+      {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white font-black text-4xl md:text-5xl lg:text-6xl min-[1440px]:text-5xl tracking-tight leading-tight">
+        Ghana's Premier Oil Refinery
+      </div> */}
+
+
     </section>
   );
 }

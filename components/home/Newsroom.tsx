@@ -148,16 +148,16 @@ export default function Newsroom() {
       aria-labelledby="newsroom-heading"
     >
       <div className="flex flex-col gap-10 px-5 sm:px-6 lg:flex-row lg:items-stretch lg:gap-x-10 lg:pl-[max(1.25rem,calc((100vw-80rem)/2+1rem))] lg:pr-0 xl:gap-x-14 2xl:gap-x-16">
-        <header className="flex shrink-0 flex-col justify-center lg:w-[min(100%,300px)] lg:max-w-[300px] xl:w-[min(100%,320px)]">
+        <header className="flex shrink-0 flex-col justify-center lg:w-[min(100%,300px)] lg:max-w-[450px] xl:w-[min(130%,380px)]">
           <p className="text-[0.8125rem] font-bold uppercase leading-none tracking-[0.14em] text-primary-950">
-            Newsroom
+            TOR Newsroom
           </p>
           <h2
             id="newsroom-heading"
             className="mt-4 text-[2.375rem] font-black leading-[0.98] tracking-tight text-primary-950 sm:text-[2.75rem] lg:text-[3.125rem] lg:leading-[0.98]"
           >
-            <span className="block">Latest at</span>
-            <span className="block">TOR</span>
+            <span className="block">Latest Updates</span>
+            <span className="block">at TOR</span>
           </h2>
         </header>
 

@@ -93,6 +93,10 @@ const HISTORY_HISTORIC_IMAGES = [
     src: "/images/history.png",
     alt: "Official visit at Tema Oil Refinery facilities during commissioning era",
   },
+  {
+    src: "/images/history/history1.jpg",
+    alt: "Official visit at Tema Oil Refinery facilities during commissioning era",
+  },
 ] as const;
 
 /** Recent TOR operations, facilities, and people — contemporary photography. */
@@ -402,7 +406,7 @@ export default function AboutUs() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
+                <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14 mt-24">
                   <div className={ABOUT_CONTENT_IMAGE_FRAME}>
                     <Image
                       src="/images/man-working1.jpg"
