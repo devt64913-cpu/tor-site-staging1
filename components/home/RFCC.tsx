@@ -1,23 +1,36 @@
-import { IconFlame } from '@tabler/icons-react'
-import React from 'react'
+"use client";
+
+import { IconFlame } from "@tabler/icons-react";
+import React from "react";
+import OdometerCount from "@/components/OdometerCount";
+import { useBreakpointDigitMetrics } from "@/components/useBreakpointDigitMetrics";
 
 export default function RFCC() {
+  const m = useBreakpointDigitMetrics();
+  const iconSize = Math.round(m.px);
+
   return (
-    <div className="flex items-center gap-12">
-
-            <div className="">
-
-                <div className="flex ">
-                    <IconFlame color="#004A77" size={55} stroke={1.5} />
-                    <p className="ml-3 text-[55px] font-semibold leading-none text-primary-950">14,000</p>
-                </div>
-
-                <p className="text-lg font-semibold text-primary-950 ml-16">Barrels per stream day</p>
-                <p className="text-center text-lg font-semibold text-primary-950 ml-16">RFCC Capacity</p>
-
-            </div>
-
-            <div className="h-32 w-0.5 bg-black" />
+    <div className="flex shrink-0 items-center gap-6 sm:gap-8 md:gap-12">
+      <div className="flex min-w-0 flex-col gap-0.5 sm:gap-1">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div
+            className="flex shrink-0 items-center justify-center"
+            style={{ width: m.px, height: m.px }}
+            aria-hidden
+          >
+            <IconFlame color="#004A77" size={iconSize} stroke={1.5} />
+          </div>
+          <OdometerCount end={14000} metrics={m} duration={2.2} />
         </div>
-  )
+        <p className="text-center text-[10px] font-semibold leading-tight text-primary-950 sm:ml-12 sm:text-xs md:ml-14 lg:text-base min-[1440px]:text-sm">
+          Barrels per stream day
+        </p>
+        <p className="text-center text-[10px] font-semibold leading-tight text-primary-950 sm:ml-12 sm:text-xs md:ml-14 lg:text-base min-[1440px]:text-sm">
+          RFCC Capacity
+        </p>
+      </div>
+
+      <div className="h-32 w-0.5 shrink-0 self-center bg-black" aria-hidden />
+    </div>
+  );
 }

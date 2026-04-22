@@ -1,23 +1,39 @@
-import { IconTank } from '@tabler/icons-react'
-import React from 'react'
+"use client";
+
+import { IconTank } from "@tabler/icons-react";
+import React from "react";
+import OdometerCount from "@/components/OdometerCount";
+import { useBreakpointDigitMetrics } from "@/components/useBreakpointDigitMetrics";
 
 export default function CrudeStorage() {
-    return (
-        <div className="flex items-center gap-12">
+  const m = useBreakpointDigitMetrics();
+  const iconSize = Math.round(m.px);
 
-            <div className="">
-
-                <div className="flex ">
-                    <IconTank color="#004A77" size={55} stroke={1.5} />
-                    <p className="ml-3 text-[55px] font-semibold leading-none text-primary-950">1,925,348</p>
-                </div>
-
-                <p className="text-center text-lg font-semibold text-primary-950">Crude Storage</p>
-                <p className="text-center text-lg font-semibold text-primary-950">BBL</p>
-
-            </div>
-
-            {/* <div className="h-32 w-0.5 bg-black ml-7" /> */}
+  return (
+    <div className="flex shrink-0 items-center">
+      <div className="flex min-w-0 flex-col gap-0.5 sm:gap-1">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div
+            className="flex shrink-0 items-center justify-center"
+            style={{ width: m.px, height: m.px }}
+            aria-hidden
+          >
+            <IconTank color="#004A77" size={iconSize} stroke={1.5} />
+          </div>
+          <OdometerCount
+            end={1925348}
+            metrics={m}
+            duration={2.65}
+            stagger={0.06}
+          />
         </div>
-    )
+        <p className="text-center text-[10px] font-semibold leading-tight text-primary-950 sm:text-xs md:text-sm lg:text-base min-[1440px]:text-sm">
+          Crude Storage
+        </p>
+        <p className="text-center text-[10px] font-semibold leading-tight text-primary-950 sm:text-xs md:text-sm lg:text-base min-[1440px]:text-sm">
+          BBL
+        </p>
+      </div>
+    </div>
+  );
 }

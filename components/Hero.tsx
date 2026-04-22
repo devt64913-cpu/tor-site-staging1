@@ -38,7 +38,7 @@ export default function Hero({
         {/* <div className="absolute inset-0 bg-gradient-to-br from-primary-900/60 via-primary-800/50 to-primary-700/60" /> */}
       </motion.div>
 
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white font-black text-4xl md:text-5xl lg:text-7xl tracking-tight leading-tight">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white font-black text-4xl md:text-5xl lg:text-6xl min-[1440px]:text-5xl tracking-tight leading-tight">
           Ghana's Premier Oil Refinery
       </div>
 

@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import AboutUsHero from "@/components/about/AboutUsHero";
 
 const TABS = [
   { id: "about" as const, label: "About Us" },
-  { id: "history" as const, label: "History" },
   { id: "leadership" as const, label: "Executive Leadership" },
   { id: "board" as const, label: "Board of Directors" },
    
@@ -23,6 +23,9 @@ const CONTENT_BG = "bg-[#004A77]";
 const ABOUT_PEOPLE_INNER = "mx-auto max-w-7xl";
 const ABOUT_PEOPLE_IMAGE_FRAME =
   "relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-black/20 shadow-xl";
+
+const ABOUT_CONTENT_IMAGE_FRAME =
+  "relative mx-auto aspect-[3/2] w-full max-w-2xl overflow-hidden rounded-xl bg-black/20 shadow-xl";
 
 const EXECUTIVE_LEADERSHIP = [
   {
@@ -47,149 +50,185 @@ const EXECUTIVE_LEADERSHIP = [
   },
 ] as const;
 
-/** Full viewport width; used for History tab full-bleed photos. */
-const FULL_BLEED_STRIP =
-  "relative w-full overflow-hidden h-[min(36vh,280px)] sm:h-[min(38vh,320px)] md:h-[min(40vh,380px)] lg:h-[min(98vh,850px)]";
+const HISTORY_MILESTONES = [
+  {
+    year: "1960",
+    title: "GHAIP Founded",
+    description:
+      "The Ghanaian Italian Petroleum Company (GHAIP) was incorporated on December 12, 1960 as a private limited liability company.",
+  },
+  {
+    year: "1963",
+    title: "Commissioning",
+    description:
+      "The refinery was commissioned in September 1963 as a hydroskimming plant and became one of Africa's notable refineries.",
+  },
+  {
+    year: "1977",
+    title: "Full Ghanaian Ownership",
+    description:
+      "The Government of Ghana acquired all remaining shares, making the refinery 100% Ghanaian-owned.",
+  },
+  {
+    year: "1996-2002",
+    title: "Expansion and Modernization",
+    description:
+      "The CDU was revamped and the RFCC unit was commissioned to improve product yield and support national demand.",
+  },
+  {
+    year: "Today",
+    title: "Serving Ghana's Energy Needs",
+    description:
+      "TOR continues improving reliability, storage, and technical operations to support long-term energy security.",
+  },
+] as const;
 
-/** Taller strips for the About tab full-bleed images only. */
-const ABOUT_TAB_FULL_BLEED_STRIP =
-  "relative h-[950px] w-full overflow-hidden";
+/** GHAIP era, commissioning, and early TOR — archival photography. */
+const HISTORY_HISTORIC_IMAGES = [
+  {
+    src: "/images/agreement.png",
+    alt: "Historical signing ceremony establishing Tema Oil Refinery",
+  },
+  {
+    src: "/images/history.png",
+    alt: "Official visit at Tema Oil Refinery facilities during commissioning era",
+  },
+] as const;
 
-const HistoryFullBleedImage = forwardRef<
-  HTMLDivElement,
-  { src: string; alt: string; className?: string }
->(function HistoryFullBleedImage({ src, alt, className = "" }, ref) {
+/** Recent TOR operations, facilities, and people — contemporary photography. */
+const HISTORY_CURRENT_IMAGES = [
+  {
+    src: "/images/whoweare/image4.jpg",
+    alt: "Present-day leadership and operations at Tema Oil Refinery",
+  },
+  {
+    src: "/images/whoweare/image2.jpg",
+    alt: "Contemporary view of Tema Oil Refinery facilities",
+  },
+  {
+    src: "/images/whoweare/image3.jpg",
+    alt: "Modern TOR site and activities",
+  },
+] as const;
+
+const HISTORY_STAGGER_CONTAINER = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.09, delayChildren: 0.06 },
+  },
+} as const;
+
+const HISTORY_STAGGER_ITEM = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.48, ease: "easeOut" as const },
+  },
+} as const;
+
+type HistoryCarouselImage = { readonly src: string; readonly alt: string };
+
+function HistoryCardCarousel({
+  images,
+  slide,
+  onSlideChange,
+  ariaLabelPrefix,
+}: {
+  images: readonly HistoryCarouselImage[];
+  slide: number;
+  onSlideChange: (next: number) => void;
+  ariaLabelPrefix: string;
+}) {
+  const goPrev = () =>
+    onSlideChange(slide === 0 ? images.length - 1 : slide - 1);
+  const goNext = () =>
+    onSlideChange(slide === images.length - 1 ? 0 : slide + 1);
+
+  const navBtn =
+    "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#004A77]/20 bg-white text-xl font-bold text-[#004A77] shadow-md transition hover:bg-primary-50 hover:shadow-lg sm:h-12 sm:w-12";
+
   return (
-    <div ref={ref} className={`w-full bg-surface-50 pt-0 ${className}`}>
-      <div className={FULL_BLEED_STRIP}>
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-        />
+    <div
+      className="mx-auto w-full max-w-4xl px-4 sm:px-6"
+      aria-roledescription="carousel"
+    >
+      <div className="flex items-stretch gap-2 sm:gap-4 md:items-center">
+        <button
+          type="button"
+          aria-label={`${ariaLabelPrefix}: previous`}
+          onClick={goPrev}
+          className={navBtn}
+        >
+          &#8249;
+        </button>
+
+        <article className="min-w-0 flex-1 overflow-hidden rounded-2xl border border-neutral-200/90 bg-white shadow-[0_8px_30px_rgba(0,74,119,0.12)] ring-1 ring-black/5">
+          <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100 sm:aspect-[5/3]">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={slide}
+                className="absolute inset-0"
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.38, ease: "easeOut" }}
+              >
+                <Image
+                  src={images[slide].src}
+                  alt={images[slide].alt}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 896px) 100vw, 896px"
+                  priority={false}
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          <div className="border-t border-neutral-100 bg-neutral-50/80 px-4 py-3 text-center">
+            <p className="text-xs font-medium text-[#004A77] sm:text-sm">
+              {slide + 1} / {images.length}
+            </p>
+          </div>
+        </article>
+
+        <button
+          type="button"
+          aria-label={`${ariaLabelPrefix}: next`}
+          onClick={goNext}
+          className={navBtn}
+        >
+          &#8250;
+        </button>
       </div>
-    </div>
-  );
-});
 
-HistoryFullBleedImage.displayName = "HistoryFullBleedImage";
-
-type HistoryEraToggleProps = {
-  historyEra: "1963" | "present";
-  onSelect1963: () => void;
-  onSelectPresent: () => void;
-  /** In-flow at top of panel vs slightly stronger chrome when sticky */
-  variant?: "panel" | "stickyBar";
-};
-
-function HistoryEraTogglePill({
-  historyEra,
-  onSelect1963,
-  onSelectPresent,
-  variant = "panel",
-}: HistoryEraToggleProps) {
-  const shell =
-    variant === "stickyBar"
-      ? "inline-flex rounded-full bg-white p-1 shadow-md ring-1 ring-black/10"
-      : "inline-flex rounded-full bg-white p-1 shadow-md ring-1 ring-black/5";
-  return (
-    <div className={shell} role="group" aria-label="History era">
-      <button
-        type="button"
-        onClick={onSelect1963}
-        className={`min-w-[5.5rem] rounded-full px-6 py-2.5 text-sm font-semibold transition-colors sm:min-w-[6.5rem] sm:px-8 sm:text-base ${
-          historyEra === "1963"
-            ? "bg-primary-500 text-white shadow-md"
-            : "text-gray-700 hover:bg-gray-100"
-        }`}
-      >
-        1963
-      </button>
-      <button
-        type="button"
-        onClick={onSelectPresent}
-        className={`min-w-[5.5rem] rounded-full px-6 py-2.5 text-sm font-semibold transition-colors sm:min-w-[6.5rem] sm:px-8 sm:text-base ${
-          historyEra === "present"
-            ? "bg-primary-500 text-white shadow-md"
-            : "text-gray-700 hover:bg-gray-100"
-        }`}
-      >
-        Present
-      </button>
+      <div className="mt-4 flex justify-center gap-2">
+        {images.map((_, index) => {
+          const active = index === slide;
+          return (
+            <button
+              key={`${ariaLabelPrefix}-dot-${index}`}
+              type="button"
+              aria-label={`${ariaLabelPrefix}: slide ${index + 1} of ${images.length}`}
+              aria-current={active ? "true" : undefined}
+              onClick={() => onSlideChange(index)}
+              className={`h-2.5 w-2.5 rounded-full transition-all ${
+                active
+                  ? "scale-110 bg-[#004A77]"
+                  : "bg-neutral-300 hover:bg-neutral-400"
+              }`}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
 
 export default function AboutUs() {
   const [tab, setTab] = useState<(typeof TABS)[number]["id"]>("about");
-  const [historyEra, setHistoryEra] = useState<"1963" | "present">("1963");
-  const historyStartRef = useRef<HTMLDivElement>(null);
-  const historyFirstImageRef = useRef<HTMLDivElement>(null);
-  const historySecondImageRef = useRef<HTMLDivElement>(null);
-  const historyModernDescriptionRef = useRef<HTMLDivElement>(null);
-  const ignoreScrollSyncUntil = useRef(0);
-
-  /** Scroll position: first image in view → 1963; second image dominant → Present */
-  useEffect(() => {
-    if (tab !== "history") return;
-    const first = historyFirstImageRef.current;
-    const second = historySecondImageRef.current;
-    const modernDescription = historyModernDescriptionRef.current;
-    if (!first || !second || !modernDescription) return;
-
-    const syncEraFromScroll = () => {
-      if (Date.now() < ignoreScrollSyncUntil.current) return;
-      const r1 = first.getBoundingClientRect();
-      const r2 = second.getBoundingClientRect();
-      const rd = modernDescription.getBoundingClientRect();
-      const vh = window.innerHeight;
-      // Modern-day description or second era image in view → Present; else first image visible → 1963
-      const modernDescriptionInView = rd.top < vh * 0.6 && rd.bottom > vh * 0.2;
-      if (modernDescriptionInView || (r2.top < vh * 0.55 && r2.bottom > 80)) {
-        setHistoryEra((e) => (e === "present" ? e : "present"));
-      } else if (r1.top < vh * 0.72 && r1.bottom > 60) {
-        setHistoryEra((e) => (e === "1963" ? e : "1963"));
-      }
-    };
-
-    window.addEventListener("scroll", syncEraFromScroll, { passive: true });
-    window.addEventListener("resize", syncEraFromScroll, { passive: true });
-    syncEraFromScroll();
-    return () => {
-      window.removeEventListener("scroll", syncEraFromScroll);
-      window.removeEventListener("resize", syncEraFromScroll);
-    };
-  }, [tab]);
-
-  const scrollToHistoryPresentSection = useCallback(() => {
-    ignoreScrollSyncUntil.current = Date.now() + 800;
-    requestAnimationFrame(() => {
-      historyModernDescriptionRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
-  }, []);
-
-  const scrollToHistoryStart = useCallback(() => {
-    ignoreScrollSyncUntil.current = Date.now() + 800;
-    requestAnimationFrame(() => {
-      historyStartRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
-  }, []);
-
-  const setHistoryEraFromToggle = useCallback(
-    (era: "1963" | "present") => {
-      ignoreScrollSyncUntil.current = Date.now() + 800;
-      setHistoryEra(era);
-    },
-    []
-  );
+  const [historicSlide, setHistoricSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
     <>
@@ -261,43 +300,85 @@ export default function AboutUs() {
                     productive refineries.
                   </p>
                 </div>
+
+                <motion.div
+                  className="mt-14 flex flex-col gap-4"
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.12 }}
+                  variants={HISTORY_STAGGER_CONTAINER}
+                >
+                  <motion.h3
+                    variants={HISTORY_STAGGER_ITEM}
+                    className="text-center text-2xl font-bold tracking-tight text-white sm:text-3xl"
+                  >
+                    Our History
+                  </motion.h3>
+                  {HISTORY_MILESTONES.map((milestone) => (
+                    <motion.article
+                      key={`${milestone.year}-${milestone.title}`}
+                      variants={HISTORY_STAGGER_ITEM}
+                      className="rounded-xl border border-white/20 bg-white/10 p-5 text-white backdrop-blur-sm"
+                    >
+                      <p className="text-sm font-semibold tracking-wide text-primary-200">
+                        {milestone.year}
+                      </p>
+                      <h4 className="mt-1 text-lg font-bold">{milestone.title}</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-white/95 sm:text-base">
+                        {milestone.description}
+                      </p>
+                    </motion.article>
+                  ))}
+                </motion.div>
               </div>
             </div>
 
-            {/* Agreement photo: full-bleed width, flush under navy panel (no top padding) */}
+            {/* History: historic vs current — two carousels */}
             <div className="w-full bg-surface-50 pt-0 pb-10 sm:pb-12 lg:pb-14">
-              <div className={ABOUT_TAB_FULL_BLEED_STRIP}>
-                <Image
-                  src="/images/our-commitment/integrity.jpg"
-                  alt="Historical signing ceremony establishing Tema Oil Refinery"
-                  fill
-                  className="object-cover object-center"
-                  sizes="100vw"
-                  priority={false}
-                />
-              </div>
-
-              <div className="w-full bg-primary-950">
-                <p className="mx-auto max-w-4xl px-5 py-5 text-center text-sm leading-relaxed text-white sm:text-base">
-                  This historic moment reflects TOR&apos;s foundation as Ghana&apos;s first
-                  value-added investment after the Akosombo Dam, commissioned in 1963.
-                  From the beginning, the refinery has focused on providing quality
-                  energy products that support national growth and long-term
-                  development.
+              <motion.div
+                className="mx-auto max-w-4xl px-5 pt-8 pb-6 text-center sm:px-8"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <h3 className="text-xl font-bold tracking-tight text-[#004A77] sm:text-2xl">
+                  Historic TOR
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-700 sm:text-base">
+                  Archival photographs from GHAIP, commissioning, and TOR&apos;s early
+                  years—the foundation of Ghana&apos;s first major refinery after the
+                  Akosombo Dam.
                 </p>
-              </div>
-              
+              </motion.div>
+              <HistoryCardCarousel
+                images={HISTORY_HISTORIC_IMAGES}
+                slide={historicSlide}
+                onSlideChange={setHistoricSlide}
+                ariaLabelPrefix="Historic TOR carousel"
+              />
 
-              <div className={ABOUT_TAB_FULL_BLEED_STRIP}>
-                <Image
-                  src="/images/whoweare/image3.jpg"
-                  alt="Historical signing ceremony establishing Tema Oil Refinery"
-                  fill
-                  className="object-cover object-center"
-                  sizes="100vw"
-                  priority={false}
-                />
-              </div>
+              <motion.div
+                className="mx-auto max-w-4xl px-5 pt-12 pb-6 text-center sm:px-8"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.05 }}
+              >
+                <h3 className="text-xl font-bold tracking-tight text-[#004A77] sm:text-2xl">
+                  TOR today
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-700 sm:text-base">
+                  Contemporary views of the refinery—operations, facilities, and
+                  people shaping TOR&apos;s role in Ghana&apos;s energy supply today.
+                </p>
+              </motion.div>
+              <HistoryCardCarousel
+                images={HISTORY_CURRENT_IMAGES}
+                slide={currentSlide}
+                onSlideChange={setCurrentSlide}
+                ariaLabelPrefix="Current TOR carousel"
+              />
             </div>
 
             <div className={`${CONTENT_BG} px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24`}>
@@ -310,7 +391,7 @@ export default function AboutUs() {
                       economic growth in an environmentally sustainable manner.
                     </p>
                   </div>
-                  <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
+                  <div className={ABOUT_CONTENT_IMAGE_FRAME}>
                     <Image
                       src="/images/man-working.jpg"
                       alt="TOR mission in action"
@@ -322,7 +403,7 @@ export default function AboutUs() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
-                  <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
+                  <div className={ABOUT_CONTENT_IMAGE_FRAME}>
                     <Image
                       src="/images/man-working1.jpg"
                       alt="TOR vision for the future"
@@ -342,120 +423,6 @@ export default function AboutUs() {
               </div>
             </div>
           </>
-        )}
-
-        {tab === "history" && (
-          <div
-            id="panel-history"
-            role="tabpanel"
-            aria-labelledby="tab-history"
-            className={`relative ${CONTENT_BG}`}
-          >
-            {/*
-              Sticky wraps the whole History tab (copy + images) so the toggle
-              stays under the fixed header while scrolling, starting in the same
-              spot as the design (centered atop the navy block).
-            */}
-            <div
-              className="sticky top-20 z-40 flex justify-center bg-transparent px-5 pt-8 pb-2 sm:px-8 sm:pt-10 sm:pb-2 lg:px-12 lg:pt-12"
-            >
-              <HistoryEraTogglePill
-                variant="stickyBar"
-                historyEra={historyEra}
-                onSelect1963={() => {
-                  setHistoryEraFromToggle("1963");
-                  scrollToHistoryStart();
-                }}
-                onSelectPresent={() => {
-                  setHistoryEraFromToggle("present");
-                  scrollToHistoryPresentSection();
-                }}
-              />
-            </div>
-
-            <div
-              ref={historyStartRef}
-              className={`${CONTENT_BG} px-5 pb-16 pt-4 sm:px-8 sm:pb-20 sm:pt-5 lg:px-12 lg:pb-24 lg:pt-6`}
-            >
-              <div className="mx-auto max-w-3xl text-center">
-                {historyEra === "1963" ? (
-                  <div className="space-y-4 text-white">
-                    <p className="text-sm font-normal text-white/90 sm:text-base">
-                      1963 – 1965
-                    </p>
-                    <h3 className="text-2xl font-bold leading-snug sm:text-3xl md:text-4xl">
-                      Commissioning of the refinery.
-                    </h3>
-                    <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg">
-                      Commissioned on September 20, 1963 as the Ghanaian Italian
-                      Petroleum (GHAIP) Company
-                    </p>
-                  </div>
-                ) : (
-                  <div className="space-y-4 text-white">
-                    <p className="text-sm font-normal text-white/90 sm:text-base">
-                      1996 – Present
-                    </p>
-                    <h3 className="text-2xl font-bold leading-snug sm:text-3xl md:text-4xl">
-                      Modernization and growth.
-                    </h3>
-                    <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg">
-                      From CDU expansion and RFCC commissioning to today, TOR has
-                      continued to supply Ghana with refined products while
-                      pursuing excellence as one of the sub-region&apos;s leading
-                      refineries.
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <HistoryFullBleedImage
-              ref={historyFirstImageRef}
-              src="/images/agreement.png"
-              alt="Historical signing ceremony establishing Tema Oil Refinery"
-               
-            />
-            <HistoryFullBleedImage
-              ref={historyFirstImageRef}
-              src="/images/history.png"
-              alt="Official visit at Tema Oil Refinery facilities during commissioning era"
-            />
-
-            <div
-              ref={historyModernDescriptionRef}
-              className={`${CONTENT_BG} px-5 py-12 sm:px-8 sm:py-14 lg:px-12 lg:py-16`}
-            >
-              <div className="mx-auto max-w-3xl text-center text-white">
-                <p className="text-sm font-normal text-white/90 sm:text-base">
-                  Present Day TOR
-                </p>
-                <h3 className="mt-3 text-2xl font-bold leading-snug sm:text-3xl md:text-4xl">
-                  Building a modern, resilient refinery for Ghana.
-                </h3>
-                <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/95 sm:text-lg">
-                  Today, TOR continues to strengthen refining reliability, storage,
-                  and operational efficiency to support Ghana&apos;s energy security.
-                  With renewed focus on asset optimization, technical excellence,
-                  and sustainability, the refinery is positioned for long-term
-                  national impact.
-                </p>
-              </div>
-            </div>
-
-            <HistoryFullBleedImage
-              ref={historySecondImageRef}
-              src="/images/whoweare/image4.jpg"
-              alt="Official visit at Tema Oil Refinery facilities during commissioning era"
-            />
-
-            <HistoryFullBleedImage
-              ref={historySecondImageRef}
-              src="/images/whoweare/image2.jpg"
-              alt="Official visit at Tema Oil Refinery facilities during commissioning era"
-              className="pb-10 sm:pb-12 lg:pb-14"
-            />
-          </div>
         )}
 
         {tab === "leadership" && (

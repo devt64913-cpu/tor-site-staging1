@@ -8,7 +8,6 @@ import { IconCheck, IconWorld, IconBook, IconSettings, IconFlame, IconDatabase, 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { url } from "@/utils/url";
-import CountUp from "@/components/CountUp";
 import CDU from "@/components/home/CDU";
 import RFCC from "@/components/home/RFCC";
 import ProductStorage from "@/components/home/ProductStorage";
@@ -56,8 +55,7 @@ export default function Home() {
         title="Our Production And Storage Capacity"
         className="text-primary flex justify-start"
       >
-        <div className="flex flex-wrap  gap-x-16 gap-y-10">
-
+        <div className="-mx-4 flex flex-nowrap items-stretch justify-start gap-6 overflow-x-auto overflow-y-visible px-4 pb-2 sm:mx-0 sm:gap-8 md:gap-12 lg:gap-16">
           <CDU />
           <RFCC />
           <ProductStorage />
@@ -75,9 +73,9 @@ export default function Home() {
           <div className="relative isolate">
             {/* No overlap on first paint — card sits below with mt. Sticky + z-0 so the z-10 card can pass over it while scrolling. */}
             <div className="sticky top-16 z-0 bg-white lg:top-20">
-              <p className="text-center text-3xl font-black uppercase text-primary-500 sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px]">
-                Tor Wel
-                <span className="text-primary-950">comes you</span>
+              <p className="text-center text-3xl font-black uppercase text-primary-500 sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl min-[1440px]:text-5xl min-[1440px]:leading-tight">
+                Greetings from our{" "}
+                <span className="text-primary-950">MD</span>
               </p>
             </div>
 
@@ -89,12 +87,12 @@ export default function Home() {
               >
                 <div className="flex flex-col bg-primary-950 pt-6 text-white sm:pt-8 md:pt-10 lg:flex-row lg:rounded-tr-[240px] lg:rounded-bl-[240px] xl:rounded-tr-[300px] xl:rounded-bl-[300px] rounded-tr-[72px] rounded-bl-[72px] sm:rounded-tr-[120px] sm:rounded-bl-[120px] md:rounded-tr-[180px] md:rounded-bl-[180px] shadow-[0_-12px_40px_-8px_rgba(0,0,0,0.15)]">
                   <div className="min-w-0 flex-1 px-4 pb-6 sm:px-6 sm:pb-8 md:px-10 md:pb-10 lg:px-12 lg:pb-12 xl:pl-16 xl:pr-8 2xl:pl-24 2xl:pr-10">
-                    <p className="text-xl font-black uppercase sm:text-2xl md:text-3xl lg:text-2xl xl:text-[25px]">
+                    <p className="text-xl font-black uppercase sm:text-2xl md:text-3xl lg:text-2xl xl:text-[25px] min-[1440px]:text-xl">
                       MANAGING DIREC
                       <span className="text-primary-500">TOR&apos;S MESSSAGE</span>
                     </p>
 
-                    <p className="mt-4 text-sm leading-relaxed text-white sm:mt-5 sm:text-sm md:mt-6 xl:text-base">
+                    <p className="mt-4 text-sm leading-relaxed text-white sm:mt-5 md:mt-6 lg:text-sm min-[1440px]:text-xs">
                       It is a new and dynamic time at TOR Ltd., one driven by a bold strategy aimed at maximizing the potential and utilization of existing assets to enhance efficiency, productivity, and ultimately increase profitability. <br /><br />
 
                       The company has a clear vision to effectively sweat its assets and progressively transitioned into the core of complete refining operations. <br /> <br />
@@ -105,10 +103,10 @@ export default function Home() {
                     </p>
 
                     <div className="mt-6 sm:mt-8 sm:ml-4 md:ml-8 lg:ml-12 xl:ml-16">
-                      <p className="text-lg font-bold text-white sm:text-xl md:text-2xl lg:text-3xl xl:text-[32px]">
+                      <p className="text-lg font-bold text-white sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl min-[1440px]:text-2xl">
                         EDMOND KOMBAT, ESQ
                       </p>
-                      <p className="mt-1 text-base font-bold leading-tight text-primary-500 sm:text-lg sm:ml-4 md:ml-6 md:text-xl lg:ml-7 lg:text-2xl xl:text-[24px]">
+                      <p className="mt-1 text-base font-bold leading-tight text-primary-500 sm:ml-4 sm:text-lg md:ml-6 md:text-xl lg:ml-7 lg:text-xl xl:text-2xl min-[1440px]:text-lg">
                         Managing Director - TOR
                       </p>
                     </div>
@@ -129,6 +127,79 @@ export default function Home() {
           </div>
         </div>
       </Section>
+
+      {/* Transformation / Optimization / Resetting — deep blue typographic band */}
+      <section
+        aria-label="Strategic focus: transformation, optimization, resetting"
+        className="overflow-hidden bg-primary-950 pt-16 pb-24 md:pt-20 lg:pt-24 mb-0"
+      >
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+          <motion.div
+            className="flex flex-col items-center gap-1 sm:gap-1.5 md:gap-2"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.35 }}
+            variants={{
+              hidden: {},
+              show: {
+                transition: {
+                  staggerChildren: 0.22,
+                  delayChildren: 0.08,
+                },
+              },
+            }}
+          >
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, x: "-100vw" },
+                show: {
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    duration: 1.2,
+                    ease: [0.16, 1, 0.3, 1],
+                  },
+                },
+              }}
+              className="will-change-transform text-3xl font-black uppercase tracking-[0.06em] text-[#7a9fb5] sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl min-[1440px]:text-5xl"
+            >
+              Transformation
+            </motion.p>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, x: "100vw" },
+                show: {
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    duration: 1.2,
+                    ease: [0.16, 1, 0.3, 1],
+                  },
+                },
+              }}
+              className="will-change-transform text-3xl font-black uppercase tracking-[0.06em] text-primary-400 sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl min-[1440px]:text-5xl"
+            >
+              Optimization
+            </motion.p>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, x: "-100vw" },
+                show: {
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    duration: 1.2,
+                    ease: [0.16, 1, 0.3, 1],
+                  },
+                },
+              }}
+              className="will-change-transform text-3xl font-black uppercase tracking-[0.06em] text-primary-200 sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl min-[1440px]:text-5xl"
+            >
+              Resetting
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
 
       <OurCommitment />
 

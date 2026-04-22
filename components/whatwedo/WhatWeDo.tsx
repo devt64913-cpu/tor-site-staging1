@@ -50,46 +50,85 @@ const BUSINESS_IMAGE_CORNERS =
   "rounded-[2.5rem_0.375rem_2.5rem_0.375rem]";
 
 const PRODUCT_TILES = [
-  { title: "Liquified Petroleum Gas (LPG)", image: "/images/whatwedo/liquified.webp" },
-  { title: "Motor Gasoline", image: "/images/whatwedo/gasoline.webp" },
-  { title: "Kerosene", image: "/images/whatwedo/kerosine.webp" },
-  { title: "Aviation Turbine Kerosene (ATK)", image: "/images/whatwedo/aviation.webp" },
-  // { title: "Diesel", image: "/images/whatwedo/diesel.webp" },
-  { title: "Gas Oil (Diesel)", image: "/images/whatwedo/gas oil.webp" },
-  { title: "Premix Fuel", image: "/images/whatwedo/premix.webp" },
-  { title: "Cracked Fuels", image: "/images/whatwedo/cracked_oil.jpg" },
-
-
+  {
+    title: "Liquefied Petroleum Gas (LPG)",
+    image: "/images/whatwedo/liquified.webp",
+    description:
+      "The main constituents of LPG produced by Tema Oil Refinery are propane and butane. It is environmentally friendly and used as domestic, commercial, and industrial fuel.",
+  },
+  {
+    title: "Motor Gasoline (Mogas)",
+    image: "/images/whatwedo/gasoline.webp",
+    description:
+      "Produced mainly for motor vehicles with internal combustion engines. TOR supplies single-grade gasoline with Methyl Cyclopentadienyl Manganese Tricarbonyl (MMT) as an octane enhancer.",
+  },
+  {
+    title: "Kerosene",
+    image: "/images/whatwedo/kerosine.webp",
+    description:
+      "A petroleum distillate used for illumination in wick-fed lamps and for cooking in stoves and pressure burners, especially useful for rural communities.",
+  },
+  {
+    title: "Aviation Turbine Kerosene (Jet A1)",
+    image: "/images/whatwedo/aviation.webp",
+    description:
+      "A special grade of kerosene with stringent specifications that is suitable for use in aircraft engines.",
+  },
+  {
+    title: "Gas Oil (Diesel)",
+    image: "/images/whatwedo/gas oil.webp",
+    description:
+      "Commonly referred to as diesel oil, suitable for high-speed diesel engines. TOR gas oil normally contains about 0.15wt% sulphur and a viscosity range of 2.5 centistokes.",
+  },
+  {
+    title: "Premix",
+    image: "/images/whatwedo/premix.webp",
+    description:
+      "A purpose-made fuel for fisher folks using outboard motors. It is a blend of Marine Mix lubricants and gasoline in the ratio 1:29, suitable for two-stroke engines.",
+  },
+  {
+    title: "Cracked Fuels",
+    image: "/images/whatwedo/cracked_oil.jpg",
+    description:
+      "A blend of Light Cycle Oil, Heavy Cycle Oil, and Clarified Oil from the RFCC unit. These are mixed in varying ratios to produce inland diesel oil and inland fuel oil.",
+  },
 ] as const;
 
 const supportServices = [
   {
-    title: "Storage Tanks",
-    icon: IconTank,
-    image: "/images/whatwedo/our-business.png",
-    description:
-      "TOR's storage and handling systems are designed to support safe custody and efficient throughput of petroleum products. Our team ensures reliable tank operations, product integrity, and operational continuity.",
-  },
-  {
-    title: "Quality Control",
+    title: "Product Quality Analysis",
     icon: IconFlask,
     image: "/images/whatwedo/our-business.png",
     description:
-      "Every product stream is monitored through strict quality checks and laboratory validation to meet specification and compliance requirements before dispatch.",
+      "Done by the refinery's Quality Control Department, TOR certifies and recertifies third-party products transferred into refinery storage tanks to confirm product integrity before onward handling.",
   },
   {
-    title: "Maintenance Support",
+    title: "Storage Tank Services",
+    icon: IconTank,
+    image: "/images/whatwedo/our-business.png",
+    description:
+      "TOR has one of the largest petroleum storage capacities, supporting the safe custody of crude oil, LPG, condensate, naphtha, gasoline premix, kerosene, ATK, gasoil, and fuel oil.",
+  },
+  {
+    title: "Loading Rack Services",
     icon: IconTools,
     image: "/images/whatwedo/our-business.png",
     description:
-      "Our maintenance teams deliver preventive and corrective support across key assets to keep refining and logistics systems dependable, safe, and available.",
+      "TOR provides loading rack services for Bulk Distribution Companies (BDCs) storing imported products in refinery tanks for onward sale and distribution to Oil Marketing Companies (OMCs).",
+  },
+  {
+    title: "Maintenance Services",
+    icon: IconTools,
+    image: "/images/whatwedo/our-business.png",
+    description:
+      "TOR performs a wide range of engineering services, including valve replacement and maintenance, pipe replacement and maintenance, installation, commissioning, instrumentation, and other comprehensive maintenance tasks.",
   },
   {
     title: "Training Services",
     icon: IconSchool,
     image: "/images/whatwedo/our-business.png",
     description:
-      "TOR invests in practical training to strengthen operational competence, safety culture, and workforce readiness across technical and support functions.",
+      "TOR offers commercial training for industry workers in upstream and downstream operations, with prior training delivered for MODEC and National Petroleum Authority personnel.",
   },
 ];
 
@@ -97,6 +136,55 @@ const SERVICES_ROW_MOTION = {
   hidden: { opacity: 0, y: 28 },
   show: { opacity: 1, y: 0 },
 } as const;
+
+function ProductCard({
+  title,
+  image,
+  description,
+}: {
+  title: string;
+  image: string;
+  description: string;
+}) {
+  return (
+    <article className="group relative mx-auto w-full max-w-[36rem] overflow-hidden rounded-lg shadow-lg">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-100">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          sizes="(max-width: 640px) 100vw, 50vw"
+        />
+      </div>
+
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[9] h-[55%] bg-gradient-to-t from-black/65 via-black/35 to-transparent transition-opacity duration-300 group-hover:opacity-0"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-[8] translate-y-full bg-black/70 transition-transform duration-500 ease-out group-hover:translate-y-0"
+        aria-hidden
+      />
+
+      <div className="absolute inset-x-0 bottom-0 z-10 p-4 transition-opacity duration-300 group-hover:pointer-events-none group-hover:opacity-0 sm:p-5">
+        <p className="inline-flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-white sm:text-xs">
+          <span className="h-px w-7 bg-primary-300" aria-hidden />
+          {title}
+        </p>
+      </div>
+
+      <div className="pointer-events-none absolute inset-0 z-20 flex flex-col p-4 opacity-0 transition-opacity duration-300 group-hover:pointer-events-auto group-hover:opacity-100 sm:p-5">
+        <h3 className="shrink-0 border-b-2 border-primary-300 pb-1 text-sm font-bold uppercase tracking-wide text-white sm:text-base">
+          {title}
+        </h3>
+        <p className="mt-3 overflow-y-auto text-sm leading-relaxed text-white/95">
+          {description}
+        </p>
+      </div>
+    </article>
+  );
+}
 
 export default function WhatWeDo() {
   const [tab, setTab] = useState<(typeof TABS)[number]["id"]>("business");
@@ -249,23 +337,14 @@ export default function WhatWeDo() {
                 </article>
               </div>
 
-              <div className="mt-8 grid grid-cols-1 gap-y-16 px-5 sm:grid-cols-2 sm:gap-x-24 sm:px-8 lg:px-32">
+              <div className="mt-8 grid grid-cols-1 justify-items-center gap-y-8 px-5 sm:grid-cols-2 sm:gap-x-8 sm:px-8 lg:grid-cols-3 lg:gap-x-8 lg:px-12">
                 {PRODUCT_TILES.map((product, index) => (
-                  <article key={`${product.title}-${index}`}>
-                    <div className="relative aspect-[5/3] w-full overflow-hidden bg-neutral-100">
-                      <Image
-                        src={product.image}
-                        alt={product.title}
-                        fill
-                        className="object-cover object-center"
-                        sizes="(max-width: 640px) 100vw, 50vw"
-                      />
-                    </div>
-                    <p className="mt-3 inline-flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[#0B76A8] sm:text-xs">
-                      <span className="h-px w-7 bg-[#0B76A8]" aria-hidden />
-                      {product.title}
-                    </p>
-                  </article>
+                  <ProductCard
+                    key={`${product.title}-${index}`}
+                    title={product.title}
+                    image={product.image}
+                    description={product.description}
+                  />
                 ))}
               </div>
             </div>

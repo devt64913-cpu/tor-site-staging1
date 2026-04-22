@@ -53,7 +53,7 @@ export default function Section({
             )}
             {title && (
               <motion.h2
-                className={`text-2xl md:text-xl lg:text-5xl font-black mb-4 text-primary-900`}
+                className={`text-2xl md:text-xl lg:text-4xl min-[1440px]:text-3xl font-black mb-4 text-primary-900`}
                 variants={{
                   hidden: { opacity: 0, y: 30 },
                   visible: { opacity: 1, y: 0 }
