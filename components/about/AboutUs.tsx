@@ -8,8 +8,6 @@ import AboutUsHero from "@/components/about/AboutUsHero";
 const TABS = [
   { id: "about" as const, label: "About Us" },
   { id: "leadership" as const, label: "Executive Leadership" },
-  { id: "board" as const, label: "Board of Directors" },
-   
 ] as const;
 
 /** Sub-nav: light cyan bar; active tab = darker navy pill (does not stretch full width) */
@@ -464,43 +462,34 @@ export default function AboutUs() {
                   </article>
                 ))}
               </div>
-            </div>
-          </div>
-        )}
 
-        {tab === "board" && (
-          <div
-            id="panel-board"
-            role="tabpanel"
-            aria-labelledby="tab-board"
-            className={`${CONTENT_BG} px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24`}
-          >
-            <div className={ABOUT_PEOPLE_INNER}>
-              <h2 className="text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Board of Directors
-              </h2>
-              <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-14">
-                <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
-                  <Image
-                    src="/images/tor_board.webp"
-                    alt="TOR Board of Directors"
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="space-y-6 text-left text-base leading-relaxed text-white/95 sm:text-lg">
-                  <p>
-                    The Board provides oversight and strategic direction for
-                    Tema Oil Refinery, ensuring accountability to shareholders
-                    and stakeholders while supporting TOR&apos;s mission to
-                    deliver reliable energy products for Ghana.
-                  </p>
-                  <p>
-                    Governance emphasizes transparency, compliance, and
-                    long-term sustainability as we pursue our goal of ranking
-                    among the sub-region&apos;s most productive refineries.
-                  </p>
+              <div className="mt-20">
+                <h3 className="text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                  Board of Directors
+                </h3>
+                <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center lg:gap-14">
+                  <div className={ABOUT_PEOPLE_IMAGE_FRAME}>
+                    <Image
+                      src="/images/tor_board.webp"
+                      alt="TOR Board of Directors"
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
+                  <div className="space-y-6 text-left text-base leading-relaxed text-white/95 sm:text-lg">
+                    <p>
+                      The Board provides oversight and strategic direction for
+                      Tema Oil Refinery, ensuring accountability to shareholders
+                      and stakeholders while supporting TOR&apos;s mission to
+                      deliver reliable energy products for Ghana.
+                    </p>
+                    <p>
+                      Governance emphasizes transparency, compliance, and
+                      long-term sustainability as we pursue our goal of ranking
+                      among the sub-region&apos;s most productive refineries.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -39,8 +39,9 @@ export default function FooterShowcase() {
 
   return (
     <footer className="bg-[#004A77] pb-10 pt-12 text-white lg:pt-14">
-      <div className="mx-6 rounded-t-[2.5rem] bg-[#004A77] sm:mx-10 lg:mx-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr] lg:gap-16 xl:gap-24">
+      <div className="mx-auto w-full max-w-screen-2xl px-6 sm:px-10 lg:px-16">
+        <div className="rounded-t-[2.5rem] bg-[#004A77]">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr] lg:gap-16 xl:gap-24">
           <div>
             <Link href="/" className="inline-flex items-center gap-4">
               <Image
@@ -109,11 +110,12 @@ export default function FooterShowcase() {
               ))}
             </ul>
           </div>
-        </div>
+          </div>
 
-        <div className="mt-12 flex items-center justify-center gap-3 border-t border-white/20 pt-6 text-center text-sm text-white/95 sm:text-base">
-          <IconCircleLetterC className="h-5 w-5" />
-          <span>{year} Tema Oil Refinery. All rights reserved.</span>
+          <div className="mt-12 flex items-center justify-center gap-3 border-t border-white/20 pt-6 text-center text-sm text-white/95 sm:text-base">
+            <IconCircleLetterC className="h-5 w-5" />
+            <span>{year} Tema Oil Refinery. All rights reserved.</span>
+          </div>
         </div>
       </div>
     </footer>

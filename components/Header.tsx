@@ -32,7 +32,7 @@ function NavLink({
     <Link
       href={href}
       onClick={onNavigate}
-      className={`group relative whitespace-nowrap px-1.5 py-2 text-sm font-medium transition-colors duration-200 xl:text-[15px] ${
+      className={`group relative whitespace-nowrap px-1.5 py-2 text-xs font-medium transition-colors duration-200 xl:text-sm ${
         isActive ? "text-primary-500" : "text-gray-800 hover:text-primary-500"
       }`}
     >
@@ -95,7 +95,7 @@ export default function Header() {
             </div>
             <Link
               href="/investor-contacts"
-              className={`inline-flex shrink-0 items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:shadow-md ${
+              className={`inline-flex shrink-0 items-center gap-1.5 rounded-lg px-3.5 py-2.5 text-xs font-semibold text-white shadow-sm transition-all duration-200 hover:shadow-md ${
                 pathname === "/investor-contacts"
                   ? "bg-primary-600"
                   : "bg-primary-500 hover:bg-primary-600"
@@ -133,7 +133,7 @@ export default function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={closeMobile}
-                    className={`border-b border-gray-100 px-2 py-3 text-base font-medium transition-colors ${
+                    className={`border-b border-gray-100 px-2 py-3 text-sm font-medium transition-colors ${
                       isActive
                         ? "bg-primary-50 font-semibold text-primary-600"
                         : "text-gray-800 hover:bg-primary-50/80 hover:text-primary-600"
@@ -146,7 +146,7 @@ export default function Header() {
               <Link
                 href="/investor-contacts"
                 onClick={closeMobile}
-                className={`mx-2 mt-4 flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-center text-base font-semibold text-white shadow-sm ${
+                className={`mx-2 mt-4 flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-center text-sm font-semibold text-white shadow-sm ${
                   pathname === "/investor-contacts"
                     ? "bg-primary-600"
                     : "bg-primary-500 hover:bg-primary-600"

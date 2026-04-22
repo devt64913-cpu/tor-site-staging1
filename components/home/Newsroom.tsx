@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useRef, useState } from "react";
 import type { EmblaCarouselType } from "embla-carousel";
-import { IconArrowRight } from "@tabler/icons-react";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import Carousel from "@/components/Carousel";
 
 const newsItems = [
@@ -73,6 +73,7 @@ const EMBLA_OPTIONS = {
 
 export default function Newsroom() {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [hasMovedForward, setHasMovedForward] = useState(false);
   const emblaApiRef = useRef<EmblaCarouselType | undefined>(undefined);
 
   const scrollTo = useCallback((i: number) => {
@@ -81,6 +82,18 @@ export default function Newsroom() {
   const scrollNext = useCallback(() => {
     emblaApiRef.current?.scrollNext();
   }, []);
+  const scrollPrev = useCallback(() => {
+    emblaApiRef.current?.scrollPrev();
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setHasMovedForward(true);
+    scrollNext();
+  }, [scrollNext]);
+
+  const handleBack = useCallback(() => {
+    scrollPrev();
+  }, [scrollPrev]);
 
   const carouselSlides = newsItems.map((item, index) => {
     const focused = selectedIndex === index;
@@ -182,6 +195,16 @@ export default function Newsroom() {
             className="relative z-10 mt-8 flex items-center justify-center gap-4 sm:mt-10 lg:mt-10 lg:justify-start"
             aria-label="News carousel"
           >
+            {hasMovedForward && (
+              <button
+                type="button"
+                onClick={handleBack}
+                aria-label="Previous slide"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black bg-white text-primary-950 shadow-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+              >
+                <IconArrowLeft className="h-6 w-6 text-black" />
+              </button>
+            )}
             <div className="flex items-center gap-2 sm:gap-2.5" role="tablist">
               {newsItems.map((item, i) => (
                 <button
@@ -201,7 +224,7 @@ export default function Newsroom() {
             </div>
             <button
               type="button"
-              onClick={scrollNext}
+              onClick={handleNext}
               aria-label="Next slide"
               className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black bg-white text-primary-950 shadow-sm transition hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
             >

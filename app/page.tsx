@@ -74,7 +74,11 @@ export default function Home() {
             className="flex flex-col items-center gap-1 sm:gap-1.5 md:gap-2"
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.35 }}
+            viewport={{
+              once: true,
+              amount: 0.75,
+              margin: "0px 0px -18% 0px",
+            }}
             variants={{
               hidden: {},
               show: {
