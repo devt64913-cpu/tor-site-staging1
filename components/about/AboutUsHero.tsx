@@ -41,6 +41,7 @@ const TIMELINE = [
 
 const SEGMENT_COUNT = TIMELINE.length;
 const SEGMENT_PERCENT = 100 / SEGMENT_COUNT;
+const HERO_HEIGHT_CLASS = "min-h-[min(86vh,920px)]";
 
 export default function AboutUsHero() {
   const emblaRef = useRef<EmblaCarouselType | undefined>(undefined);
@@ -83,9 +84,9 @@ export default function AboutUsHero() {
 
   return (
     <section className="relative mb-0 w-full pt-16 lg:mb-0 lg:pt-20">
-      <div className="relative min-h-[min(78vh,760px)] w-full overflow-hidden bg-primary-950">
+      <div className={`relative w-full overflow-hidden bg-primary-950 ${HERO_HEIGHT_CLASS}`}>
         <Carousel
-          className="absolute inset-0 h-full min-h-[min(78vh,760px)]"
+          className={`absolute inset-0 h-full ${HERO_HEIGHT_CLASS}`}
           responsiveSlides={false}
           slideBasis="100%"
           slideClassName="!w-full !min-w-full !max-w-full h-full"
@@ -101,12 +102,12 @@ export default function AboutUsHero() {
           onSlideChange={handleSlideChange}
         >
           {HERO_IMAGES.map((img) => (
-            <div key={img.src} className="relative h-[min(78vh,760px)] w-full">
+            <div key={img.src} className={`relative h-full w-full ${HERO_HEIGHT_CLASS}`}>
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-contain"
+                className="object-cover object-center"
                 // priority={img.src === HERO_IMAGES[0].src}
                 sizes="100vw"
               />
@@ -119,7 +120,7 @@ export default function AboutUsHero() {
           aria-hidden
         />
 
-        <div className="absolute inset-0 z-20 flex min-h-[min(78vh,760px)] flex-col justify-between px-4 pb-24 pt-24 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
+        <div className={`absolute inset-0 z-20 flex flex-col justify-between px-4 pb-24 pt-24 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 ${HERO_HEIGHT_CLASS}`}>
           {/* Headline + CTA: left-aligned (timeline below uses same horizontal inset) */}
           <div className="pointer-events-none flex flex-1 flex-col items-start justify-center">
             <motion.h1

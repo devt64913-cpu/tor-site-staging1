@@ -10,14 +10,13 @@ interface LogoProps {
 export default function Logo({ showText = false, className = "" }: LogoProps) {
   return (
     <Link href="/" className={`flex items-center ${className}`}>
-      <div className="w-16 h-16 rounded-lg flex items-center justify-center relative overflow-hidden ">
+      <div className="relative flex h-[72px] w-[72px] items-center justify-center overflow-hidden rounded-lg sm:h-[80px] sm:w-[80px]">
         <Image
-          // src={`${url}/images/logo.png`}
           src={`/images/logo.png`}
           alt="TOR Refinery Logo"
-          width={58}
-          height={58}
-          className="object-cover"
+          fill
+          sizes="(max-width: 640px) 72px, 80px"
+          className="object-contain"
         />
       </div>
       {showText && (
