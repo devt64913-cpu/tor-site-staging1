@@ -146,7 +146,7 @@ export default function Sustainability() {
               <motion.div variants={heroItemVariants} className="pointer-events-auto">
                 <Link
                   href="#sustainability-tabs"
-                  className="mt-8 inline-flex items-center self-start rounded-lg bg-primary-500 px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-primary-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:text-base"
+                  className="my-8 inline-flex items-center self-start rounded-lg bg-primary-500 px-7 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-primary-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:text-base"
                 >
                   Explore Policy Commitments
                 </Link>
@@ -189,7 +189,7 @@ export default function Sustainability() {
 
       <section
         id="sustainability-tabs"
-        className="mt-0 scroll-mt-20 bg-[#d7e8f0]"
+        className="mt-0 scroll-mt-20 bg-white"
         aria-label="Sustainability sections"
       >
         <div className="w-full bg-primary-400 px-4 py-3 sm:px-6 lg:px-8">
@@ -217,75 +217,64 @@ export default function Sustainability() {
           </div>
         </div>
 
-        <div className=" w-full px-0 bg-primary-500/40 mt-16 relative h-160">
+        <div className=" w-full px-0 mt-12 relative h-[34rem]">
 
-        <div className="w-full rounded-tr-[20rem] rounded-bl-[20rem] overflow-hidden absolute h-160">
-        <Image
-                src="/images/sustainability/tree.png"
-                alt="Tree on grassy field"
-                fill
-                className="object-fill absolute"
-                priority
-              />
+          <div className="w-full rounded-tr-[20rem] rounded-bl-[20rem] overflow-hidden absolute h-[34rem]">
+            <Image
+              src="/images/sustainability/tree.png"
+              alt="Tree on grassy field"
+              fill
+              className="object-fill absolute"
+              priority
+            />
 
-             
-        </div>
-          {/* <div className="px-0 py-2 sm:px-2 lg:px-0">
-            <div className="relative overflow-hidden rounded-[4.8rem] bg-[#1f7ea3] px-4 py-10 sm:px-8 sm:py-12 md:px-10 lg:px-14">
-              <Image
-                src="/images/sustainability/tree.png"
-                alt="Tree on grassy field"
-                fill
-                className="object-cover object-bottom"
-                priority
-              />
-              <div className="absolute inset-0 bg-linear-to-b from-[#3d94ba]/90 via-[#2b87ae]/72 to-[#1f7ea3]/40" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-[#1f7ea3]/55 to-transparent" />
-              <div className="relative overflow-hidden rounded-[2.15rem] bg-primay-500/80 px-6 py-5 text-white shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-[1.5px] sm:px-8 sm:py-7 md:px-10 md:py-8">
-                <h2 className="text-xl font-extrabold text-[#14b6e8] sm:text-[2.15rem] sm:leading-tight">
-                Environmental Policy Statement
+
+          </div>
+
+          <div className="w-full h-[34rem] rounded-tl-[20rem] rounded-br-[20rem] bg-primary-500/35 absolute" />
+
+          <div className="w-full h-full flex justify-center items-center">
+
+            <div className="relative overflow-hidden w-[50%] inset-0 rounded-[2.15rem] bg-primary-950/60 px-6 py-5 text-white shadow-[0_14px_30px_rgba(0,0,0,0.18)] backdrop-blur-[1.5px] sm:px-8 sm:py-7 md:px-10 md:py-8">
+              <h2 className="text-xl font-extrabold text-[#14b6e8] sm:text-[2.15rem] sm:leading-tight">
+                Environmental <span className="text-white">Policy Statement</span>
               </h2>
-                <p className="mt-4 text-xs font-semibold leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
-                  The Mission of Tema Oil Refinery (TOR) Limited is to provide clean energy
-                  products to power Ghana&apos;s economic growth in an environmentally sustainable
-                  manner.
-                </p>
-                <p className="mt-4 text-xs font-semibold leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
-                  TOR is committed to implementing pollution prevention and mitigation measures
-                  aimed at avoidance, minimisation, restoration and offset as it refines crude
-                  oil into clean energy products and other related operations.
-                </p>
-                <p className="mt-4 text-xs font-semibold leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
-                  TOR shall strive to continually improve on its environmental performance and
-                  ensure compliance with all applicable legal and regulatory requirements.
-                </p>
-              </div>
-              
+              <p className="mt-4 text-xs font-semibold leading-relaxed text-white sm:text-[1.02rem] sm:leading-[1.45]">
+                The Mission of Tema Oil Refinery (TOR) Limited is to provide clean energy
+                products to power Ghana&apos;s economic growth in an environmentally sustainable
+                manner.
+              </p>
+              <p className="mt-4 text-xs font-semibold leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
+                TOR is committed to implementing pollution prevention and mitigation measures
+                aimed at avoidance, minimisation, restoration and offset as it refines crude
+                oil into clean energy products and other related operations.
+              </p>
+              <p className="mt-4 text-xs font-semibold leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
+                TOR shall strive to continually improve on its environmental performance and
+                ensure compliance with all applicable legal and regulatory requirements.
+              </p>
             </div>
-          </div> */}
+          </div>
+
         </div>
       </section>
 
-      <section className="bg-[#d7e8f0] py-4 sm:py-5">
-        <div className="mx-auto w-full max-w-screen-2xl px-0">
-          <div className="relative overflow-hidden rounded-[0_5rem_5rem_0] bg-[#16a7df] px-4 py-10 sm:px-8 sm:py-12 lg:px-12">
-            <div className="pointer-events-none absolute -left-16 top-0 h-64 w-64 rounded-br-[9rem] bg-[#d7e8f0]" />
-            <div className="pointer-events-none absolute bottom-0 right-0 h-20 w-20 rounded-tl-[3.5rem] bg-[#d7e8f0]" />
-            <h2 className="relative text-center text-lg font-semibold text-[#1d4a5b] sm:text-2xl">
-              Environmental and Safety Compliance
-            </h2>
+      <section className="bg-white py-4 sm:py-5 mb-16 mt-6">
+        <div className="relative w-full h-[70rem]">
+          <div className="absolute bg-primary-500/30 h-[70rem] w-full">
 
-            <div className="relative mx-auto mt-6 w-full max-w-5xl">
+            <div className="absolute bg-primary-500 w-full h-[70rem] rounded-tl-[30rem] rounded-br-[30rem] px-24 pt-10">
               <Image
                 src="/images/sustainability/environment.png"
                 alt="Environmental and safety compliance framework"
-                width={1536}
-                height={1152}
-                className="h-auto w-full object-contain"
+                width={100}
+                height={100}
+                className=" object-fill h-[62rem] w-full"
                 priority
               />
             </div>
           </div>
+
         </div>
       </section>
     </>

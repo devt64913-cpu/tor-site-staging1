@@ -106,7 +106,7 @@ export default function AboutUsHero() {
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-cover"
+                className="object-contain"
                 // priority={img.src === HERO_IMAGES[0].src}
                 sizes="100vw"
               />

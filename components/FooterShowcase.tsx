@@ -41,7 +41,8 @@ export default function FooterShowcase() {
     <footer className="bg-[#004A77] pb-10 pt-12 text-white lg:pt-14">
       <div className="mx-auto w-full max-w-screen-2xl px-6 sm:px-10 lg:px-16">
         <div className="rounded-t-[2.5rem] bg-[#004A77]">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr] lg:gap-16 xl:gap-24">
+          <div className="md:grid md:grid-cols-2 md:gap-x-10 lg:flex lg:justify-between">
+          {/* <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr] lg:gap-16 xl:gap-24"> */}
           <div>
             <Link href="/" className="inline-flex items-center gap-4">
               <Image
@@ -55,7 +56,7 @@ export default function FooterShowcase() {
                 Tema Oil Refinery
               </span>
             </Link>
-            <p className="mt-4 max-w-sm text-base leading-snug text-white/95">
+            <p className="mt-4 max-w-sm text-[13px] leading-snug text-white/95">
               Established in 1963 and being the first stellar refinery in Africa.
             </p>
             <div className="mt-5 flex items-center gap-4">
@@ -77,7 +78,7 @@ export default function FooterShowcase() {
             <ul className="mt-4 space-y-3 text-base text-white/95">
               {COMPANY_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="transition-colors hover:text-cyan-200">
+                  <Link href={link.href} className="transition-colors hover:text-cyan-200 text-[13px]">
                     {link.label}
                   </Link>
                 </li>
@@ -90,7 +91,7 @@ export default function FooterShowcase() {
             <ul className="mt-4 space-y-3 text-base text-white/95">
               {OPERATIONS_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="transition-colors hover:text-cyan-200">
+                  <Link href={link.href} className="transition-colors hover:text-cyan-200 text-[13px]">
                     {link.label}
                   </Link>
                 </li>
@@ -103,13 +104,15 @@ export default function FooterShowcase() {
             <ul className="mt-4 space-y-3 text-base text-white/95">
               {RESOURCES_LINKS.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="transition-colors hover:text-cyan-200">
+                  <Link href={link.href} className="transition-colors hover:text-cyan-200 text-[13px]">
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
+
           </div>
 
           <div className="mt-12 flex items-center justify-center gap-3 border-t border-white/20 pt-6 text-center text-sm text-white/95 sm:text-base">

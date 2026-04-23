@@ -8,6 +8,7 @@ import {
   IconTank,
   IconTools,
   IconSchool,
+  IconBuildingWarehouse,
 } from "@tabler/icons-react";
 import WhatWeDoHero from "@/components/whatwedo/WhatWeDoHero";
 
@@ -105,28 +106,28 @@ const supportServices = [
   {
     title: "Storage Tank Services",
     icon: IconTank,
-    image: "/images/whatwedo/our-business.png",
+    image: "/images/whatwedo/image4.webp",
     description:
       "TOR has one of the largest petroleum storage capacities, supporting the safe custody of crude oil, LPG, condensate, naphtha, gasoline premix, kerosene, ATK, gasoil, and fuel oil.",
   },
   {
     title: "Loading Rack Services",
-    icon: IconTools,
-    image: "/images/whatwedo/our-business.png",
+    icon: IconBuildingWarehouse,
+    image: "/images/whatwedo/loading-rack.webp",
     description:
       "TOR provides loading rack services for Bulk Distribution Companies (BDCs) storing imported products in refinery tanks for onward sale and distribution to Oil Marketing Companies (OMCs).",
   },
   {
     title: "Maintenance Services",
     icon: IconTools,
-    image: "/images/whatwedo/our-business.png",
+    image: "/images/whatwedo/maintenance.webp",
     description:
       "TOR performs a wide range of engineering services, including valve replacement and maintenance, pipe replacement and maintenance, installation, commissioning, instrumentation, and other comprehensive maintenance tasks.",
   },
   {
     title: "Training Services",
     icon: IconSchool,
-    image: "/images/whatwedo/our-business.png",
+    image: "/images/whatwedo/training-service.webp",
     description:
       "TOR offers commercial training for industry workers in upstream and downstream operations, with prior training delivered for MODEC and National Petroleum Authority personnel.",
   },
