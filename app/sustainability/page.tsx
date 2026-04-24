@@ -216,6 +216,8 @@ export default function Sustainability() {
                 priority
               />
 
+              <div></div>
+
 
               <div className="inset-0 top-[7%] left-[20%] relative w-[60%] overflow-hidden px-6 py-5 text-white sm:px-8 sm:py-7 md:px-10 md:py-8">
                 <h2 className="text-xl font-extrabold text-white sm:text-[2.15rem] sm:leading-tight">
