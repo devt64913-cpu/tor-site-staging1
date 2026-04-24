@@ -39,7 +39,7 @@ export default function FooterShowcase() {
 
   return (
     <footer className="bg-[#004A77] pb-8 pt-10 text-white sm:pb-10 sm:pt-12 lg:pb-10 lg:pt-14">
-      <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-8 lg:px-16 2xl:px-0">
+      <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-8 lg:px-16 2xl:px-20">
         <div className="rounded-t-[2.5rem] bg-[#004A77]">
           <div className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 md:gap-x-10 md:gap-y-12 lg:flex lg:justify-between">
           {/* <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr] lg:gap-16 xl:gap-24"> */}
@@ -94,14 +94,14 @@ export default function FooterShowcase() {
             </ul>
           </div>
 
-          <div className="text-left lg:text-right">
+          <div className="text-left lg:text-left">
             <h3 className="text-xl font-semibold leading-none tracking-tight sm:text-2xl">
               Tema Oil Refinery
             </h3>
-            <p className="max-w-sm text-xs leading-snug text-white/95 sm:text-[13px] lg:ml-auto mt-6">
+            <p className="max-w-[16rem] text-xs leading-snug text-white/95 sm:text-[13px] lg:ml-auto mt-6 ">
               Established in 1963 and being the first stellar refinery in Africa.
             </p>
-            <div className="mt-5 flex flex-wrap items-center gap-3 sm:gap-4 lg:justify-end">
+            <div className="mt-5 flex flex-wrap items-center gap-3 sm:gap-4 lg:justify-start">
               {SOCIAL_LINKS.map((item) => (
                 <a
                   key={item.label}

@@ -44,14 +44,14 @@ const COMPLIANCE_FRAMEWORK = [
 export default function SustainabilityComplianceSection() {
   return (
     <section className="mb-16 mt-6 bg-white py-4 sm:py-5">
-      <div className="relative h-280 w-full">
-        <div className="absolute h-280 w-full bg-primary-500/30">
-          <div className="absolute h-280 w-full rounded-br-[30rem] rounded-tl-[30rem] bg-primary-500 px-24 pt-10">
-            <div className="h-248 w-full rounded-[2.5rem] bg-primary-500 px-6 py-8 text-white sm:px-8 sm:py-10">
+      <div className="relative h-[53rem] w-full">
+        <div className="absolute h-[53rem] w-full bg-primary-500/30">
+          <div className="absolute h-[53rem] w-full rounded-br-[30rem] rounded-tl-[30rem] bg-primary-500 px-24 pt-10">
+            <div className="h-248 w-full rounded-[2.5rem] px-6 py-8 text-white sm:px-8 sm:py-10">
               <h3 className="text-center text-2xl font-extrabold tracking-tight text-primary-50 sm:text-4xl">
                 Environmental and Safety Compliance
               </h3>
-              <p className="mx-auto mt-3 max-w-3xl text-center text-sm text-primary-50/95 sm:text-base">
+              <p className="mx-auto mt-3 max-w-3xl text-center text-sm text-primary-50/95 sm:text-base mb-24">
                 Each control pillar is interconnected to keep operations compliant, safe, and
                 environmentally responsible.
               </p>

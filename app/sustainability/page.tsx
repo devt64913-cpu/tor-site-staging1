@@ -193,6 +193,58 @@ export default function Sustainability() {
       <SustainabilityPolicySection />
       <SustainabilityComplianceImageSection />
       <SustainabilityComplianceSection />
+
+      <section className="mb-16 mt-6 bg-white py-4 sm:py-5">
+        <div className="relative h-140 w-full">
+          <div className="absolute h-140 w-full bg-primary-500/30">
+            <div className="absolute h-140 w-full rounded-br-[30rem] rounded-tl-[30rem] bg-primary-950 px-24 pt-10">
+              <Image
+                src="/images/health-and-safety/image1.png"
+                alt="Environmental and safety compliance framework"
+                width={40}
+                height={40}
+                className="h-[13rem] w-[13rem] object-cover absolute right-0 top-0 rounded-br-[15rem]"
+                priority
+              />
+
+              <Image
+                src="/images/health-and-safety/image2.png"
+                alt="Environmental and safety compliance framework"
+                width={40}
+                height={40}
+                className="h-[15rem] w-[15rem] object-cover absolute left-0 bottom-0 rounded-br-[15rem]"
+                priority
+              />
+
+
+              <div className="inset-0 top-[7%] left-[20%] relative w-[60%] overflow-hidden px-6 py-5 text-white sm:px-8 sm:py-7 md:px-10 md:py-8">
+                <h2 className="text-xl font-extrabold text-white sm:text-[2.15rem] sm:leading-tight">
+                  Health and Safety Policy <span className="text-[#14b6e8]">Statement</span>
+                </h2>
+                <p className="mt-4 text-xs font-normal leading-relaxed text-white sm:text-[1.02rem] sm:leading-[1.45]">
+                  Tema Oil Refinery endeavours to conduct its operations in a manner which ensures the protection of its employees, customers, contractors, visitors and communities in which it operates.
+
+                </p>
+                <p className="mt-4 text-xs font-normal leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
+                We recognize Safety as first within our Core Values and our aim is to develop Health and Safety objectives which are integral to the success of the business.
+
+                </p>
+                <p className="mt-4 text-xs font-normal leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
+                We recognize that this commitment will only be achieved with positive leadership, the provision of essential and adequate resources and continued pursuit of best practice in Health and Safety.
+
+                </p>
+
+                <p className="mt-4 text-xs font-normal leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
+                  Ultimate responsibility for Health and Safety rests with the Managing Director and Executive Management team.
+
+                </p>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
