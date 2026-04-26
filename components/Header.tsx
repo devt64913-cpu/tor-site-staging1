@@ -11,8 +11,6 @@ const MAIN_NAV = [
   { href: "/whoweare", label: "Who We Are" },
   { href: "/what-we-do", label: "What We Do" },
   { href: "/sustainability", label: "Sustainability" },
-  { href: "/health-safety", label: "Health & safety" },
-  { href: "/news", label: "News & Event" },
   { href: "/investors", label: "Investors" },
 ] as const;
 
@@ -83,8 +81,8 @@ export default function Header() {
             <Logo />
           </div>
 
-          <div className="ml-auto mr-4 hidden min-w-0 shrink-0 items-center gap-1.5 sm:mr-5 lg:mr-8 lg:flex xl:gap-2 2xl:mr-10">
-            <div className="flex max-w-none flex-wrap items-center justify-end gap-x-1 gap-y-1 sm:gap-x-1.5 md:gap-x-2 xl:gap-x-2.5">
+          <div className="ml-auto mr-4 hidden min-w-0 shrink-0 items-center gap-2.5 sm:mr-5 lg:mr-8 lg:flex xl:gap-3 2xl:mr-10">
+            <div className="flex max-w-none flex-wrap items-center justify-end gap-x-2 gap-y-1 sm:gap-x-2.5 md:gap-x-3 xl:gap-x-3.5">
               {MAIN_NAV.map((item) => (
                 <NavLink
                   key={item.href}

@@ -195,54 +195,50 @@ export default function Sustainability() {
       <SustainabilityComplianceSection />
 
       <section className="mb-16 mt-6 bg-white py-4 sm:py-5">
-        <div className="relative h-140 w-full">
-          <div className="absolute h-140 w-full bg-primary-500/30">
-            <div className="absolute h-140 w-full rounded-br-[30rem] rounded-tl-[30rem] bg-primary-950 px-24 pt-10">
+        <div className="relative h-136 w-full sm:h-152 lg:h-140">
+          <div className="absolute inset-0 bg-primary-500/30">
+            <div className="absolute inset-0 rounded-br-[8rem] rounded-tl-[8rem] bg-primary-950 px-4 pt-8 sm:rounded-br-[16rem] sm:rounded-tl-[16rem] sm:px-10 sm:pt-10 lg:rounded-br-[30rem] lg:rounded-tl-[30rem] lg:px-24">
               <Image
                 src="/images/health-and-safety/image1.png"
                 alt="Environmental and safety compliance framework"
-                width={40}
-                height={40}
-                className="h-[13rem] w-[13rem] object-cover absolute right-0 top-0 rounded-br-[15rem]"
+                width={320}
+                height={320}
+                className="absolute right-0 top-0 h-24 w-24 rounded-br-[4rem] object-cover sm:h-36 sm:w-36 sm:rounded-br-[8rem] lg:h-52 lg:w-52 lg:rounded-br-[15rem]"
                 priority
               />
 
               <Image
                 src="/images/health-and-safety/image2.png"
                 alt="Environmental and safety compliance framework"
-                width={40}
-                height={40}
-                className="h-[15rem] w-[15rem] object-cover absolute left-0 bottom-0 rounded-br-[15rem]"
+                width={320}
+                height={320}
+                className="absolute bottom-0 left-0 h-28 w-28 rounded-tr-[4rem] object-cover sm:h-40 sm:w-40 sm:rounded-tr-[8rem] lg:h-60 lg:w-60 lg:rounded-tr-[15rem]"
                 priority
               />
 
-              <div></div>
-
-
-              <div className="inset-0 top-[7%] left-[20%] relative w-[60%] overflow-hidden px-6 py-5 text-white sm:px-8 sm:py-7 md:px-10 md:py-8">
-                <h2 className="text-xl font-extrabold text-white sm:text-[2.15rem] sm:leading-tight">
+              <div className="relative left-1/2 top-[6%] w-[92%] -translate-x-1/2 overflow-hidden px-2 py-3 text-white sm:top-[7%] sm:w-[78%] sm:px-6 sm:py-5 lg:left-[20%] lg:w-[60%] lg:translate-x-0 lg:px-6 lg:py-5">
+                <h2 className="text-xl font-extrabold text-white sm:text-3xl sm:leading-tight md:text-[2.15rem]">
                   Health and Safety Policy <span className="text-[#14b6e8]">Statement</span>
                 </h2>
-                <p className="mt-4 text-xs font-normal leading-relaxed text-white sm:text-[1.02rem] sm:leading-[1.45]">
-                  Tema Oil Refinery endeavours to conduct its operations in a manner which ensures the protection of its employees, customers, contractors, visitors and communities in which it operates.
-
+                <p className="mt-4 text-xs font-normal leading-relaxed text-white sm:text-base sm:leading-[1.45]">
+                  Tema Oil Refinery endeavours to conduct its operations in a manner which ensures
+                  the protection of its employees, customers, contractors, visitors and
+                  communities in which it operates.
                 </p>
-                <p className="mt-4 text-xs font-normal leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
-                We recognize Safety as first within our Core Values and our aim is to develop Health and Safety objectives which are integral to the success of the business.
-
+                <p className="mt-4 text-xs font-normal leading-relaxed text-white/95 sm:text-base sm:leading-[1.45]">
+                  We recognize Safety as first within our Core Values and our aim is to develop
+                  Health and Safety objectives which are integral to the success of the business.
                 </p>
-                <p className="mt-4 text-xs font-normal leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
-                We recognize that this commitment will only be achieved with positive leadership, the provision of essential and adequate resources and continued pursuit of best practice in Health and Safety.
-
+                <p className="mt-4 text-xs font-normal leading-relaxed text-white/95 sm:text-base sm:leading-[1.45]">
+                  We recognize that this commitment will only be achieved with positive leadership,
+                  the provision of essential and adequate resources and continued pursuit of best
+                  practice in Health and Safety.
                 </p>
-
-                <p className="mt-4 text-xs font-normal leading-relaxed text-white/95 sm:text-[1.02rem] sm:leading-[1.45]">
-                  Ultimate responsibility for Health and Safety rests with the Managing Director and Executive Management team.
-
+                <p className="mt-4 text-xs font-normal leading-relaxed text-white/95 sm:text-base sm:leading-[1.45]">
+                  Ultimate responsibility for Health and Safety rests with the Managing Director
+                  and Executive Management team.
                 </p>
               </div>
-
-
             </div>
           </div>
         </div>
